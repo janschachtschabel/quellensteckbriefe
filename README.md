@@ -270,6 +270,9 @@ Kurz-SHA, SemVer bei `v*`-Tags). Image-Name bei Bedarf im Workflow anpassen.
 `.pytest_cache/`. **Versioniert** bleiben `truth.json`, die Input-CSVs und die
 Golden-Snapshots (von Build bzw. Tests benötigt).
 
+**Server-Deployment (Debian 13 + Docker Compose):** fertige `docker-compose.yml`,
+Muster-`.env` und Schritt-für-Schritt-Anleitung unter [`deploy/`](deploy/).
+
 ## Offene Erweiterungen
 
 - Team4-Excel-Detail (KI-Check Rechtliches, Vereinbarungs-Details) zusätzlich zu

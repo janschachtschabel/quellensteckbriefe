@@ -1,0 +1,20 @@
+# WLO Quellensteckbriefe — Deployment (API + Frontend in einem Container).
+# Konfiguration kommt aus .env (siehe .env.example).  Start:  docker compose up -d
+services:
+  quellensteckbriefe:
+    image: ${IMAGE:?bitte IMAGE in .env setzen (z. B. deinuser/quellensteckbriefe:latest)}
+    container_name: quellensteckbriefe
+    restart: unless-stopped
+    ports:
+      - "${PORT:-8080}:8080"
+    environment:
+      # Team-Passwort wird zur Laufzeit injiziert (nicht im Image gebacken):
+      - QE_TEAM_PASSWORD=${QE_TEAM_PASSWORD:?bitte QE_TEAM_PASSWORD in .env setzen}
+    # Healthcheck ist bereits im Image definiert (Dockerfile) und wird übernommen.
+    #
+    # Persistenz (optional): Der mitgelieferte Datenstand (truth.json) steckt schon
+    # im Image. Ein Volume NUR mounten, wenn es vorab mit truth.json + inputs/
+    # befüllt wurde — sonst überdeckt das leere Volume die eingebauten Daten und
+    # die App startet ohne Datensatz. Für den Normalbetrieb auskommentiert lassen.
+    # volumes:
+    #   - ./data:/app/quellenerschliessung-app/backend/data
