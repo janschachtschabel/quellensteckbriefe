@@ -1,0 +1,845 @@
+{
+  "bqSizeBrackets": [
+    {
+      "count": 2674,
+      "value": "1–4"
+    },
+    {
+      "count": 124,
+      "value": "5–9"
+    },
+    {
+      "count": 83,
+      "value": "10–49"
+    },
+    {
+      "count": 2,
+      "value": "50–99"
+    },
+    {
+      "count": 2,
+      "value": "100–499"
+    }
+  ],
+  "byKind": {
+    "bezugsquelle": 2885,
+    "crawler": 55,
+    "manuell": 1279
+  },
+  "confidence": {
+    "high": 682,
+    "low": 2893,
+    "medium": 644
+  },
+  "contentBrackets": [
+    {
+      "count": 650,
+      "value": "0"
+    },
+    {
+      "count": 3154,
+      "value": "1–4"
+    },
+    {
+      "count": 181,
+      "value": "5–9"
+    },
+    {
+      "count": 153,
+      "value": "10–49"
+    },
+    {
+      "count": 17,
+      "value": "50–99"
+    },
+    {
+      "count": 33,
+      "value": "100–499"
+    },
+    {
+      "count": 12,
+      "value": "500–999"
+    },
+    {
+      "count": 12,
+      "value": "1k–9.9k"
+    },
+    {
+      "count": 7,
+      "value": "≥10k"
+    }
+  ],
+  "contentBracketsNode": [
+    {
+      "count": 642,
+      "value": "0"
+    },
+    {
+      "count": 480,
+      "value": "1–4"
+    },
+    {
+      "count": 57,
+      "value": "5–9"
+    },
+    {
+      "count": 70,
+      "value": "10–49"
+    },
+    {
+      "count": 15,
+      "value": "50–99"
+    },
+    {
+      "count": 30,
+      "value": "100–499"
+    },
+    {
+      "count": 12,
+      "value": "500–999"
+    },
+    {
+      "count": 11,
+      "value": "1k–9.9k"
+    },
+    {
+      "count": 5,
+      "value": "≥10k"
+    }
+  ],
+  "contentCoverage": {
+    "bezugsquelle": 310911,
+    "crawler": 296285,
+    "gesamt": 304800,
+    "quelldatensatz": 304480
+  },
+  "coverage": {
+    "beschreibung": {
+      "count": 1301,
+      "percent": 30.8
+    },
+    "qualitaetsmerkmale": {
+      "count": 965,
+      "percent": 22.9
+    },
+    "url": {
+      "count": 1334,
+      "percent": 31.6
+    },
+    "vorschaubild": {
+      "count": 1539,
+      "percent": 36.5
+    }
+  },
+  "crawlerByType": [
+    {
+      "count": 23,
+      "value": "API"
+    },
+    {
+      "count": 14,
+      "value": "Webseite (Scraping)"
+    },
+    {
+      "count": 7,
+      "value": "Dump/Import"
+    },
+    {
+      "count": 5,
+      "value": "Webseite (Sitemap)"
+    },
+    {
+      "count": 5,
+      "value": "RSS"
+    }
+  ],
+  "erschliessung": {
+    "crawler": 55,
+    "manuell": 1279,
+    "mitQuelldatensatz": 1322,
+    "nurBezugsquelle": 2885,
+    "zweitDatensatz": 473
+  },
+  "fieldGeneration": {
+    "avgFieldsPerCrawler": 27.2,
+    "byMethod": [
+      {
+        "count": 1050,
+        "value": "aus Quelldaten"
+      },
+      {
+        "count": 202,
+        "value": "hard-coded"
+      },
+      {
+        "count": 61,
+        "value": "sonstige"
+      },
+      {
+        "count": 40,
+        "value": "via Mapping"
+      },
+      {
+        "count": 27,
+        "value": "aus URL"
+      },
+      {
+        "count": 15,
+        "value": "aus RSS"
+      },
+      {
+        "count": 11,
+        "value": "aus CSV"
+      },
+      {
+        "count": 11,
+        "value": "aus DOM gescraped"
+      },
+      {
+        "count": 9,
+        "value": "aus API"
+      },
+      {
+        "count": 8,
+        "value": "via LRMI"
+      },
+      {
+        "count": 5,
+        "value": "Volltext-Extraktion"
+      }
+    ],
+    "crawlerWithProfile": 53,
+    "fieldActivity": [
+      {
+        "count": 53,
+        "value": "hash"
+      },
+      {
+        "count": 53,
+        "value": "sourceId"
+      },
+      {
+        "count": 52,
+        "value": "title"
+      },
+      {
+        "count": 51,
+        "value": "description"
+      },
+      {
+        "count": 51,
+        "value": "valuespaces"
+      },
+      {
+        "count": 50,
+        "value": "location"
+      },
+      {
+        "count": 49,
+        "value": "license"
+      },
+      {
+        "count": 49,
+        "value": "lom"
+      },
+      {
+        "count": 47,
+        "value": "format"
+      },
+      {
+        "count": 46,
+        "value": "keyword"
+      },
+      {
+        "count": 46,
+        "value": "url"
+      },
+      {
+        "count": 45,
+        "value": "discipline"
+      },
+      {
+        "count": 41,
+        "value": "language"
+      },
+      {
+        "count": 41,
+        "value": "thumbnail"
+      },
+      {
+        "count": 38,
+        "value": "intendedEndUserRole"
+      },
+      {
+        "count": 37,
+        "value": "role"
+      },
+      {
+        "count": 35,
+        "value": "educationalContext"
+      },
+      {
+        "count": 34,
+        "value": "new_lrt"
+      }
+    ],
+    "totalActiveFields": 1439
+  },
+  "herkunft": {
+    "bezugsquelleMitQuelldatensatz": 683,
+    "bezugsquelleOhneQuelldatensatz": 2870,
+    "bezugsquellenGesamt": 3553,
+    "quelldatensaetzeGesamt": 1322,
+    "quelldatensatzMitBezugsquelle": 1153,
+    "quelldatensatzOhneBezugsquelle": 169,
+    "schnittmengeBlacklist": 67,
+    "schnittmengeNurEinmalProBezugsquelle": 683,
+    "schnittmengeSauber": 669,
+    "schnittmengeZweitdatensatz": 417
+  },
+  "inhalte": {
+    "wloProd": 318650,
+    "zuordenbar": 304800
+  },
+  "korrektur": {
+    "blacklist": 81,
+    "blacklistImSchnitt": 67,
+    "whitelist": 136,
+    "whitelistImSchnitt": 129
+  },
+  "licenseDistribution": [
+    {
+      "count": 781,
+      "value": "COPYRIGHT_FREE"
+    },
+    {
+      "count": 156,
+      "value": "CC_BY_SA"
+    },
+    {
+      "count": 88,
+      "value": "CC_BY"
+    },
+    {
+      "count": 54,
+      "value": "CUSTOM"
+    },
+    {
+      "count": 30,
+      "value": "CC_BY_NC_ND"
+    },
+    {
+      "count": 29,
+      "value": "COPYRIGHT_LICENSE"
+    },
+    {
+      "count": 27,
+      "value": "CC_BY_NC_SA"
+    },
+    {
+      "count": 15,
+      "value": "CC_0"
+    },
+    {
+      "count": 9,
+      "value": "CC_BY_NC"
+    },
+    {
+      "count": 4,
+      "value": "PDM"
+    },
+    {
+      "count": 4,
+      "value": "CC_BY_ND"
+    },
+    {
+      "count": 3,
+      "value": "NONE"
+    },
+    {
+      "count": 1,
+      "value": "UNTERRICHTS_UND_LEHRMEDIEN"
+    }
+  ],
+  "meta": {
+    "byKind": {
+      "bezugsquelle": 2885,
+      "crawler": 55,
+      "manuell": 1279
+    },
+    "generatedAt": "2026-06-24 14:48",
+    "total": 4219,
+    "totalContents": 304800,
+    "withFieldProfile": 53,
+    "withNode": 1322,
+    "wloProdContent": 318650
+  },
+  "oer": {
+    "count": 375,
+    "percent": 8.9
+  },
+  "provenienz": {
+    "legacyBindung": 33,
+    "misGetaggt": 2,
+    "wloMigration": 197,
+    "zweitDatensatz": 473
+  },
+  "quellenverwaltung": {
+    "gesamt": 4138,
+    "mitBezugsquelle": 3975,
+    "mitQuelldatensatz": 1241,
+    "ueberschneidung": 1086
+  },
+  "topByContent": [
+    {
+      "count": 62867,
+      "kind": "crawler",
+      "name": "Bundeszentrale für politische Bildung"
+    },
+    {
+      "count": 54338,
+      "kind": "crawler",
+      "name": "YouTube"
+    },
+    {
+      "count": 49671,
+      "kind": "crawler",
+      "name": "OERSI"
+    },
+    {
+      "count": 39445,
+      "kind": "crawler",
+      "name": "Geogebra"
+    },
+    {
+      "count": 14838,
+      "kind": "crawler",
+      "name": "Bayerischer Rundfunk"
+    },
+    {
+      "count": 12859,
+      "kind": "crawler",
+      "name": "Tutory"
+    },
+    {
+      "count": 12501,
+      "kind": "crawler",
+      "name": "RPI-Virtuell"
+    },
+    {
+      "count": 8197,
+      "kind": "crawler",
+      "name": "Serlo"
+    },
+    {
+      "count": 4396,
+      "kind": "crawler",
+      "name": "Sodis"
+    },
+    {
+      "count": 4031,
+      "kind": "crawler",
+      "name": "Lehrer-Online"
+    },
+    {
+      "count": 3913,
+      "kind": "crawler",
+      "name": "Zebis"
+    },
+    {
+      "count": 3830,
+      "kind": "crawler",
+      "name": "Fobizz"
+    },
+    {
+      "count": 3659,
+      "kind": "crawler",
+      "name": "ZUM-Unterrichten"
+    },
+    {
+      "count": 3377,
+      "kind": "crawler",
+      "name": "Klexikon"
+    },
+    {
+      "count": 2079,
+      "kind": "crawler",
+      "name": "DiLerTube"
+    },
+    {
+      "count": 1937,
+      "kind": "crawler",
+      "name": "OER Commons"
+    },
+    {
+      "count": 1930,
+      "kind": "crawler",
+      "name": "Science in School"
+    },
+    {
+      "count": 1228,
+      "kind": "crawler",
+      "name": "Memucho"
+    },
+    {
+      "count": 1186,
+      "kind": "crawler",
+      "name": "ZUM Deutsch Lernen"
+    },
+    {
+      "count": 977,
+      "kind": "crawler",
+      "name": "Portal globales Lernen"
+    }
+  ],
+  "topCrawler": [
+    {
+      "count": 62867,
+      "fields": 28,
+      "name": "Bundeszentrale für politische Bildung"
+    },
+    {
+      "count": 54338,
+      "fields": 31,
+      "name": "YouTube"
+    },
+    {
+      "count": 49671,
+      "fields": 45,
+      "name": "OERSI"
+    },
+    {
+      "count": 39445,
+      "fields": 18,
+      "name": "Geogebra"
+    },
+    {
+      "count": 14838,
+      "fields": 26,
+      "name": "Bayerischer Rundfunk"
+    },
+    {
+      "count": 12859,
+      "fields": 25,
+      "name": "Tutory"
+    },
+    {
+      "count": 12501,
+      "fields": 33,
+      "name": "RPI-Virtuell"
+    },
+    {
+      "count": 8197,
+      "fields": 40,
+      "name": "Serlo"
+    },
+    {
+      "count": 4396,
+      "fields": 28,
+      "name": "Sodis"
+    },
+    {
+      "count": 4031,
+      "fields": 41,
+      "name": "Lehrer-Online"
+    },
+    {
+      "count": 3913,
+      "fields": 32,
+      "name": "Zebis"
+    },
+    {
+      "count": 3830,
+      "fields": 32,
+      "name": "Fobizz"
+    },
+    {
+      "count": 3659,
+      "fields": 20,
+      "name": "ZUM-Unterrichten"
+    },
+    {
+      "count": 3377,
+      "fields": 21,
+      "name": "Klexikon"
+    },
+    {
+      "count": 2079,
+      "fields": 34,
+      "name": "DiLerTube"
+    },
+    {
+      "count": 1937,
+      "fields": 34,
+      "name": "OER Commons"
+    },
+    {
+      "count": 1930,
+      "fields": 39,
+      "name": "Science in School"
+    },
+    {
+      "count": 1228,
+      "fields": 14,
+      "name": "Memucho"
+    },
+    {
+      "count": 1186,
+      "fields": 22,
+      "name": "ZUM Deutsch Lernen"
+    },
+    {
+      "count": 977,
+      "fields": 25,
+      "name": "Portal globales Lernen"
+    }
+  ],
+  "topLanguages": [
+    {
+      "count": 1063,
+      "value": "Deutsch (Deutschland)"
+    },
+    {
+      "count": 38,
+      "value": "Deutsch"
+    },
+    {
+      "count": 33,
+      "value": "Spanisch"
+    },
+    {
+      "count": 17,
+      "value": "Englisch"
+    },
+    {
+      "count": 1,
+      "value": "DE"
+    },
+    {
+      "count": 1,
+      "value": "en-US-LEARN"
+    }
+  ],
+  "topLevels": [
+    {
+      "count": 976,
+      "value": "Sekundarstufe II"
+    },
+    {
+      "count": 925,
+      "value": "Sekundarstufe I"
+    },
+    {
+      "count": 453,
+      "value": "Erwachsenenbildung"
+    },
+    {
+      "count": 417,
+      "value": "Primarstufe"
+    },
+    {
+      "count": 371,
+      "value": "Berufliche Bildung"
+    },
+    {
+      "count": 270,
+      "value": "Hochschule"
+    },
+    {
+      "count": 103,
+      "value": "Fortbildung"
+    },
+    {
+      "count": 84,
+      "value": "Elementarbereich"
+    },
+    {
+      "count": 51,
+      "value": "Schule"
+    },
+    {
+      "count": 40,
+      "value": "Förderschule"
+    },
+    {
+      "count": 30,
+      "value": "Fernunterricht"
+    },
+    {
+      "count": 13,
+      "value": "Informelles Lernen"
+    }
+  ],
+  "topLrt": [
+    {
+      "count": 1319,
+      "value": "Quelle"
+    },
+    {
+      "count": 70,
+      "value": "Übungsmaterial"
+    },
+    {
+      "count": 47,
+      "value": "Video"
+    },
+    {
+      "count": 43,
+      "value": "Tool"
+    },
+    {
+      "count": 36,
+      "value": "Methoden"
+    },
+    {
+      "count": 29,
+      "value": "Bildungsangebot"
+    },
+    {
+      "count": 29,
+      "value": "Webseite"
+    },
+    {
+      "count": 27,
+      "value": "Unterrichtsbaustein/-reihe"
+    },
+    {
+      "count": 22,
+      "value": "Unterrichtsidee"
+    },
+    {
+      "count": 22,
+      "value": "Audio"
+    },
+    {
+      "count": 21,
+      "value": "Arbeitsblatt"
+    },
+    {
+      "count": 20,
+      "value": "Bild"
+    },
+    {
+      "count": 16,
+      "value": "Unterrichtsplan"
+    },
+    {
+      "count": 14,
+      "value": "Kurs"
+    },
+    {
+      "count": 12,
+      "value": "Noten"
+    }
+  ],
+  "topSubjects": [
+    {
+      "count": 233,
+      "value": "Biologie"
+    },
+    {
+      "count": 185,
+      "value": "Allgemein"
+    },
+    {
+      "count": 170,
+      "value": "Spanisch"
+    },
+    {
+      "count": 164,
+      "value": "Nachhaltigkeit"
+    },
+    {
+      "count": 160,
+      "value": "Chemie"
+    },
+    {
+      "count": 99,
+      "value": "Physik"
+    },
+    {
+      "count": 90,
+      "value": "Informatik"
+    },
+    {
+      "count": 82,
+      "value": "Mathematik"
+    },
+    {
+      "count": 77,
+      "value": "Geschichte"
+    },
+    {
+      "count": 77,
+      "value": "Deutsch"
+    },
+    {
+      "count": 77,
+      "value": "Englisch"
+    },
+    {
+      "count": 71,
+      "value": "Berufliche Bildung"
+    },
+    {
+      "count": 68,
+      "value": "Musik"
+    },
+    {
+      "count": 63,
+      "value": "Deutsch als Zweitsprache"
+    },
+    {
+      "count": 56,
+      "value": "Medienbildung"
+    },
+    {
+      "count": 50,
+      "value": "Zeitgemäße Bildung"
+    },
+    {
+      "count": 45,
+      "value": "Mediendidaktik"
+    },
+    {
+      "count": 44,
+      "value": "Politik"
+    },
+    {
+      "count": 43,
+      "value": "Kunst"
+    },
+    {
+      "count": 41,
+      "value": "Wirtschaftskunde"
+    },
+    {
+      "count": 39,
+      "value": "Geografie"
+    },
+    {
+      "count": 38,
+      "value": "Projektmanagement"
+    },
+    {
+      "count": 36,
+      "value": "Pädagogik"
+    },
+    {
+      "count": 35,
+      "value": "Ethik"
+    },
+    {
+      "count": 34,
+      "value": "Sport"
+    }
+  ],
+  "totals": {
+    "bezugsquellenOhneQuelle": 2885,
+    "crawler": 55,
+    "inhalteGesamt": 304800,
+    "manuell": 1279,
+    "quelldatensaetze": 1322,
+    "quellenGesamt": 4219
+  }
+}

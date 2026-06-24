@@ -1,0 +1,775 @@
+{
+  "items": [
+    {
+      "confidence": "high",
+      "contentCount": 248,
+      "erschliessung": "im Bestand verfuegbar",
+      "fieldActiveCount": 0,
+      "fieldGeneration": [],
+      "flags": [],
+      "hasInternal": true,
+      "id": "node:04d21212-2abe-4726-add5-7cdb54189bc9",
+      "identity": {
+        "bezugsquelle": "ComeIn",
+        "nodeId": "04d21212-2abe-4726-add5-7cdb54189bc9",
+        "spider": "",
+        "spiderVocabName": "",
+        "url": "https://redaktion.openeduhub.net/edu-sharing/components/render/04d21212-2abe-4726-add5-7cdb54189bc9"
+      },
+      "kind": "manuell",
+      "name": "Fortbildungskurs 1: Basislektionen ",
+      "previewUrl": "https://redaktion.openeduhub.net/edu-sharing/preview?nodeId=04d21212-2abe-4726-add5-7cdb54189bc9&storeProtocol=workspace&storeId=SpacesStore&dontcache=1782305330861",
+      "provenance": {
+        "Alter": "WLO-API",
+        "Beschreibung": "WLO-API",
+        "Bezugsquelle": "WLO-API (Facette)",
+        "Bildungsstufen": "WLO-API",
+        "Faecher": "WLO-API",
+        "Inhaltsanzahl": "WLO-API (Facette)",
+        "Inhaltstypen": "WLO-API",
+        "Lehrplanbezug": "WLO-API",
+        "Lizenz": "WLO-API",
+        "Schlagworte": "WLO-API",
+        "Sprache": "WLO-API",
+        "Titel": "WLO-API",
+        "URL": "WLO-API",
+        "Zielgruppe": "WLO-API",
+        "Zielsprache": "WLO-API"
+      },
+      "public": {
+        "Alter": "18–99 Jahre",
+        "Beschreibung": "Fortbildungskurs Teil 1 umfasst alle eigens erstellten OER-Materialien zu den Basislektionen aus dem Online-Selbstlernkurs, die aufeinander aufbauen und gemeinsam bearbeitet werden sollten, um das theoretische Grundwissen und Möglichkeiten der digitalen Umsetzung erläutert zu bekommen. \nFortbildungskurs Teil 2 A, B und C ist am Ende verlinkt und beinhaltet 3 verschiedene Aufbaumodule, die sich mit Best-Practise-Beispielen aus den Kompetenzbereichen Erkenntnisgewinnung, Kommunikation und Bewerten auseinandersetzen.",
+        "Bezugsquelle": "ComeIn",
+        "Bildungsstufen": [
+          "Hochschule",
+          "Fortbildung"
+        ],
+        "Faecher": [
+          "Biologie",
+          "Mathematik, Naturwissenschaften"
+        ],
+        "Inhaltsanzahl": 248,
+        "Inhaltstypen": [
+          "Bildungsangebot",
+          "Quelle",
+          "Kurs"
+        ],
+        "Lehrplanbezug": [
+          "Biologie"
+        ],
+        "Lizenz": "CC_BY",
+        "Schlagworte": [
+          "ComeMINT",
+          "Biologieunterricht (Biologiedidaktik, Biologie)",
+          "Digitalisierung",
+          "Inklusion"
+        ],
+        "Sprache": "Deutsch (Deutschland)",
+        "Titel": "Fortbildungskurs 1: Basislektionen ",
+        "URL": "https://redaktion.openeduhub.net/edu-sharing/components/render/04d21212-2abe-4726-add5-7cdb54189bc9",
+        "Zielgruppe": [
+          "Lehrer/in"
+        ],
+        "Zielsprache": "de"
+      },
+      "quality": {
+        "Für Bildung geeignet": "Ja - geeignet",
+        "Kosten": "nein"
+      }
+    },
+    {
+      "confidence": "high",
+      "contentCount": 4,
+      "erschliessung": "im Bestand verfuegbar",
+      "fieldActiveCount": 0,
+      "fieldGeneration": [],
+      "flags": [],
+      "hasInternal": true,
+      "id": "node:1c0541d7-f667-4dec-9d73-287a6372421d",
+      "identity": {
+        "bezugsquelle": "Stifterverband für die Deutsche Wissenschaft e.V.",
+        "nodeId": "1c0541d7-f667-4dec-9d73-287a6372421d",
+        "spider": "",
+        "spiderVocabName": "",
+        "url": "https://redaktion.openeduhub.net/edu-sharing/components/render/1c0541d7-f667-4dec-9d73-287a6372421d"
+      },
+      "kind": "manuell",
+      "name": "KI-Campus",
+      "previewUrl": "https://redaktion.openeduhub.net/edu-sharing/preview?nodeId=1c0541d7-f667-4dec-9d73-287a6372421d&storeProtocol=workspace&storeId=SpacesStore&dontcache=1782305334640",
+      "provenance": {
+        "Alter": "WLO-API",
+        "Beschreibung": "WLO-API",
+        "Bezugsquelle": "WLO-API (Facette)",
+        "Bildungsstufen": "WLO-API",
+        "Faecher": "WLO-API",
+        "Inhaltsanzahl": "WLO-API (Facette)",
+        "Inhaltstypen": "WLO-API",
+        "Lizenz": "WLO-API",
+        "Schlagworte": "WLO-API",
+        "Sprache": "WLO-API",
+        "Sprachniveau": "WLO-API",
+        "Titel": "WLO-API",
+        "URL": "WLO-API",
+        "Urheber": "WLO-API",
+        "Zielgruppe": "WLO-API"
+      },
+      "public": {
+        "Alter": "12–99 Jahre",
+        "Beschreibung": "Die Lernplattform für Künstliche Intelligenz bietet eigene und kuratierte Lernangebote in unterschiedlichen Themenfeldern der KI.",
+        "Bezugsquelle": "Stifterverband für die Deutsche Wissenschaft e.V.",
+        "Bildungsstufen": [
+          "Sekundarstufe II",
+          "Hochschule"
+        ],
+        "Faecher": [
+          "Deutsch",
+          "Informatik"
+        ],
+        "Inhaltsanzahl": 4,
+        "Inhaltstypen": [
+          "Quelle"
+        ],
+        "Lizenz": "COPYRIGHT_FREE",
+        "Schlagworte": [
+          "KI",
+          "Künstliche Intelligenz",
+          "Schlüsseltechnologie"
+        ],
+        "Sprache": "Deutsch (Deutschland)",
+        "Sprachniveau": [
+          "C2"
+        ],
+        "Titel": "KI-Campus",
+        "URL": "https://redaktion.openeduhub.net/edu-sharing/components/render/1c0541d7-f667-4dec-9d73-287a6372421d",
+        "Urheber": "Stifterverband für die Deutsche Wissenschaft e.V.",
+        "Zielgruppe": [
+          "Lehrer/in"
+        ]
+      },
+      "quality": {
+        "Für Bildung geeignet": "Ja - geeignet",
+        "Kosten": "nein",
+        "Login": "Anmeldung notwendig"
+      }
+    },
+    {
+      "confidence": "high",
+      "contentCount": 3,
+      "erschliessung": "im Bestand verfuegbar",
+      "fieldActiveCount": 0,
+      "fieldGeneration": [],
+      "flags": [],
+      "hasInternal": true,
+      "id": "node:6bfd4856-e040-4629-800c-2093122e7528",
+      "identity": {
+        "bezugsquelle": "Verband der chemischen Industrie",
+        "nodeId": "6bfd4856-e040-4629-800c-2093122e7528",
+        "spider": "",
+        "spiderVocabName": "",
+        "url": "https://redaktion.openeduhub.net/edu-sharing/components/render/6bfd4856-e040-4629-800c-2093122e7528"
+      },
+      "kind": "manuell",
+      "name": "VCI Online - Verband der Chemischen Industrie e.V. (VCI)",
+      "previewUrl": "https://redaktion.openeduhub.net/edu-sharing/preview?nodeId=6bfd4856-e040-4629-800c-2093122e7528&storeProtocol=workspace&storeId=SpacesStore&dontcache=1782305347825",
+      "provenance": {
+        "Beschreibung": "WLO-API",
+        "Bezugsquelle": "WLO-API (Facette)",
+        "Bildungsstufen": "WLO-API",
+        "Faecher": "WLO-API",
+        "Inhaltsanzahl": "WLO-API (Facette)",
+        "Inhaltstypen": "WLO-API",
+        "Lizenz": "WLO-API",
+        "Schlagworte": "WLO-API",
+        "Sprache": "WLO-API",
+        "Titel": "WLO-API",
+        "URL": "WLO-API",
+        "Zielgruppe": "WLO-API"
+      },
+      "public": {
+        "Beschreibung": "VCI Online - Portal",
+        "Bezugsquelle": "Verband der chemischen Industrie",
+        "Bildungsstufen": [
+          "Sekundarstufe I",
+          "Sekundarstufe II"
+        ],
+        "Faecher": [
+          "Chemie"
+        ],
+        "Inhaltsanzahl": 3,
+        "Inhaltstypen": [
+          "Quelle"
+        ],
+        "Lizenz": "COPYRIGHT_FREE",
+        "Schlagworte": [
+          "Chemieverband",
+          "Chemische Industrie",
+          "VCI"
+        ],
+        "Sprache": "Deutsch (Deutschland)",
+        "Titel": "VCI Online - Verband der Chemischen Industrie e.V. (VCI)",
+        "URL": "https://redaktion.openeduhub.net/edu-sharing/components/render/6bfd4856-e040-4629-800c-2093122e7528",
+        "Zielgruppe": [
+          "Lehrer/in",
+          "Lerner/in"
+        ]
+      },
+      "quality": {}
+    },
+    {
+      "confidence": "high",
+      "contentCount": 3,
+      "erschliessung": "im Bestand verfuegbar",
+      "fieldActiveCount": 0,
+      "fieldGeneration": [],
+      "flags": [],
+      "hasInternal": true,
+      "id": "node:92633321-72aa-4854-8677-0ae4c09eb48d",
+      "identity": {
+        "bezugsquelle": "Universität Oldenburg",
+        "nodeId": "92633321-72aa-4854-8677-0ae4c09eb48d",
+        "spider": "",
+        "spiderVocabName": "",
+        "url": "https://redaktion.openeduhub.net/edu-sharing/components/render/92633321-72aa-4854-8677-0ae4c09eb48d"
+      },
+      "kind": "manuell",
+      "name": "Methodenkartei | Universität Oldenburg",
+      "previewUrl": "https://redaktion.openeduhub.net/edu-sharing/preview?nodeId=92633321-72aa-4854-8677-0ae4c09eb48d&storeProtocol=workspace&storeId=SpacesStore&dontcache=1782305352054",
+      "provenance": {
+        "Beschreibung": "WLO-API",
+        "Bezugsquelle": "WLO-API (Facette)",
+        "Bildungsstufen": "WLO-API",
+        "Faecher": "WLO-API",
+        "Inhaltsanzahl": "WLO-API (Facette)",
+        "Inhaltstypen": "WLO-API",
+        "Lehrplanbezug": "WLO-API",
+        "Lizenz": "WLO-API",
+        "Schlagworte": "WLO-API",
+        "Sprache": "WLO-API",
+        "Titel": "WLO-API",
+        "URL": "WLO-API",
+        "Urheber": "WLO-API",
+        "Zielgruppe": "WLO-API"
+      },
+      "public": {
+        "Beschreibung": "Auf dieser Internetseite wird eine Sammlung von Methodenkarten zur Verfügung gestellt, die in Seminaren zur Lehrer*innenausbildung an der Carl von Ossietzky Universität Oldenburg erarbeitet worden sind. Neben einer Beschreibung und Materialübersicht enthalten die Methodenkarten auch Tipps und Differenzierungsmöglichkeiten und lassen sich nach Sozialform, Kompetenz, Schulform und Basismodell des Lernens sortieren. ",
+        "Bezugsquelle": "Universität Oldenburg",
+        "Bildungsstufen": [
+          "Sekundarstufe I",
+          "Sekundarstufe II",
+          "Primarstufe"
+        ],
+        "Faecher": [
+          "Zeitgemäße Bildung"
+        ],
+        "Inhaltsanzahl": 3,
+        "Inhaltstypen": [
+          "Quelle"
+        ],
+        "Lehrplanbezug": [
+          "Methodensammlungen"
+        ],
+        "Lizenz": "COPYRIGHT_FREE",
+        "Schlagworte": [
+          "zeitgemäß",
+          "Methodensammlung"
+        ],
+        "Sprache": "Deutsch (Deutschland)",
+        "Titel": "Methodenkartei | Universität Oldenburg",
+        "URL": "https://redaktion.openeduhub.net/edu-sharing/components/render/92633321-72aa-4854-8677-0ae4c09eb48d",
+        "Urheber": "Carl von Ossietzky Universität Oldenburg",
+        "Zielgruppe": [
+          "Lehrer/in",
+          "Lerner/in"
+        ]
+      },
+      "quality": {}
+    },
+    {
+      "confidence": "high",
+      "contentCount": 3,
+      "erschliessung": "im Bestand verfuegbar",
+      "fieldActiveCount": 0,
+      "fieldGeneration": [],
+      "flags": [],
+      "hasInternal": true,
+      "id": "node:dcddb099-489a-4fa4-a181-9a6267532aeb",
+      "identity": {
+        "bezugsquelle": "Schlaukopf.de",
+        "nodeId": "dcddb099-489a-4fa4-a181-9a6267532aeb",
+        "spider": "",
+        "spiderVocabName": "",
+        "url": "https://redaktion.openeduhub.net/edu-sharing/components/render/dcddb099-489a-4fa4-a181-9a6267532aeb"
+      },
+      "kind": "manuell",
+      "name": "Schlaukopf",
+      "previewUrl": "https://redaktion.openeduhub.net/edu-sharing/preview?nodeId=dcddb099-489a-4fa4-a181-9a6267532aeb&storeProtocol=workspace&storeId=SpacesStore&dontcache=1782305362307",
+      "provenance": {
+        "Beschreibung": "WLO-API",
+        "Bezugsquelle": "WLO-API (Facette)",
+        "Bildungsstufen": "WLO-API",
+        "FSK": "WLO-API",
+        "Faecher": "WLO-API",
+        "Inhaltsanzahl": "WLO-API (Facette)",
+        "Inhaltstypen": "WLO-API",
+        "Lehrplanbezug": "WLO-API",
+        "Lizenz": "WLO-API",
+        "Schlagworte": "WLO-API",
+        "Sprache": "WLO-API",
+        "Sprachniveau": "WLO-API",
+        "Titel": "WLO-API",
+        "URL": "WLO-API",
+        "Urheber": "WLO-API",
+        "Zielgruppe": "WLO-API",
+        "Zielsprache": "WLO-API"
+      },
+      "public": {
+        "Beschreibung": "Auf dieser Website kannst Du interaktiv und mit direktem Feedback lernen. Dazu stehen Dir mehr als 80 000 interaktive, qualitativ hochwertige und dennoch kostenfreie Fragen, wie sie auch in Klassenarbeiten und Tests gestellt werden, zur Verfügung.",
+        "Bezugsquelle": "Schlaukopf.de",
+        "Bildungsstufen": [
+          "Primarstufe",
+          "Sekundarstufe I",
+          "Sekundarstufe II"
+        ],
+        "FSK": "0",
+        "Faecher": [
+          "Allgemein",
+          "Biologie"
+        ],
+        "Inhaltsanzahl": 3,
+        "Inhaltstypen": [
+          "Quelle"
+        ],
+        "Lehrplanbezug": [
+          "Fachportale"
+        ],
+        "Lizenz": "COPYRIGHT_FREE",
+        "Schlagworte": [
+          "Prüfungsfragen",
+          "Übungsfragen",
+          "Test"
+        ],
+        "Sprache": "Deutsch (Deutschland)",
+        "Sprachniveau": [
+          "Kompetente Sprachverwendung"
+        ],
+        "Titel": "Schlaukopf",
+        "URL": "https://redaktion.openeduhub.net/edu-sharing/components/render/dcddb099-489a-4fa4-a181-9a6267532aeb",
+        "Urheber": "Michael Hicke",
+        "Zielgruppe": [
+          "Lerner/in"
+        ],
+        "Zielsprache": "de"
+      },
+      "quality": {
+        "Aktualität": "4- aktueller Wissensstand",
+        "Für Bildung geeignet": "Ja - geeignet",
+        "Kosten": "nein"
+      }
+    },
+    {
+      "confidence": "high",
+      "contentCount": 1,
+      "erschliessung": "im Bestand verfuegbar",
+      "fieldActiveCount": 0,
+      "fieldGeneration": [],
+      "flags": [],
+      "hasInternal": true,
+      "id": "node:10d8ed1c-23c6-49ec-8365-f83ff8e95c0c",
+      "identity": {
+        "bezugsquelle": "Klassenarbeiten.de",
+        "nodeId": "10d8ed1c-23c6-49ec-8365-f83ff8e95c0c",
+        "spider": "",
+        "spiderVocabName": "",
+        "url": "https://redaktion.openeduhub.net/edu-sharing/components/render/10d8ed1c-23c6-49ec-8365-f83ff8e95c0c"
+      },
+      "kind": "manuell",
+      "name": "Klassenarbeiten.de - Kostenlose Klassenarbeiten und Übungen",
+      "previewUrl": "https://redaktion.openeduhub.net/edu-sharing/preview?nodeId=10d8ed1c-23c6-49ec-8365-f83ff8e95c0c&storeProtocol=workspace&storeId=SpacesStore&dontcache=1782305332293",
+      "provenance": {
+        "Beschreibung": "WLO-API",
+        "Bezugsquelle": "WLO-API (Facette)",
+        "Bildungsstufen": "WLO-API",
+        "FSK": "WLO-API",
+        "Faecher": "WLO-API",
+        "Inhaltsanzahl": "WLO-API (Facette)",
+        "Inhaltstypen": "WLO-API",
+        "Lehrplanbezug": "WLO-API",
+        "Lizenz": "WLO-API",
+        "Schlagworte": "WLO-API",
+        "Sprache": "WLO-API",
+        "Sprachniveau": "WLO-API",
+        "Titel": "WLO-API",
+        "URL": "WLO-API",
+        "Urheber": "WLO-API",
+        "Zielgruppe": "WLO-API",
+        "Zielsprache": "WLO-API"
+      },
+      "public": {
+        "Beschreibung": "Auf diesem Portal für Klassenarbeiten und Übungsblätter findest Du über 1800 original Klassenarbeiten für Grund-, Haupt-, Real- und Gesamtschule und für das Gymnasium. Sämtliche Materialien sind kostenlos, speisen sich aus lehrplanbezogenen Inhalten und können direkt  als PDF ausgedruckt werden.",
+        "Bezugsquelle": "Klassenarbeiten.de",
+        "Bildungsstufen": [
+          "Primarstufe",
+          "Sekundarstufe I",
+          "Sekundarstufe II"
+        ],
+        "FSK": "0",
+        "Faecher": [
+          "Allgemein",
+          "Biologie"
+        ],
+        "Inhaltsanzahl": 1,
+        "Inhaltstypen": [
+          "Quelle"
+        ],
+        "Lehrplanbezug": [
+          "Fachportale"
+        ],
+        "Lizenz": "CC_BY_NC_ND",
+        "Schlagworte": [
+          "Klassenarbeiten",
+          "Test",
+          "Übungsaufgaben",
+          "Übungsblätter"
+        ],
+        "Sprache": "Deutsch (Deutschland)",
+        "Sprachniveau": [
+          "Kompetente Sprachverwendung"
+        ],
+        "Titel": "Klassenarbeiten.de - Kostenlose Klassenarbeiten und Übungen",
+        "URL": "https://redaktion.openeduhub.net/edu-sharing/components/render/10d8ed1c-23c6-49ec-8365-f83ff8e95c0c",
+        "Urheber": "Michael Hicke",
+        "Zielgruppe": [
+          "Lehrer/in",
+          "Lerner/in"
+        ],
+        "Zielsprache": "de"
+      },
+      "quality": {
+        "Aktualität": "4- aktueller Wissensstand",
+        "Für Bildung geeignet": "Ja - geeignet",
+        "Kosten": "nein"
+      }
+    },
+    {
+      "confidence": "high",
+      "contentCount": 1,
+      "erschliessung": "im Bestand verfuegbar",
+      "fieldActiveCount": 0,
+      "fieldGeneration": [],
+      "flags": [],
+      "hasInternal": true,
+      "id": "node:4fe88ca2-ff26-46f6-a261-5466019e36fe",
+      "identity": {
+        "bezugsquelle": "Whale & Dolphin Conservation gGmbH",
+        "nodeId": "4fe88ca2-ff26-46f6-a261-5466019e36fe",
+        "spider": "",
+        "spiderVocabName": "",
+        "url": "https://redaktion.openeduhub.net/edu-sharing/components/render/4fe88ca2-ff26-46f6-a261-5466019e36fe"
+      },
+      "kind": "manuell",
+      "name": " Wale und Delfine als Thema in der Schule ",
+      "previewUrl": "https://redaktion.openeduhub.net/edu-sharing/preview?nodeId=4fe88ca2-ff26-46f6-a261-5466019e36fe&storeProtocol=workspace&storeId=SpacesStore&dontcache=1782305340509",
+      "provenance": {
+        "Beschreibung": "WLO-API",
+        "Bezugsquelle": "WLO-API (Facette)",
+        "Bildungsstufen": "WLO-API",
+        "FSK": "WLO-API",
+        "Faecher": "WLO-API",
+        "Inhaltsanzahl": "WLO-API (Facette)",
+        "Inhaltstypen": "WLO-API",
+        "Lehrplanbezug": "WLO-API",
+        "Lizenz": "WLO-API",
+        "Schlagworte": "WLO-API",
+        "Sprache": "WLO-API",
+        "Sprachniveau": "WLO-API",
+        "Titel": "WLO-API",
+        "URL": "WLO-API",
+        "Urheber": "WLO-API",
+        "Zielgruppe": "WLO-API",
+        "Zielsprache": "WLO-API"
+      },
+      "public": {
+        "Beschreibung": "Wale und Delfine als Thema in der Schule\nWale und Delfine sind ein Thema, das bei Kindern und Jugendlichen fast immer auf Begeisterung stößt. Im Rahmen unserer Bildungsarbeit haben wir aus diesem Grund Ideen und Aktionen für Kinder unterschiedlicher Altersgruppen zusammengestellt.\n\nDie verfügbaren Bildungsunterlagen decken verschiedene Themen ab. Sie behandeln die Welt der Wale und Delfine genauso wie den Klimawandel und Plastikmüll im Meer. Da wir Sie in Ihrem Engagement unterstützen möchten, freuen wir uns über Rückmeldungen, Fragen und eine Zusammenarbeit.\n\nBleiben Sie mit dem Thema Wale und Delfine in Verbindung und unterstützen Sie WDC mit einer Klassenpatenschaft.",
+        "Bezugsquelle": "Whale & Dolphin Conservation gGmbH",
+        "Bildungsstufen": [
+          "Elementarbereich",
+          "Primarstufe",
+          "Sekundarstufe I",
+          "Sekundarstufe II"
+        ],
+        "FSK": "0",
+        "Faecher": [
+          "Nachhaltigkeit",
+          "Biologie"
+        ],
+        "Inhaltsanzahl": 1,
+        "Inhaltstypen": [
+          "Quelle"
+        ],
+        "Lehrplanbezug": [
+          "Wasser",
+          "Ökosysteme, Natur- und Umweltschutz",
+          "Biodiversität und Artenschutz"
+        ],
+        "Lizenz": "COPYRIGHT_FREE",
+        "Schlagworte": [
+          "Meere",
+          "Ozeane",
+          "Wale",
+          "Nachhaltigkeit",
+          "Müll im Meer",
+          "Plastik",
+          "Umweltschutz"
+        ],
+        "Sprache": "Deutsch (Deutschland)",
+        "Sprachniveau": [
+          "Kompetente Sprachverwendung"
+        ],
+        "Titel": " Wale und Delfine als Thema in der Schule ",
+        "URL": "https://redaktion.openeduhub.net/edu-sharing/components/render/4fe88ca2-ff26-46f6-a261-5466019e36fe",
+        "Urheber": "WDC Deutschland",
+        "Zielgruppe": [
+          "Lehrer/in"
+        ],
+        "Zielsprache": "de"
+      },
+      "quality": {
+        "Aktualität": "5 - hochaktuell/neuester Wissensstand",
+        "Für Bildung geeignet": "Ja - geeignet",
+        "Kosten": "nein",
+        "Login": "ohne Anmeldung"
+      }
+    },
+    {
+      "confidence": "high",
+      "contentCount": 1,
+      "erschliessung": "im Bestand verfuegbar",
+      "fieldActiveCount": 0,
+      "fieldGeneration": [],
+      "flags": [],
+      "hasInternal": true,
+      "id": "node:82f8c314-96e1-49a2-8485-1bc83142b521",
+      "identity": {
+        "bezugsquelle": "imoox.at",
+        "nodeId": "82f8c314-96e1-49a2-8485-1bc83142b521",
+        "spider": "",
+        "spiderVocabName": "",
+        "url": "https://redaktion.openeduhub.net/edu-sharing/components/render/82f8c314-96e1-49a2-8485-1bc83142b521"
+      },
+      "kind": "manuell",
+      "name": "Digital und Binnendifferenziert: Das Potential digital gestufter Lernhilfen für den Biologieunterricht",
+      "previewUrl": "https://redaktion.openeduhub.net/edu-sharing/preview?nodeId=82f8c314-96e1-49a2-8485-1bc83142b521&storeProtocol=workspace&storeId=SpacesStore&dontcache=1782305350263",
+      "provenance": {
+        "Beschreibung": "WLO-API",
+        "Bezugsquelle": "WLO-API (Facette)",
+        "Bildungsstufen": "WLO-API",
+        "Faecher": "WLO-API",
+        "Inhaltsanzahl": "WLO-API (Facette)",
+        "Inhaltstypen": "WLO-API",
+        "Lehrplanbezug": "WLO-API",
+        "Lizenz": "WLO-API",
+        "Sprache": "WLO-API",
+        "Titel": "WLO-API",
+        "URL": "WLO-API",
+        "Urheber": "WLO-API",
+        "Zielgruppe": "WLO-API",
+        "Zielsprache": "WLO-API"
+      },
+      "public": {
+        "Beschreibung": "Grundlegend handelt es sich bei dieser Fortbildung um eine Online-Selbstlerneinheit zum Potential digital gestufter Lernhilfen für den digitalen und binnendifferenzierten Biologieunterricht. Die Fortbildung ist in vier Basismodule und drei Aufbaumodule unterteilt. Die Basismodule bilden die Grundlage zur optionalen Vertiefung in einem oder mehreren der Aufbaumodule. Neben der Online-Selbstlerneinheit können die Kursteilnehmenden über Chat-Foren oder synchronen (Online-) Austauschformaten miteinander in Kontakt treten.  \n\nKursinhalt:\n\nBasismodul 1: Theoretische Grundlagen zu gestuften Lernhilfen (gLh), Heterogenität und Diklusion\nBasismodul 2: Nutzungsweisen und Lernwirksamkeit von gLh\nBasismodul 3: Gelingensbedingungen von gLh\nBasismodul 4: Digitale Umsetzung von gLh mit Moodle, H5P und QR-Lernhilfe \n\nAufbaumodul Erkenntnisgewinnung: Einführung in den Kompetenzbereich Erkenntnisgewinnung und Anwendungsbeispiele zum Themengebiet Experimentieren\nAufbaumodul Kommunikation:  Einführung in den Kompetenzbereich Kommunikation und Anwendungsbeispiele zum Themengebiet Genetik\nAufbaumodul Bewertung:  Einführung in den Kompetenzbereich Bewertung und Anwendungsbeispiele zum Themengebiet Ethik\n\nLernziele\n \n1. Die Fortbildung soll eine Wissensvermittlung zu Heterogenitätssensibilisierung und Diklusion umfassen und dabei den inklusivem und bedarfsgerechtem Biologieunterricht in den Fokus nehmen, der die Bedürfnisse aller Lernenden berücksichtigt. \n2. Den teilnehmenden (angehenden) Biologielehrkräften wird die Möglichkeit geboten, digitalisierungsbezogene Kompetenzen im Hinblick auf den binnendifferenzierten Biologieunterricht aufzubauen oder zu vertiefen. \n3. Neben der Professionalisierung in der Nutzung digital gestufter Lernhilfen erwerben die teilnehmenden Lehrkräfte Medienkompetenz im Umgang mit den vorgestellten digitalen Anwendungen. ",
+        "Bezugsquelle": "imoox.at",
+        "Bildungsstufen": [
+          "Sekundarstufe I",
+          "Sekundarstufe II"
+        ],
+        "Faecher": [
+          "Biologie"
+        ],
+        "Inhaltsanzahl": 1,
+        "Inhaltstypen": [
+          "Bildungsangebot",
+          "Quelle",
+          "Methoden"
+        ],
+        "Lehrplanbezug": [
+          "Biologie",
+          "Open Educational Resources (OER)",
+          "Medienbildung"
+        ],
+        "Lizenz": "CC_BY_SA",
+        "Sprache": "Deutsch (Deutschland)",
+        "Titel": "Digital und Binnendifferenziert: Das Potential digital gestufter Lernhilfen für den Biologieunterricht",
+        "URL": "https://redaktion.openeduhub.net/edu-sharing/components/render/82f8c314-96e1-49a2-8485-1bc83142b521",
+        "Urheber": "Rebekka Karbstein, Margit Offermann und Ricarda Lohrsträter für das ComeNet-Biologie publiziert über die OER-Plattform iMoox.at",
+        "Zielgruppe": [
+          "Lehrer/in"
+        ],
+        "Zielsprache": "de"
+      },
+      "quality": {}
+    },
+    {
+      "confidence": "high",
+      "contentCount": 1,
+      "erschliessung": "im Bestand verfuegbar",
+      "fieldActiveCount": 0,
+      "fieldGeneration": [],
+      "flags": [],
+      "hasInternal": true,
+      "id": "node:95bbe376-ef5e-4178-aa4c-931f300bebdd",
+      "identity": {
+        "bezugsquelle": "Bundesministerium für Umwelt, Naturschutz, nukleare Sicherheit und Verbraucherschutz (BMUV)",
+        "nodeId": "95bbe376-ef5e-4178-aa4c-931f300bebdd",
+        "spider": "",
+        "spiderVocabName": "",
+        "url": "https://redaktion.openeduhub.net/edu-sharing/components/render/95bbe376-ef5e-4178-aa4c-931f300bebdd"
+      },
+      "kind": "manuell",
+      "name": "Urlaub: entspannt und nachhaltig! | umwelt-im-unterricht.de",
+      "previewUrl": "https://redaktion.openeduhub.net/edu-sharing/preview?nodeId=95bbe376-ef5e-4178-aa4c-931f300bebdd&storeProtocol=workspace&storeId=SpacesStore&dontcache=1782305352384",
+      "provenance": {
+        "Beschreibung": "WLO-API",
+        "Bezugsquelle": "WLO-API (Facette)",
+        "Bildungsstufen": "WLO-API",
+        "Faecher": "WLO-API",
+        "Inhaltsanzahl": "WLO-API (Facette)",
+        "Inhaltstypen": "WLO-API",
+        "Lehrplanbezug": "WLO-API",
+        "Lizenz": "WLO-API",
+        "Schlagworte": "WLO-API",
+        "Sprache": "WLO-API",
+        "Titel": "WLO-API",
+        "URL": "WLO-API",
+        "Urheber": "WLO-API",
+        "Zielgruppe": "WLO-API"
+      },
+      "public": {
+        "Beschreibung": "Für die meisten Menschen gehört Urlaub zu den Höhepunkten des Jahres. Ob Strand- oder Aktivurlaub, Party, Kultur oder Entdeckertouren in die Natur: Viele Ziele stellen sich ganz auf die liebsten Aktivitäten ihrer Gäste ein. Hier findest du Unterrichtsvorschläge und Arbeitsmaterial rund um Fragen wie: Wie prägt der Tourismus Urlaubsregionen? Wie kann er mit den Interessen der Menschen vor Ort und dem Schutz der Umwelt in Einklang gebracht werden?",
+        "Bezugsquelle": "Bundesministerium für Umwelt, Naturschutz, nukleare Sicherheit und Verbraucherschutz (BMUV)",
+        "Bildungsstufen": [
+          "Primarstufe",
+          "Sekundarstufe I"
+        ],
+        "Faecher": [
+          "Geografie",
+          "Nachhaltigkeit"
+        ],
+        "Inhaltsanzahl": 1,
+        "Inhaltstypen": [
+          "Quelle"
+        ],
+        "Lehrplanbezug": [
+          "Tourismus und Reisen",
+          "Sanfter Tourismus",
+          "Tourismus und seine Auswirkungen"
+        ],
+        "Lizenz": "CC_BY_SA",
+        "Schlagworte": [
+          "Urlaub",
+          "Reisen",
+          "Tourismus",
+          "Ferien",
+          "Unterrichtsidee",
+          "Unterrichtsbaustein",
+          "Arbeitsblatt",
+          "Unterrichtsplanung"
+        ],
+        "Sprache": "Deutsch (Deutschland)",
+        "Titel": "Urlaub: entspannt und nachhaltig! | umwelt-im-unterricht.de",
+        "URL": "https://redaktion.openeduhub.net/edu-sharing/components/render/95bbe376-ef5e-4178-aa4c-931f300bebdd",
+        "Urheber": "Umwelt im Unterricht",
+        "Zielgruppe": [
+          "Lehrer/in"
+        ]
+      },
+      "quality": {
+        "Barrierefreiheit": "Nicht geprüft",
+        "Kosten": "nein",
+        "Login": "ohne Anmeldung",
+        "Werbung": "ohne Werbung"
+      }
+    },
+    {
+      "confidence": "high",
+      "contentCount": 1,
+      "erschliessung": "im Bestand verfuegbar",
+      "fieldActiveCount": 0,
+      "fieldGeneration": [],
+      "flags": [],
+      "hasInternal": true,
+      "id": "node:d88265ab-f46f-4c07-8265-abf46f8c07be",
+      "identity": {
+        "bezugsquelle": "teachSam",
+        "nodeId": "d88265ab-f46f-4c07-8265-abf46f8c07be",
+        "spider": "",
+        "spiderVocabName": "",
+        "url": "https://redaktion.openeduhub.net/edu-sharing/components/render/d88265ab-f46f-4c07-8265-abf46f8c07be"
+      },
+      "kind": "manuell",
+      "name": "teachSam",
+      "previewUrl": "https://redaktion.openeduhub.net/edu-sharing/preview?nodeId=d88265ab-f46f-4c07-8265-abf46f8c07be&storeProtocol=workspace&storeId=SpacesStore&dontcache=1782305361658",
+      "provenance": {
+        "Beschreibung": "WLO-API",
+        "Bezugsquelle": "WLO-API (Facette)",
+        "Bildungsstufen": "WLO-API",
+        "Faecher": "WLO-API",
+        "Inhaltsanzahl": "WLO-API (Facette)",
+        "Inhaltstypen": "WLO-API",
+        "Lizenz": "WLO-API",
+        "Schlagworte": "WLO-API",
+        "Sprache": "WLO-API",
+        "Titel": "WLO-API",
+        "URL": "WLO-API",
+        "Urheber": "WLO-API",
+        "Zielgruppe": "WLO-API"
+      },
+      "public": {
+        "Beschreibung": "teachSam-OER ist ein Bildungsserver für Schülerinnen und Schüler, Studierende und Lehrkräfte. Sein Schwerpunkt liegt in den Fächern Deutsch, Geschichte und Politik (Sekundarstufe I und und Sekundarstufe II, Berufsschule).",
+        "Bezugsquelle": "teachSam",
+        "Bildungsstufen": [
+          "Schule",
+          "Sekundarstufe I",
+          "Sekundarstufe II",
+          "Berufliche Bildung"
+        ],
+        "Faecher": [
+          "Deutsch",
+          "Geschichte",
+          "Politik"
+        ],
+        "Inhaltsanzahl": 1,
+        "Inhaltstypen": [
+          "Quelle"
+        ],
+        "Lizenz": "CC_BY_SA",
+        "Schlagworte": [
+          "Arbeitstechnik",
+          "Filmanalyse",
+          "Pädagogik",
+          "Didaktik und Methodik",
+          "Medien",
+          "Psychologie",
+          "Prüfungen",
+          "Spiele",
+          "Berufsschule",
+          "Abitur"
+        ],
+        "Sprache": "Deutsch (Deutschland)",
+        "Titel": "teachSam",
+        "URL": "https://redaktion.openeduhub.net/edu-sharing/components/render/d88265ab-f46f-4c07-8265-abf46f8c07be",
+        "Urheber": "teachSam",
+        "Zielgruppe": [
+          "Lerner/in",
+          "Lehrer/in"
+        ]
+      },
+      "quality": {
+        "Kosten": "nein"
+      }
+    }
+  ],
+  "page": 1,
+  "pageSize": 10,
+  "pages": 9,
+  "total": 81
+}

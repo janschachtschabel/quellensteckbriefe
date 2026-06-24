@@ -1,0 +1,4 @@
+# Lokale Geheimnisse / generierte Dateien
+.env
+__pycache__/
+*.pyc

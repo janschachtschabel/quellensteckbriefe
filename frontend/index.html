@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WLO Quellenerschliessung</title>
+  <link rel="stylesheet" href="/styles.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/jspdf@2.5.1/dist/jspdf.umd.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/jspdf-autotable@3.8.2/dist/jspdf.plugin.autotable.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <img src="/wissenlebtonline_claim.svg" alt="WissenLebtOnline" class="brand-logo">
+      <span class="brand-app">Quellensteckbriefe</span>
+    </div>
+    <div class="topbar-actions">
+      <input id="search" type="search" placeholder="Suche: Name, Fach, Beschreibung…" autocomplete="off">
+      <button id="refreshBtn" class="btn-ghost" title="Live-Daten von der WLO-API neu abrufen">🔄 Aktualisieren</button>
+      <button id="loginBtn" class="btn-ghost" title="Interner Bereich">🔒 Team-Login</button>
+    </div>
+  </header>
+
+  <nav class="tabbar">
+    <div class="tabs">
+      <button class="tab active" data-view="list">📚 Quellen</button>
+      <button class="tab" data-view="stats">📊 Statistiken</button>
+    </div>
+    <div class="tabbar-export">
+      <span class="hint" id="freshness" title="Datenstand der zuletzt abgerufenen Live-/Facetten-Daten"></span>
+      <span class="hint" id="exportHint"></span>
+      <button id="exportCsvAll" class="btn-ghost small">⬇ CSV</button>
+      <button id="exportJsonAll" class="btn-ghost small">⬇ JSON</button>
+      <button id="exportTablePdf" class="btn-ghost small" title="Aktuelle Filter-Auswahl als Tabellen-PDF">🖨️ Tabelle</button>
+      <button id="exportStatsPdf" class="btn-ghost small hidden" title="Statistik-Bericht als PDF">🖨️ Statistik</button>
+    </div>
+  </nav>
+
+  <!-- Auswahl-Leiste -->
+  <div id="selbar" class="selbar hidden">
+    <span><b id="selCount">0</b> ausgewählt</span>
+    <div class="selbar-actions">
+      <button id="selPdf" class="btn small">🖨️ PDF-Steckbriefe</button>
+      <select id="pdfTemplate" class="mini-sel" title="PDF-Vorlage wählen">
+        <option value="standard">Standard (ausführlich)</option>
+        <option value="compact">Kompakt (1 Seite)</option>
+      </select>
+      <label class="chk"><input id="pdfPreview" type="checkbox" checked> Vorschaubilder</label>
+      <label class="chk"><input id="pdfSeparate" type="checkbox"> einzelne Dateien</label>
+      <label class="chk"><input id="pdfInternal" type="checkbox"> interne Infos</label>
+      <span class="sep">·</span>
+      <button id="selCsv" class="btn-ghost small">⬇ CSV</button>
+      <button id="selJson" class="btn-ghost small">⬇ JSON</button>
+      <button id="selClear" class="btn-ghost small">Auswahl leeren</button>
+    </div>
+  </div>
+
+  <!-- VIEW: Liste -->
+  <main id="view-list" class="layout">
+    <aside class="filters">
+      <h3>Filter</h3>
+      <!-- End-User-Filter; Default = Crawler. Lässt sich mit Fach/Stufe/… kombinieren. -->
+      <label>Art der Quelle
+        <select id="f-art">
+          <option value="" selected>alle Quellen</option>
+          <option value="crawler">Quellen mit Crawler</option>
+          <option value="node">mit Quelldatensatz</option>
+          <option value="bq">mit Bezugsquelle</option>
+          <option value="both">Quelldatensatz und Bezugsquelle</option>
+        </select>
+      </label>
+      <!-- Nur nach Team-Login sichtbar (Fehlerkontrolle). -->
+      <label class="team-only hidden">Prüfung / Herkunft (Team)
+        <select id="f-pruef">
+          <option value="">alle</option>
+          <option value="wlo">aus Datenübernahme (Migration)</option>
+          <option value="legacy">über alte Verschlagwortung gebunden</option>
+          <option value="mistyp">Datensatz ohne Typ „Quelle" (mis-getaggt)</option>
+          <option value="blacklist">aussortiert (keine echte Quelle)</option>
+        </select>
+      </label>
+      <label>Fach <select id="f-subject"><option value="">alle</option></select></label>
+      <label>Bildungsstufe <select id="f-level"><option value="">alle</option></select></label>
+      <label>Inhaltstyp <select id="f-lrt"><option value="">alle</option></select></label>
+      <label>Lizenz <select id="f-license"><option value="">alle</option></select></label>
+      <label>Sprache <select id="f-language"><option value="">alle</option></select></label>
+      <label>Mindest-Inhaltszahl: <span id="mc-val">0</span>
+        <input id="f-mincount" type="range" min="0" max="100" value="0" step="5">
+      </label>
+      <label class="chk"><input id="f-oer" type="checkbox"> nur OER</label>
+      <label class="chk"><input id="f-fp" type="checkbox"> nur mit Feld-Profil</label>
+      <label>Sortierung
+        <select id="f-sort">
+          <option value="contentCount|desc">Inhalte (viel → wenig)</option>
+          <option value="contentCount|asc">Inhalte (wenig → viel)</option>
+          <option value="name|asc">Name (A → Z)</option>
+          <option value="name|desc">Name (Z → A)</option>
+          <option value="fieldActiveCount|desc">aktive Felder (viel → wenig)</option>
+        </select>
+      </label>
+      <button id="resetBtn" class="btn-ghost small">Filter zurücksetzen</button>
+      <p class="hint" id="resultCount"></p>
+      <div class="statuskey" title="Farbe der Kachel-Pillen (Quelldatensatz / Bezugsquelle / Spider)">
+        <span><i class="sk ok"></i> ok</span><span><i class="sk warn"></i> Einschränkung</span><span><i class="sk miss"></i> fehlt</span><span><i class="sk unk"></i> unbekannt</span>
+      </div>
+      <label class="chk selectall"><input id="selAllPage" type="checkbox"> Seite auswählen</label>
+    </aside>
+
+    <section class="results">
+      <div id="list" class="cards"></div>
+      <div id="pager" class="pager"></div>
+    </section>
+  </main>
+
+  <!-- VIEW: Statistik -->
+  <main id="view-stats" class="stats-view hidden"></main>
+
+  <!-- Detail / Steckbrief -->
+  <div id="overlay" class="overlay hidden"><div class="drawer" id="drawer"></div></div>
+
+  <!-- Login-Dialog -->
+  <div id="loginOverlay" class="overlay hidden">
+    <div class="dialog">
+      <h3>Interner Team-Login</h3>
+      <p class="hint">Für Entwicklervermerke &amp; genauen Erschließungsstatus.</p>
+      <input id="pwInput" type="password" placeholder="Team-Passwort">
+      <p id="pwErr" class="err hidden">Falsches Passwort.</p>
+      <div class="dialog-actions">
+        <button id="pwCancel" class="btn-ghost">Abbrechen</button>
+        <button id="pwOk" class="btn">Anmelden</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- geteiltes Karten-Aktionsmenü -->
+  <div id="cardmenu" class="cardmenu hidden">
+    <button data-act="detail">📋 Steckbrief öffnen</button>
+    <button data-act="pdf">🖨️ PDF-Steckbrief</button>
+    <button data-act="open">↗ Quelle öffnen</button>
+    <button data-act="select">✓ Zur Auswahl</button>
+  </div>
+
+  <footer class="appfoot">
+    <span class="foot-brand">WissenLebtOnline · Quellensteckbriefe</span>
+    <nav class="foot-links">
+      <a href="#" data-legal="impressum">Impressum</a>
+      <a href="#" data-legal="datenschutz">Datenschutz</a>
+      <a href="https://wirlernenonline.de/" target="_blank" rel="noopener">wirlernenonline.de ↗</a>
+    </nav>
+  </footer>
+
+  <!-- Rechtsseiten (in-App, Inhalt von wirlernenonline.de übernommen) -->
+  <div id="legalOverlay" class="overlay hidden">
+    <div class="legal-panel">
+      <button class="legal-close" id="legalClose" title="Schließen">×</button>
+      <div id="legalBody" class="legal-body"></div>
+    </div>
+  </div>
+
+  <template id="tpl-impressum">
+    <h2>Impressum</h2>
+    <p class="legal-intro">Die Anwendung „Quellensteckbriefe" ist Teil von WirLernenOnline/WissenLebtOnline und wird vom edu-sharing.net e.V. betrieben. Es gilt das folgende Impressum.</p>
+
+    <h3>1. Geltungsbereich</h3>
+    <p>Dieses Impressum gilt für die Websites unter den Domains wirlernenonline.de und wirlernen.online und openeduhub.de.</p>
+
+    <h3>2. Diensteanbieter</h3>
+    <p><strong>Adresse / Anschrift</strong><br>
+    edu-sharing.net e.V.<br>
+    Am Horn 21a<br>
+    99425 Weimar</p>
+    <p><strong>Mailkontakt</strong> (bevorzugt):<br>
+    <a href="mailto:redaktion@wirlernenonline.de">redaktion@wirlernenonline.de</a></p>
+    <p><strong>Telefonkontakt</strong> (nur in Notfällen):<br>
+    +49 (0) 3643 / 811 697</p>
+    <p><strong>Anbieterkennzeichnung:</strong><br>
+    Name des Dienstanbieters: edu-sharing.net e.V.<br>
+    Rechtsform: gemeinnütziger Verein, Amtsgericht Weimar VR 131198<br>
+    Vertretungsberechtigter Vorstand: Prof. Dr. Christian Erfurth, Stellvertreter: Annett Zobel<br>
+    Steuernummer: 162 / 141 / 16077, zuständiges Finanzamt: Jena</p>
+
+    <h3>3. Verantwortlich für die Inhalte § 55 Abs. 2 RStV</h3>
+    <p>Prof. Dr. Christian Erfurth, Annett Zobel<br>
+    Anschrift und Kontaktdaten siehe 2.</p>
+
+    <h3>4. Haftung</h3>
+    <p>Als Diensteanbieter ist der edu-sharing.net e.V. gemäß § 7 TMG für eigene Informationen, die sie zur Nutzung bereithält, nach den allgemeinen Gesetzen verantwortlich. Dementsprechend besteht keine Verantwortung für die von anderen Anbietern bereitgestellten Inhalte, insbesondere solche, auf die mittels Hyperlinks verwiesen wird.</p>
+    <p>Wir prüfen verlinkte Seiten zum Zeitpunkt der Verlinkung auf mögliche Rechtsverstöße und erklären, dass dabei keine rechtswidrigen Inhalte erkennbar waren.</p>
+    <p>Unter dem Menüpunkt „Lernstoff" binden wir von einer freien Community gesammelte Verweise auf externe Seiten ein. Eine Redaktion der Community prüft die Inhalte vor Veröffentlichung.</p>
+    <p>Da eine permanente, anlasslose Kontrolle der verlinkten Seiten nicht zumutbar ist, bitten wir um entsprechende Mitteilung, falls von unserem Angebot aus verlinkte Seiten aus fachlichen oder rechtlichen Gründen Anlass zur Beanstandung geben. Wir werden derartige Links bei Bekanntwerden unverzüglich entfernen.</p>
+
+    <h3>5. Urheberrecht / Lizenz</h3>
+    <p>Die Inhalte auf den genannten Websites, die durch den Diensteanbieter erstellt worden sind, stehen unter der Creative-Commons-Lizenz CC BY 4.0. Sollten für Inhalte Dritter, die auf diesen Websites veröffentlicht sind, andere Regelungen gelten, werden sie auf der jeweiligen Seite angezeigt.</p>
+
+    <h3>6. Widerspruch Werbe-Mails</h3>
+    <p>Der Nutzung von im Rahmen der Impressumspflicht veröffentlichten Kontaktdaten zur Übersendung von nicht ausdrücklich angeforderter Werbung und Informationsmaterialien wird hiermit widersprochen. Die Betreiber der Seiten behalten sich ausdrücklich rechtliche Schritte im Falle der unverlangten Zusendung von Werbeinformationen, etwa durch Spam-E-Mails, vor.</p>
+
+    <p class="legal-src">Übernommen vom Impressum unter <a href="https://wirlernenonline.de/impressum/" target="_blank" rel="noopener">wirlernenonline.de/impressum/</a>.</p>
+  </template>
+
+  <template id="tpl-datenschutz">
+    <h2>Datenschutzerklärung</h2>
+    <p class="legal-intro">Die Anwendung „Quellensteckbriefe" ist Teil von „Wir Lernen Online". „Wir Lernen Online" ist ein Projekt zwischen dem edu-sharing.net e. V. und Wikimedia Deutschland e. V. Gemeinsam betreuen wir eine Community von Mitwirkenden, welche bspw. Lerninhalte und Softwaretools sammelt, kuratiert und zu Sammlungen zusammenstellt.</p>
+
+    <h3>Verantwortlicher</h3>
+    <p>edu-sharing.net e.V.<br>
+    Am Horn 21a<br>
+    99425 Weimar<br>
+    <a href="mailto:redaktion@wirlernenonline.de">redaktion@wirlernenonline.de</a></p>
+
+    <h3>Umfang und Zweck der Verarbeitung persönlicher Daten</h3>
+    <p>Die Betreiber dieser Seiten nehmen den Schutz Ihrer persönlichen Daten sehr ernst. Wir behandeln Ihre personenbezogenen Daten vertraulich und entsprechend der gesetzlichen Datenschutzvorschriften. Die Nutzung unserer Webseite ist in der Regel ohne Angabe personenbezogener Daten möglich. Wir verarbeiten personenbezogene Daten unserer Nutzer grundsätzlich nur, soweit dies zur Bereitstellung einer funktionsfähigen Website sowie unserer Inhalte und Leistungen erforderlich ist. Soweit auf unseren Seiten personenbezogene Daten erhoben werden, erfolgt dies, soweit technisch möglich, stets auf freiwilliger Basis im Wege der vorherigen Einwilligung. Eine Ausnahme gilt in solchen Fällen, in denen eine vorherige Einholung einer Einwilligung aus tatsächlichen Gründen nicht möglich ist und die Verarbeitung der Daten durch gesetzliche Vorschriften gestattet ist. Eine Weitergabe von Daten an Dritte ohne ausdrückliche Zustimmung erfolgt nicht.</p>
+
+    <h3>Speicherdauer</h3>
+    <p>Die personenbezogenen Daten der betroffenen Person werden gelöscht oder gesperrt, sobald der Zweck der Speicherung entfällt. Eine Speicherung kann darüber hinaus erfolgen, wenn dies durch den europäischen oder nationalen Gesetzgeber in unionsrechtlichen Verordnungen, Gesetzen oder sonstigen Vorschriften, denen der Verantwortliche unterliegt, vorgesehen wurde.</p>
+
+    <h3>Auskunft, Löschung, Sperrung</h3>
+    <p>Sie haben jederzeit das Recht auf unentgeltliche Auskunft über Ihre gespeicherten personenbezogenen Daten, deren Herkunft und Empfänger und den Zweck der Datenverarbeitung sowie ein Recht auf Berichtigung, Sperrung oder Löschung dieser Daten. Hierzu sowie zu weiteren Fragen zum Thema personenbezogene Daten können Sie sich jederzeit unter der im Impressum angegebenen Adresse an uns wenden.</p>
+    <p>Unbeschadet eines anderweitigen verwaltungsrechtlichen oder gerichtlichen Rechtsbehelfs steht Ihnen das Recht auf Beschwerde bei einer Aufsichtsbehörde, insbesondere in dem Mitgliedstaat ihres Aufenthaltsorts, ihres Arbeitsplatzes oder des Orts des mutmaßlichen Verstoßes, zu, wenn Sie der Ansicht sind, dass die Verarbeitung der Sie betreffenden personenbezogenen Daten gegen die DSGVO verstößt.</p>
+
+    <h3>Cookies</h3>
+    <p>Auf unseren Internetseiten verwenden wir Cookies. Diese dienen dazu, unser Angebot nutzerfreundlicher, effektiver und sicherer zu machen. Cookies sind kleine Textdateien, die auf Ihrem Rechner abgelegt werden und die Ihr Browser speichert. Die meisten der von uns verwendeten Cookies sind so genannte „Session-Cookies”. Sie werden nach Ende Ihres Besuchs automatisch gelöscht. Andere Cookies bleiben auf Ihrem Endgerät gespeichert, bis Sie diese löschen. Diese Cookies ermöglichen es uns, Ihren Browser beim nächsten Besuch wiederzuerkennen und die Funktionsfähigkeit unserer Internetseiten zu gewährleisten.</p>
+    <p>In den Cookies werden dabei folgende Daten gespeichert und übermittelt:</p>
+    <ul><li>Session-ID</li></ul>
+    <p>Sie können Ihren Browser so einstellen, dass Sie über das Setzen von Cookies informiert werden und Cookies nur im Einzelfall erlauben, die Annahme von Cookies für bestimmte Fälle oder generell ausschließen sowie das automatische Löschen der Cookies beim Schließen des Browsers aktivieren. Bei der Deaktivierung von Cookies kann die Funktionalität dieser Website eingeschränkt sein.</p>
+
+    <h3>Server-Log-Files</h3>
+    <p>Beim Aufrufen unserer Website erheben und speichern wir automatisch Informationen in so genannten Server-Log Files, die Ihr Browser automatisch an uns übermittelt. Diese Informationen umfassen:</p>
+    <ul>
+      <li>Browsertyp und -version</li>
+      <li>verwendetes Betriebssystem</li>
+      <li>Webseite, von der aus Sie uns besuchen (Referrer URL)</li>
+      <li>unsere Webseiten, die Sie besuchen (Reiteransichten)</li>
+      <li>Datum und Uhrzeit Ihres Zugriffs</li>
+      <li>Ihre Internet Protokoll (IP)-Adresse</li>
+    </ul>
+    <p>Diese Daten sind nicht bestimmten Personen zuordenbar. Eine Zusammenführung dieser Daten mit anderen Datenquellen wird nicht vorgenommen. Wir behalten uns vor, diese Daten nachträglich zu prüfen, wenn uns konkrete Anhaltspunkte für eine rechtswidrige Nutzung bekannt werden. Die Log-Files werden nach zwei Wochen automatisch gelöscht.</p>
+    <p>Die vorübergehende Speicherung der IP-Adresse durch das System ist notwendig, um eine Auslieferung der Website an den Rechner des Nutzers zu ermöglichen.</p>
+
+    <h3>Hosting Provider Dienst</h3>
+    <p>Diese Website wird bei einem externen Dienstleister gehostet. Personenbezogenen Daten, die auf dieser Website erfasst werden, werden auf den Servern des Hosters gespeichert. Hierbei kann es sich v. a. um IP-Adressen, Kontaktanfragen, Meta- und Kommunikationsdaten, Kontaktdaten, Namen, Webseitenzugriffe und sonstige Daten, die über eine Website generiert werden, handeln.</p>
+    <p>Der Einsatz des Hosters erfolgt zum Zwecke der einer sicheren, schnellen und effizienten Bereitstellung unseres Online-Angebots durch einen professionellen Anbieter (Art. 6 Abs. 1 lit. f DSGVO).</p>
+    <p>Unser Hoster wird Ihre Daten nur insoweit verarbeiten, wie dies zur Erfüllung seiner Leistungspflichten erforderlich ist und unsere Weisungen in Bezug auf diese Daten befolgen. Mit dem Hosting Provider haben wir eine Auftragsdatenvereinbarung geschlossen.</p>
+    <p>Wir setzen folgenden Hoster ein:<br>
+    Gesellschaft für wissenschaftliche Datenverarbeitung mbH Göttingen<br>
+    Burckhardtweg 4<br>
+    37077 Göttingen</p>
+
+    <h3>Kontaktmöglichkeit</h3>
+    <p>Wir bieten Ihnen auf unserer Seite die Möglichkeit, mit uns per E-Mail und/oder über ein Kontaktformular in Verbindung zu treten. Ferner können Sie mit uns über das Quellenvorschlagsfomular in Kontakt treten. In diesen Fällen werden die vom Nutzer gemachten Angaben zum Zwecke der Bearbeitung seiner Kontaktaufnahme gespeichert. Die sonstigen während des Absendevorgangs verarbeiteten personenbezogenen Daten dienen dazu, einen Missbrauch des Kontaktformulars zu verhindern und die Sicherheit unserer informationstechnischen Systeme sicherzustellen. Diese Daten umfassen:</p>
+    <ul>
+      <li>IP-Adresse des Nutzers</li>
+      <li>Datum und Uhrzeit der Registrierung</li>
+    </ul>
+    <p>Eine Weitergabe der Daten an Dritte erfolgt nicht.</p>
+    <p>Für die Verarbeitung der Daten wird im Rahmen des Absendevorgangs Ihre Einwilligung eingeholt und auf diese Datenschutzerklärung verwiesen.</p>
+    <p>Die Daten werden gelöscht, sobald sie für die Erreichung des Zweckes ihrer Erhebung nicht mehr erforderlich sind. Die während des Absendevorgangs zusätzlich erhobenen personenbezogenen Daten werden spätestens nach einer Frist von 30 Tagen gelöscht.</p>
+
+    <h3>Newsletter</h3>
+    <p>Der Websitebetreiber bzw. Seitenprovider erhebt Daten bei der Anmeldung zum Newsletter. Dabei werden folgende Daten an uns übermittelt:</p>
+    <ul><li>Email-Adresse</li></ul>
+    <p>Zudem werden folgende Daten automatisch erhoben:</p>
+    <ul>
+      <li>Datum und Uhrzeit des Opt-Ins</li>
+      <li>IP-Adresse des aufrufenden Rechners während des Opt-Ins</li>
+      <li>Datum und Uhrzeit des Double-Opt-Ins</li>
+      <li>IP-Adresse des aufrufenden Rechners während des Double-Opt-Ins</li>
+      <li>Nutzungsverhalten des Newsletters (Klickverhalten des Nutzers inklusive Datum, Uhrzeit und IP-Adresse)</li>
+    </ul>
+    <p>Für die Verarbeitung der Daten wird im Rahmen des Anmeldevorgangs Ihre Einwilligung eingeholt und auf diese Datenschutzerklärung verwiesen. Es erfolgt im Zusammenhang mit der Datenverarbeitung für den Versand von Newslettern keine Weitergabe der Daten an Dritte. Die Daten werden ausschließlich für den Versand des Newsletters verwendet. Die automatische Erhebung der sonstigen personenbezogenen Daten im Rahmen des Anmeldevorgangs dient dazu, einen Missbrauch der Dienste oder der verwendeten E-Mail-Adresse zu verhindern. Die Analyse des Nutzungsverhaltens des Newsletters dient der Verbesserung unsere Angebote.</p>
+    <p>Die Daten werden gelöscht, sobald sich der Nutzer vom Newsletter abmeldet und sie deshalb für die Erreichung des Zweckes ihrer Erhebung nicht mehr erforderlich sind. Das Abonnement des Newsletters kann durch den betroffenen Nutzer jederzeit gekündigt werden. Zu diesem Zweck findet sich in jedem Newsletter ein entsprechender Link.</p>
+    <p>Als Newsletter-Tool verwenden wir Mailerlite. Unser Tool wird Ihre Daten nur insoweit verarbeiten, wie dies zur Erfüllung seiner Leistungspflichten erforderlich ist und unsere Weisungen in Bezug auf diese Daten befolgen. Mit Tool-Anbieter haben wir eine Auftragsdatenvereinbarung geschlossen.</p>
+
+    <h3>Einbindung von Inhalten Dritter</h3>
+    <p>Der Betreiber dieser Seite bindet im Wege des sogenannten Embedding Inhalte von Drittanbietern im Rahmen der Suchfunktion ein. Dabei werden angezeigten Inhalte lediglich verlinkt und verbleiben zu jeder Zeit auf den Servern der Drittanbieter. Eine Speicherung der Inhalte auf eigenen Servern des Betreibers dieser Seite erfolgt nicht.</p>
+    <p>Ob und ggf. welche personenbezogenen Daten beim Aufrufen der verlinkten Inhalte seitens der Drittanbieter erhoben werden, obliegt einzig dem Drittanbieter. Für weitere Einzelheiten wird auf die jeweils geltenden Datenschutzerklärungen der Drittanbieter verwiesen.</p>
+
+    <h3>Webanalyse durch Matomo</h3>
+    <p><em>Beschreibung und Umfang der Datenverarbeitung</em></p>
+    <p>Wir nutzen auf unserer Website das Open-Source-Software-Tool Matomo (ehemals PIWIK) zur Analyse des Surfverhaltens unserer Nutzer. Die Software setzt ein Cookie auf dem Rechner der Nutzer. Werden Einzelseiten unserer Website aufgerufen, so werden die im folgenden aufgeführten Daten gespeichert.</p>
+    <p>Im Einzelnen werden über jeden Zugriff/Abruf folgende Basisdaten gespeichert:</p>
+    <ul>
+      <li>IP-Adresse, durch Verkürzen anonymisiert</li>
+      <li>Cookie, zur Unterscheidung verschiedener Besucher</li>
+      <li>Zuvor besuchte URL (Referrer), sofern vom Browser übermittelt</li>
+      <li>Name und Version des Betriebssystems</li>
+      <li>Name, Version und Spracheinstellung des Browsers</li>
+    </ul>
+    <p>Zusätzlich werden, sofern JavaScript aktiviert ist, über jeden Zugriff/Abruf folgende Daten gespeichert:</p>
+    <ul>
+      <li>Besuchte URLs auf dieser Webseite</li>
+      <li>Zeitpunkte der Seitenaufrufe</li>
+      <li>Art der HTML-Anfragen</li>
+      <li>Bildschirmauflösung und Farbtiefe</li>
+      <li>Vom Browser unterstützte Techniken und Formate (z. B. Cookies, Java, Flash, PDF, WindowsMedia, QuickTime, Realplayer, Director, SilverLight, Google Gears)</li>
+    </ul>
+    <p>Die Software läuft dabei ausschließlich auf den Servern der GWDG, die im GWDG eigenen Rechenzentrum betrieben werden. Eine Speicherung der personenbezogenen Daten der Nutzer findet nur dort statt. Eine Weitergabe der Daten an Dritte erfolgt nicht.</p>
+    <p>Die Software ist so eingestellt, dass die IP-Adressen nicht vollständig gespeichert werden, sondern 2 Bytes der IP-Adresse maskiert werden (Beispiel: 192.168.xxx.xxx). Auf diese Weise ist eine Zuordnung der gekürzten IP-Adresse zum aufrufenden Rechner nicht mehr möglich.</p>
+
+    <h3>Weitere Anwendungen</h3>
+    <p><em>Zoom</em></p>
+    <p>Wir benutzen Zoom für Videokonferenzen, Online Meetings, Webinare und Workshops. Diese Anwendung wird betrieben von Zoom Video Communications, Inc., 55 Almaden Boulevard, 6th Floor, San Jose, CA 95113, USA.</p>
+    <p>Datenschutzhinweise von Zoom sowie entsprechende Kontaktmöglichkeiten zu Zoom finden Sie hier: <a href="https://zoom.us/de-de/privacy.html" target="_blank" rel="noopener">https://zoom.us/de-de/privacy.html</a>. Zoom verarbeitet nach eigenen Angaben die Daten in einem Gebiet, das nach Feststellung der EU-Kommission ein angemessenes Schutzniveau für personenbezogenen Daten bietet oder implementiert geeignete Sicherheitsvorkehrungen zum Schutz der personenbezogenen Daten. Das umfasst die geltenden Übertragungsmechanismen der EU (Standardvertragsklauseln der EU-Kommission).</p>
+    <p>Alternativ können Sie der Veranstaltung auch nur telefonisch beiwohnen ohne die Videooption zu nutzen. In diesem Fall ist aber die interaktive Komponente in den Veranstaltungen eingeschränkt.</p>
+    <p>Die Nutzung von Zoom erfolgt auf Grundlage Art. 6 Abs. 1 lit. f) DSGVO. Wir haben ein berechtigtes Interesse daran, im Rahmen unserer Aufgaben „Online Meetings” effektiv durchzuführen. Soweit die Meetings im Rahmen von Vertragsbeziehungen durchgeführt werden, ist die Rechtsgrundlage für die Datenverarbeitung Art. 6 Abs. 1 lit. b) DSGVO. Sofern Sie um Ihre Einwilligung gefragt werden, ist die Rechtsgrundlage Ihre Einwilligung gem. Art. 6 Abs. 1 lit. a DSGVO. Diese können Sie jederzeit mit Wirkung für die Zukunft widerrufen.</p>
+    <p><em>Miro</em></p>
+    <p>Wir benutzen Miro in Online-Meetings und -Workshops für die virtuelle kollaborative Zusammenarbeit, insbesondere zur Visualisierung. Diese Anwendung wird betrieben von RealtimeBoard, Inc., 201 Spear Street, Suite 1100, San Francisco, CA 94105.</p>
+    <p>Datenschutzhinweise von Miro und Kontaktmöglichkeiten zu Miro finden Sie hier: <a href="https://miro.com/legal/privacy-policy/" target="_blank" rel="noopener">https://miro.com/legal/privacy-policy/</a>. Für externe Workshops ist eine Registrierung bei Miro nicht notwendig. Wir bieten Nutzer:innen Miro-Boards zur kollaborativen Zusammenarbeit, bei denen sie sich nicht registrieren oder anmelden müssen. Dennoch nutzt Miro Google-Analytics. Entsprechende Cookies lassen sich auch beim Aufruf eines Miroboards mit einem Einladungslink für nichtregistrierte Nutzer nachweisen. Sie erscheinen dort als 1st Party Cookies.</p>
+
+    <p class="legal-src">Übernommen von der Datenschutzerklärung unter <a href="https://wirlernenonline.de/datenschutz/" target="_blank" rel="noopener">wirlernenonline.de/datenschutz/</a>.</p>
+  </template>
+
+  <div id="toast" class="toast hidden"></div>
+  <!-- App-Skripte: klassische Skripte, in dieser Reihenfolge geladen (defer
+       garantiert Dokument-Reihenfolge). core zuerst, main zuletzt. -->
+  <script defer src="/core.js"></script>
+  <script defer src="/list.js"></script>
+  <script defer src="/detail.js"></script>
+  <script defer src="/pdf.js"></script>
+  <script defer src="/export.js"></script>
+  <script defer src="/stats.js"></script>
+  <script defer src="/main.js"></script>
+</body>
+</html>

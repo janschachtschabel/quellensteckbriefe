@@ -1,0 +1,25 @@
+# --- Geheimnisse (NIE committen) -------------------------------------------
+.env
+**/.env
+!.env.example
+
+# --- Python-Laufzeit-/Test-Artefakte ---------------------------------------
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.coverage
+htmlcov/
+*.egg-info/
+.venv/
+venv/
+
+# --- Editor / Betriebssystem -----------------------------------------------
+.idea/
+*.swp
+.DS_Store
+Thumbs.db
+
+# Bewusst VERSIONIERT (vom Container-Build benötigt, daher NICHT ignoriert):
+#   backend/data/truth.json          – Datensnapshot, den die App ausliefert
+#   backend/data/inputs/*.csv        – kuratierte Eingaben für den Refresh
+#   backend/tests/golden/*.json      – Golden-Snapshots der Tests

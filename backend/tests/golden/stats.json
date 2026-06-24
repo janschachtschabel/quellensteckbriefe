@@ -1,0 +1,80 @@
+{
+  "crawlerWithFieldProfile": 53,
+  "facetsOnly": 2885,
+  "meta": {
+    "byKind": {
+      "bezugsquelle": 2885,
+      "crawler": 55,
+      "manuell": 1279
+    },
+    "generatedAt": "2026-06-24 14:48",
+    "total": 4219,
+    "totalContents": 304800,
+    "withFieldProfile": 53,
+    "withNode": 1322,
+    "wloProdContent": 318650
+  },
+  "oerCount": 375,
+  "topSubjects": [
+    {
+      "count": 233,
+      "value": "Biologie"
+    },
+    {
+      "count": 185,
+      "value": "Allgemein"
+    },
+    {
+      "count": 170,
+      "value": "Spanisch"
+    },
+    {
+      "count": 164,
+      "value": "Nachhaltigkeit"
+    },
+    {
+      "count": 160,
+      "value": "Chemie"
+    },
+    {
+      "count": 99,
+      "value": "Physik"
+    },
+    {
+      "count": 90,
+      "value": "Informatik"
+    },
+    {
+      "count": 82,
+      "value": "Mathematik"
+    },
+    {
+      "count": 77,
+      "value": "Geschichte"
+    },
+    {
+      "count": 77,
+      "value": "Deutsch"
+    },
+    {
+      "count": 77,
+      "value": "Englisch"
+    },
+    {
+      "count": 71,
+      "value": "Berufliche Bildung"
+    },
+    {
+      "count": 68,
+      "value": "Musik"
+    },
+    {
+      "count": 63,
+      "value": "Deutsch als Zweitsprache"
+    },
+    {
+      "count": 56,
+      "value": "Medienbildung"
+    }
+  ]
+}

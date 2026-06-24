@@ -1,0 +1,332 @@
+{
+  "confidence": {
+    "high": 682,
+    "low": 2893,
+    "medium": 644
+  },
+  "feldFuellstand": {
+    "ki": [
+      {
+        "anzahl": 49,
+        "feld": "robots.txt",
+        "prozent": 92
+      },
+      {
+        "anzahl": 48,
+        "feld": "TDM-Hinweis (§44b)",
+        "prozent": 91
+      },
+      {
+        "anzahl": 35,
+        "feld": "AGB/Nutzungsbedingungen",
+        "prozent": 66
+      },
+      {
+        "anzahl": 35,
+        "feld": "Lizenz-Check",
+        "prozent": 66
+      },
+      {
+        "anzahl": 1,
+        "feld": "API-Nutzungsbedingungen",
+        "prozent": 2
+      }
+    ],
+    "kiBasis": 53,
+    "metadaten": [
+      {
+        "anzahl": 1301,
+        "feld": "Beschreibung",
+        "prozent": 98
+      },
+      {
+        "anzahl": 1201,
+        "feld": "Lizenz",
+        "prozent": 91
+      },
+      {
+        "anzahl": 375,
+        "feld": "OER",
+        "prozent": 28
+      },
+      {
+        "anzahl": 1262,
+        "feld": "Fächer",
+        "prozent": 95
+      },
+      {
+        "anzahl": 1260,
+        "feld": "Bildungsstufen",
+        "prozent": 95
+      },
+      {
+        "anzahl": 1321,
+        "feld": "Inhaltstypen",
+        "prozent": 100
+      },
+      {
+        "anzahl": 1153,
+        "feld": "Sprache",
+        "prozent": 87
+      },
+      {
+        "anzahl": 1061,
+        "feld": "Schlagworte",
+        "prozent": 80
+      },
+      {
+        "anzahl": 1043,
+        "feld": "Urheber",
+        "prozent": 79
+      },
+      {
+        "anzahl": 1258,
+        "feld": "Zielgruppe",
+        "prozent": 95
+      },
+      {
+        "anzahl": 73,
+        "feld": "Alter",
+        "prozent": 6
+      },
+      {
+        "anzahl": 528,
+        "feld": "Sprachniveau",
+        "prozent": 40
+      },
+      {
+        "anzahl": 815,
+        "feld": "Lehrplanbezug",
+        "prozent": 62
+      },
+      {
+        "anzahl": 199,
+        "feld": "FSK",
+        "prozent": 15
+      },
+      {
+        "anzahl": 1322,
+        "feld": "Vorschaubild",
+        "prozent": 100
+      },
+      {
+        "anzahl": 965,
+        "feld": "Qualitätsmerkmale",
+        "prozent": 73
+      }
+    ],
+    "metadatenBasis": 1322
+  },
+  "feldHerkunft": [
+    {
+      "felder": [
+        {
+          "anzahl": 1322,
+          "feld": "Titel"
+        },
+        {
+          "anzahl": 1322,
+          "feld": "URL"
+        },
+        {
+          "anzahl": 1321,
+          "feld": "Inhaltstypen"
+        },
+        {
+          "anzahl": 1301,
+          "feld": "Beschreibung"
+        },
+        {
+          "anzahl": 1262,
+          "feld": "Faecher"
+        },
+        {
+          "anzahl": 1260,
+          "feld": "Bildungsstufen"
+        },
+        {
+          "anzahl": 1258,
+          "feld": "Zielgruppe"
+        },
+        {
+          "anzahl": 1201,
+          "feld": "Lizenz"
+        },
+        {
+          "anzahl": 1153,
+          "feld": "Sprache"
+        },
+        {
+          "anzahl": 1061,
+          "feld": "Schlagworte"
+        },
+        {
+          "anzahl": 1034,
+          "feld": "Urheber"
+        },
+        {
+          "anzahl": 815,
+          "feld": "Lehrplanbezug"
+        },
+        {
+          "anzahl": 528,
+          "feld": "Sprachniveau"
+        },
+        {
+          "anzahl": 375,
+          "feld": "OER"
+        },
+        {
+          "anzahl": 271,
+          "feld": "Zielsprache"
+        },
+        {
+          "anzahl": 199,
+          "feld": "FSK"
+        },
+        {
+          "anzahl": 73,
+          "feld": "Alter"
+        }
+      ],
+      "gesamt": 15756,
+      "quelle": "WLO-API"
+    },
+    {
+      "felder": [
+        {
+          "anzahl": 4042,
+          "feld": "Bezugsquelle"
+        },
+        {
+          "anzahl": 3569,
+          "feld": "Inhaltsanzahl"
+        }
+      ],
+      "gesamt": 7611,
+      "quelle": "WLO-API (Facette)"
+    },
+    {
+      "felder": [
+        {
+          "anzahl": 49,
+          "feld": "robots.txt"
+        },
+        {
+          "anzahl": 48,
+          "feld": "TDM-Hinweis (§44b)"
+        },
+        {
+          "anzahl": 35,
+          "feld": "AGB/Nutzungsbedingungen"
+        },
+        {
+          "anzahl": 35,
+          "feld": "Lizenz-Check"
+        },
+        {
+          "anzahl": 15,
+          "feld": "Urheber"
+        },
+        {
+          "anzahl": 12,
+          "feld": "URL"
+        },
+        {
+          "anzahl": 1,
+          "feld": "API-Nutzungsbedingungen"
+        }
+      ],
+      "gesamt": 195,
+      "quelle": "datencrawler.csv"
+    }
+  ],
+  "generatedAt": "2026-06-24 14:48",
+  "herkunft": {
+    "nurBezugsquelle_ohneQuelldatensatz": 2885,
+    "nurQuelldatensatz_ohneBezugsquelle": 169,
+    "quelldatensaetzeGesamt": 1322,
+    "schnittmenge_QuelldatensatzUndBezugsquelle": 1153,
+    "schnittmenge_blacklist": 67,
+    "schnittmenge_sauber": 669,
+    "schnittmenge_zweitDatensatz": 417
+  },
+  "probleme": {
+    "bezugsquellenMit1Inhalt": 2104,
+    "bezugsquellenUnter5Inhalte": 2674,
+    "blacklistEintraege": 81,
+    "doppelteTitel": {
+      "beispiele": [
+        {
+          "anzahl": 4,
+          "wert": "portal globales lernen"
+        },
+        {
+          "anzahl": 3,
+          "wert": "coding for tomorrow"
+        },
+        {
+          "anzahl": 3,
+          "wert": "thüringer schulportal"
+        },
+        {
+          "anzahl": 2,
+          "wert": "youtube"
+        },
+        {
+          "anzahl": 2,
+          "wert": "zum-unterrichten"
+        },
+        {
+          "anzahl": 2,
+          "wert": "dilertube"
+        },
+        {
+          "anzahl": 2,
+          "wert": "oer commons"
+        },
+        {
+          "anzahl": 2,
+          "wert": "umwelt im unterricht"
+        }
+      ],
+      "gruppen": 60,
+      "ueberzaehlig": 64
+    },
+    "doppelteUrl": {
+      "beispiele": [
+        {
+          "anzahl": 2,
+          "wert": "https://www.wirlernenonline.de"
+        },
+        {
+          "anzahl": 2,
+          "wert": "https://redaktion.openeduhub.net/"
+        }
+      ],
+      "gruppen": 2,
+      "ueberzaehlig": 2
+    },
+    "mehrfachInhaltstypen_fehltagging": 274,
+    "quelldatensaetzeOhneBezugsquelle": 169,
+    "unsichtbareQuellenMitCrawler": 12,
+    "zweitDatensaetze": 473
+  },
+  "spider": {
+    "ausWloAltmigration_replicationsource": 197,
+    "beideFelderGesetzt": 35,
+    "mitCrawlerBindung_generalIdentifier": 41
+  },
+  "spiderBindung": {
+    "beide": 35,
+    "beideUnterschiedlich": 35,
+    "echteBindungGesamt": 123,
+    "mitGeneralIdentifier": 41,
+    "mitReplicationsource": 283,
+    "nurGeneralIdentifier": 6,
+    "nurReplicationsource": 248,
+    "nurRs_echterSpider": 49,
+    "nurRs_legacyName": 33,
+    "nurRs_wloMigration": 166
+  }
+}

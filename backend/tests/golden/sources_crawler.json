@@ -1,0 +1,2999 @@
+{
+  "items": [
+    {
+      "confidence": "high",
+      "contentCount": 62867,
+      "erschliessung": "im Bestand verfuegbar",
+      "fieldActiveCount": 28,
+      "fieldGeneration": [
+        {
+          "aktiv": true,
+          "field": "identifier",
+          "how": "",
+          "item": "LomGeneralItem",
+          "status": "aktiv"
+        },
+        {
+          "aktiv": true,
+          "field": "title",
+          "how": "",
+          "item": "LomGeneralItem",
+          "status": "aktiv"
+        },
+        {
+          "aktiv": true,
+          "field": "language",
+          "how": "",
+          "item": "LomGeneralItem",
+          "status": "aktiv"
+        },
+        {
+          "aktiv": true,
+          "field": "keyword",
+          "how": "",
+          "item": "LomGeneralItem",
+          "status": "aktiv"
+        },
+        {
+          "aktiv": true,
+          "field": "description",
+          "how": "",
+          "item": "LomGeneralItem",
+          "status": "aktiv"
+        },
+        {
+          "aktiv": true,
+          "field": "role",
+          "how": "",
+          "item": "LomLifecycleItem",
+          "status": "aktiv"
+        },
+        {
+          "aktiv": true,
+          "field": "firstName",
+          "how": "",
+          "item": "LomLifecycleItem",
+          "status": "aktiv"
+        },
+        {
+          "aktiv": true,
+          "field": "lastName",
+          "how": "",
+          "item": "LomLifecycleItem",
+          "status": "aktiv"
+        },
+        {
+          "aktiv": true,
+          "field": "organization",
+          "how": "",
+          "item": "LomLifecycleItem",
+          "status": "aktiv"
+        },
+        {
+          "aktiv": true,
+          "field": "format",
+          "how": "",
+          "item": "LomTechnicalItem",
+          "status": "aktiv"
+        },
+        {
+          "aktiv": true,
+          "field": "size",
+          "how": "",
+          "item": "LomTechnicalItem",
+          "status": "aktiv"
+        },
+        {
+          "aktiv": true,
+          "field": "location",
+          "how": "",
+          "item": "LomTechnicalItem",
+          "status": "aktiv"
+        },
+        {
+          "aktiv": true,
+          "field": "typicalLearningTime",
+          "how": "",
+          "item": "LomEducationalItem",
+          "status": "aktiv"
+        },
+        {
+          "aktiv": true,
+          "field": "intendedEndUserRole",
+          "how": "",
+          "item": "ValuespaceItem",
+          "status": "aktiv"
+        },
+        {
+          "aktiv": true,
+          "field": "discipline",
+          "how": "hard-coded / aus URL-Pfad abgeleitet",
+          "item": "ValuespaceItem",
+          "status": "aktiv | hard-coded / aus URL-Pfad abgeleitet"
+        },
+        {
+          "aktiv": true,
+          "field": "learningResourceType",
+          "how": "",
+          "item": "ValuespaceItem",
+          "status": "aktiv"
+        },
+        {
+          "aktiv": true,
+          "field": "new_lrt",
+          "how": "hard-coded / aus URL-Pfad abgeleitet",
+          "item": "ValuespaceItem",
+          "status": "aktiv | hard-coded / aus URL-Pfad abgeleitet"
+        },
+        {
+          "aktiv": true,
+          "field": "conditionsOfAccess",
+          "how": "hard-coded",
+          "item": "ValuespaceItem",
+          "status": "aktiv | hard-coded"
+        },
+        {
+          "aktiv": true,
+          "field": "containsAdvertisement",
+          "how": "hard-coded",
+          "item": "ValuespaceItem",
+          "status": "aktiv | hard-coded"
+        },
+        {
+          "aktiv": true,
+          "field": "price",
+          "how": "hard-coded",
+          "item": "ValuespaceItem",
+          "status": "aktiv | hard-coded"
+        },
+        {
+          "aktiv": true,
+          "field": "url",
+          "how": "",
+          "item": "LicenseItem",
+          "status": "aktiv"
+        },
+        {
+          "aktiv": true,
+          "field": "sourceId",
+          "how": "",
+          "item": "BaseItem",
+          "status": "aktiv"
+        },
+        {
+          "aktiv": true,
+          "field": "hash",
+          "how": "",
+          "item": "BaseItem",
+          "status": "aktiv"
+        },
+        {
+          "aktiv": true,
+          "field": "thumbnail",
+          "how": "",
+          "item": "BaseItem",
+          "status": "aktiv"
+        },
+        {
+          "aktiv": true,
+          "field": "lastModified",
+          "how": "",
+          "item": "BaseItem",
+          "status": "aktiv"
+        },
+        {
+          "aktiv": true,
+          "field": "lom",
+          "how": "",
+          "item": "BaseItem",
+          "status": "aktiv"
+        },
+        {
+          "aktiv": true,
+          "field": "valuespaces",
+          "how": "",
+          "item": "BaseItem",
+          "status": "aktiv"
+        },
+        {
+          "aktiv": true,
+          "field": "license",
+          "how": "",
+          "item": "BaseItem",
+          "status": "aktiv"
+        }
+      ],
+      "flags": [
+        "WLO_MIGRATION",
+        "OER"
+      ],
+      "hasInternal": true,
+      "id": "crawler:bpb_spider",
+      "identity": {
+        "bezugsquelle": "Bundeszentrale für politische Bildung",
+        "nodeId": "b23cf2a4-a0cc-4272-b5f2-3a398dd7c27e",
+        "spider": "bpb_spider",
+        "spiderVocabName": "",
+        "url": "https://www.bpb.de/"
+      },
+      "kind": "crawler",
+      "name": "Bundeszentrale für politische Bildung",
+      "previewUrl": "https://redaktion.openeduhub.net/edu-sharing/preview?nodeId=b23cf2a4-a0cc-4272-b5f2-3a398dd7c27e&storeProtocol=workspace&storeId=SpacesStore&dontcache=1782305355214",
+      "provenance": {
+        "AGB/Nutzungsbedingungen": "datencrawler.csv",
+        "Beschreibung": "WLO-API",
+        "Bezugsquelle": "WLO-API (Facette)",
+        "Bildungsstufen": "WLO-API",
+        "Faecher": "WLO-API",
+        "Inhaltsanzahl": "WLO-API (Facette)",
+        "Inhaltstypen": "WLO-API",
+        "Lehrplanbezug": "WLO-API",
+        "Lizenz": "WLO-API",
+        "Lizenz-Check": "datencrawler.csv",
+        "OER": "WLO-API",
+        "Schlagworte": "WLO-API",
+        "Sprache": "WLO-API",
+        "TDM-Hinweis (§44b)": "datencrawler.csv",
+        "Titel": "WLO-API",
+        "URL": "WLO-API",
+        "Urheber": "WLO-API",
+        "Zielgruppe": "WLO-API",
+        "robots.txt": "datencrawler.csv"
+      },
+      "public": {
+        "AGB/Nutzungsbedingungen": "erlaubt für OER Anteil https://www.bpb.de/die-bpb/faq/184955/nutzungsrechte/#node-content-title-0",
+        "Beschreibung": "Die Webseite der Bundeszentrale für politische Bildung bietet vielseitige Materialien aus dem Bereich Politik, Geschichte und Gesellschaft. Dazu gehört auch ein Bereich \"Lernen\" mit Arbeitsblättern, Erklärvideos und didaktischen Hinweisen.",
+        "Bezugsquelle": "Bundeszentrale für politische Bildung",
+        "Bildungsstufen": [
+          "Primarstufe",
+          "Sekundarstufe I",
+          "Sekundarstufe II",
+          "Erwachsenenbildung"
+        ],
+        "Faecher": [
+          "Allgemein",
+          "Geschichte",
+          "Gesellschaftskunde",
+          "Interkulturelle Bildung",
+          "Politik"
+        ],
+        "Inhaltsanzahl": 62867,
+        "Inhaltstypen": [
+          "Quelle"
+        ],
+        "Lehrplanbezug": [
+          "Geschichte",
+          "Zeitgemäße Bildung",
+          "Politische Bildung"
+        ],
+        "Lizenz": "COPYRIGHT_FREE",
+        "Lizenz-Check": "Copyright, freier Zugang (verschiedene CC-Lizenzen mit Markierung am Ende der jeweiligen Artikel - meist: CC BY-NC-ND), Bilder sind verboten!",
+        "OER": true,
+        "Schlagworte": [
+          "Lehr- und Lernmaterial"
+        ],
+        "Sprache": "Deutsch (Deutschland)",
+        "TDM-Hinweis (§44b)": "nicht gefunden",
+        "Titel": "Bundeszentrale für politische Bildung",
+        "URL": "https://www.bpb.de/",
+        "Urheber": "Bundeszentrale für politische Bildung, Bundeskanzlerplatz 2, 53113 Bonn, Telefon: +49 (0)228 99515-0 (Zentrale, Interner Link:Bürgerservice), Fax: +49 (0)228 99515-113, E-Mail: E-Mail Link:poststelle@bpb.de, DE-Mail: E-Mail Link:de-mail-poststelle@bpb-bund.de-mail.de (Interner Link:Was ist DE-Mail?), Für Bürger/-innenanfragen nutzen Sie bitte die E-Mail-Adresse: E-Mail Link:info@bpb.de.",
+        "Zielgruppe": [
+          "Lehrer/in",
+          "Lerner/in",
+          "Eltern"
+        ],
+        "robots.txt": "## robots.txt## This file is to prevent the crawling and indexing of certain parts# of your site by web crawlers and spiders run by sites like Yahoo!# and Google. By telling these \"robots\" where not to go on your site,# you save bandwidth and server resources.## This file will be ignored unless it is at the root of your host:# Used:    http://example.com/robots.txt# Ignored: http://example.com/site/robots.txt## For more information about the robots.txt standard, see:# http://www.robotstxt.org/robotstxt.htmlUser-agent: *# CSS, JS, ImagesAllow: /core/*.css$Allow: /core/*.css?Allow: /core/*.js$Allow: /core/*.js?Allow: /core/*.gifAllow: /core/*.jpgAllow: /core/*.jpegAllow: /core/*.pngAllow: /core/*.svgAllow: /profiles/*.css$Allow: /profiles/*.css?Allow: /profiles/*.js$Allow: /profiles/*.js?Allow: /profiles/*.gifAllow: /profiles/*.jpgAllow: /profiles/*.jpegAllow: /profiles/*.pngAllow: /profiles/*.svg# DirectoriesDisallow: /core/Disallow: /profiles/# FilesDisallow: /README.txtDisallow: /web.config# Paths (clean URLs)Disallow: /admin/Disallow: /comment/reply/Disallow: /filter/tipsDisallow: /node/add/Disallow: /search/Disallow: /user/registerDisallow: /user/passwordDisallow: /user/loginDisallow: /user/logout# Paths (no clean URLs)Disallow: /index.php/admin/Disallow: /index.php/comment/reply/Disallow: /index.php/filter/tipsDisallow: /index.php/node/add/Disallow: /index.php/search/Disallow: /index.php/user/passwordDisallow: /index.php/user/registerDisallow: /index.php/user/loginDisallow: /index.php/user/logoutSitemap: https://www.bpb.de/sites/default/files/xmlsitemap/oWx2Pl033k1XFmYJFOs7sO0G3JasH0cjDbduvDwKuwo/index.xml"
+      },
+      "quality": {
+        "DSGVO": "Datensparsam",
+        "Kosten": "nein",
+        "Login": "ohne Anmeldung"
+      }
+    },
+    {
+      "confidence": "medium",
+      "contentCount": 54338,
+      "erschliessung": "im Bestand verfuegbar",
+      "fieldActiveCount": 31,
+      "fieldGeneration": [
+        {
+          "aktiv": true,
+          "field": "title",
+          "how": "",
+          "item": "LomGeneralItem",
+          "status": "aktiv"
+        },
+        {
+          "aktiv": true,
+          "field": "language",
+          "how": "",
+          "item": "LomGeneralItem",
+          "status": "aktiv"
+        },
+        {
+          "aktiv": true,
+          "field": "keyword",
+          "how": "",
+          "item": "LomGeneralItem",
+          "status": "aktiv"
+        },
+        {
+          "aktiv": true,
+          "field": "description",
+          "how": "",
+          "item": "LomGeneralItem",
+          "status": "aktiv"
+        },
+        {
+          "aktiv": true,
+          "field": "role",
+          "how": "\"author\" / \"publisher\"",
+          "item": "LomLifecycleItem",
+          "status": "aktiv | \"author\" / \"publisher\""
+        },
+        {
+          "aktiv": true,
+          "field": "organization",
+          "how": "",
+          "item": "LomLifecycleItem",
+          "status": "aktiv"
+        },
+        {
+          "aktiv": true,
+          "field": "url",
+          "how": "",
+          "item": "LomLifecycleItem",
+          "status": "aktiv"
+        },
+        {
+          "aktiv": true,
+          "field": "date",
+          "how": "",
+          "item": "LomLifecycleItem",
+          "status": "aktiv"
+        },
+        {
+          "aktiv": true,
+          "field": "format",
+          "how": "hard-coded (\"text/html\")",
+          "item": "LomTechnicalItem",
+          "status": "aktiv | hard-coded (\"text/html\")"
+        },
+        {
+          "aktiv": true,
+          "field": "location",
+          "how": "",
+          "item": "LomTechnicalItem",
+          "status": "aktiv"
+        },
+        {
+          "aktiv": true,
+          "field": "duration",
+          "how": "",
+          "item": "LomTechnicalItem",
+          "status": "aktiv"
+        },
+        {
+          "aktiv": true,
+          "field": "typicalAgeRange",
+          "how": "",
+          "item": "LomEducationalItem",
+          "status": "aktiv"
+        },
+        {
+          "aktiv": true,
+          "field": "intendedEndUserRole",
+          "how": "hard-coded (aus vorgegebener CSV Tabelle)",
+          "item": "ValuespaceItem",
+          "status": "aktiv | hard-coded (aus vorgegebener CSV Tabelle)"
+        },
+        {
+          "aktiv": true,
+          "field": "discipline",
+          "how": "hard-coded (aus vorgegebener CSV Tabelle)",
+          "item": "ValuespaceItem",
+          "status": "aktiv | hard-coded (aus vorgegebener CSV Tabelle)"
+        },
+        {
+          "aktiv": true,
+          "field": "educationalContext",
+          "how": "hard-coded (aus vorgegebener CSV Tabelle)",
+          "item": "ValuespaceItem",
+          "status": "aktiv | hard-coded (aus vorgegebener CSV Tabelle)"
+        },
+        {
+          "aktiv": true,
+          "field": "kldb",
+          "how": "hard-coded (aus vorgegebener CSV Tabelle)",
+          "item": "ValuespaceItem",
+          "status": "aktiv | hard-coded (aus vorgegebener CSV Tabelle)"
+        },
+        {
+          "aktiv": true,
+          "field": "learningResourceType",
+          "how": "hard-coded (aus vorgegebener CSV Tabelle)",
+          "item": "ValuespaceItem",
+          "status": "aktiv | hard-coded (aus vorgegebener CSV Tabelle)"
+        },
+        {
+          "aktiv": true,
+          "field": "fskRating",
+          "how": "",
+          "item": "ValuespaceItem",
+          "status": "aktiv"
+        },
+        {
+          "aktiv": true,
+          "field": "url",
+          "how": "",
+          "item": "LicenseItem",
+          "status": "aktiv"
+        },
+        {
+          "aktiv": true,
+          "field": "internal",
+          "how": "",
+          "item": "LicenseItem",
+          "status": "aktiv"
+        },
+        {
+          "aktiv": true,
+          "field": "description",
+          "how": "",
+          "item": "LicenseItem",
+          "status": "aktiv"
+        },
+        {
+          "aktiv": true,
+          "field": "sourceId",
+          "how": "",
+          "item": "BaseItem",
+          "status": "aktiv"
+        },
+        {
+          "aktiv": true,
+          "field": "hash",
+          "how": "",
+          "item": "BaseItem",
+          "status": "aktiv"
+        },
+        {
+          "aktiv": true,
+          "field": "origin",
+          "how": "",
+          "item": "BaseItem",
+          "status": "aktiv"
+        },
+        {
+          "aktiv": true,
+          "field": "response",
+          "how": "",
+          "item": "BaseItem",
+          "status": "aktiv"
+        },
+        {
+          "aktiv": true,
+          "field": "fulltext",
+          "how": "",
+          "item": "BaseItem",
+          "status": "aktiv"
+        },
+        {
+          "aktiv": true,
+          "field": "thumbnail",
+          "how": "",
+          "item": "BaseItem",
+          "status": "aktiv"
+        },
+        {
+          "aktiv": true,
+          "field": "lastModified",
+          "how": "",
+          "item": "BaseItem",
+          "status": "aktiv"
+        },
+        {
+          "aktiv": true,
+          "field": "lom",
+          "how": "",
+          "item": "BaseItem",
+          "status": "aktiv"
+        },
+        {
+          "aktiv": true,
+          "field": "valuespaces",
+          "how": "",
+          "item": "BaseItem",
+          "status": "aktiv"
+        },
+        {
+          "aktiv": true,
+          "field": "license",
+          "how": "",
+          "item": "BaseItem",
+          "status": "aktiv"
+        }
+      ],
+      "flags": [
+        "FACETS_ONLY"
+      ],
+      "hasInternal": true,
+      "id": "crawler:youtube_spider",
+      "identity": {
+        "bezugsquelle": "YouTube",
+        "nodeId": "",
+        "spider": "youtube_spider",
+        "spiderVocabName": "",
+        "url": "https://www.youtube.de"
+      },
+      "kind": "crawler",
+      "name": "YouTube",
+      "previewUrl": "",
+      "provenance": {
+        "Bezugsquelle": "WLO-API (Facette)",
+        "Inhaltsanzahl": "WLO-API (Facette)",
+        "TDM-Hinweis (§44b)": "datencrawler.csv",
+        "URL": "datencrawler.csv"
+      },
+      "public": {
+        "Bezugsquelle": "YouTube",
+        "Inhaltsanzahl": 54338,
+        "TDM-Hinweis (§44b)": "Mit der Funktion „Verwendung von YouTube-Inhalten für das Trainieren von Drittanbieter-KI“ können Creator und Rechteinhaber festlegen, ob ihre Inhalte zum Trainieren von KI-Modellen verwendet werden dürfen. Mit der YouTube Video Drittanbieter-Trainability API kannst du prüfen, ob ein bestimmtes Video zum Trainieren von KI verwendet werden kann.",
+        "URL": "https://www.youtube.de"
+      },
+      "quality": {}
+    },
+    {
+      "confidence": "high",
+      "contentCount": 49671,
+      "erschliessung": "im Bestand verfuegbar",
+      "fieldActiveCount": 45,
+      "fieldGeneration": [
+        {
+          "aktiv": true,
+          "field": "identifier",
+          "how": "",
+          "item": "LomGeneralItem",
+          "status": "aktiv"
+        },
+        {
+          "aktiv": true,
+          "field": "title",
+          "how": "",
+          "item": "LomGeneralItem",
+          "status": "aktiv"
+        },
+        {
+          "aktiv": true,
+          "field": "language",
+          "how": "",
+          "item": "LomGeneralItem",
+          "status": "aktiv"
+        },
+        {
+          "aktiv": true,
+          "field": "keyword",
+          "how": "",
+          "item": "LomGeneralItem",
+          "status": "aktiv"
+        },
+        {
+          "aktiv": true,
+          "field": "description",
+          "how": "",
+          "item": "LomGeneralItem",
+          "status": "aktiv"
+        },
+        {
+          "aktiv": true,
+          "field": "role",
+          "how": "author / publisher / metadata_provider / unknown",
+          "item": "LomLifecycleItem",
+          "status": "aktiv | author / publisher / metadata_provider / unknown"
+        },
+        {
+          "aktiv": true,
+          "field": "firstName",
+          "how": "",
+          "item": "LomLifecycleItem",
+          "status": "aktiv"
+        },
+        {
+          "aktiv": true,
+          "field": "lastName",
+          "how": "",
+          "item": "LomLifecycleItem",
+          "status": "aktiv"
+        },
+        {
+          "aktiv": true,
+          "field": "organization",
+          "how": "",
+          "item": "LomLifecycleItem",
+          "status": "aktiv"
+        },
+        {
+          "aktiv": true,
+          "field": "title",
+          "how": "",
+          "item": "LomLifecycleItem",
+          "status": "aktiv"
+        },
+        {
+          "aktiv": true,
+          "field": "id_gnd",
+          "how": "",
+          "item": "LomLifecycleItem",
+          "status": "aktiv"
+        },
+        {
+          "aktiv": true,
+          "field": "id_orcid",
+          "how": "",
+          "item": "LomLifecycleItem",
+          "status": "aktiv"
+        },
+        {
+          "aktiv": true,
+          "field": "id_ror",
+          "how": "",
+          "item": "LomLifecycleItem",
+          "status": "aktiv"
+        },
+        {
+          "aktiv": true,
+          "field": "id_wikidata",
+          "how": "",
+          "item": "LomLifecycleItem",
+          "status": "aktiv"
+        },
+        {
+          "aktiv": true,
+          "field": "url",
+          "how": "",
+          "item": "LomLifecycleItem",
+          "status": "aktiv"
+        },
+        {
+          "aktiv": true,
+          "field": "date",
+          "how": "",
+          "item": "LomLifecycleItem",
+          "status": "aktiv"
+        },
+        {
+          "aktiv": true,
+          "field": "format",
+          "how": "",
+          "item": "LomTechnicalItem",
+          "status": "aktiv"
+        },
+        {
+          "aktiv": true,
+          "field": "location",
+          "how": "",
+          "item": "LomTechnicalItem",
+          "status": "aktiv"
+        },
+        {
+          "aktiv": true,
+          "field": "language",
+          "how": "",
+          "item": "LomEducationalItem",
+          "status": "aktiv"
+        },
+        {
+          "aktiv": true,
+          "field": "status",
+          "how": "",
+          "item": "ResponseItem",
+          "status": "aktiv"
+        },
+        {
+          "aktiv": true,
+          "field": "url",
+          "how": "",
+          "item": "ResponseItem",
+          "status": "aktiv"
+        },
+        {
+          "aktiv": true,
+          "field": "html",
+          "how": "",
+          "item": "ResponseItem",
+          "status": "aktiv"
+        },
+        {
+          "aktiv": true,
+          "field": "text",
+          "how": "",
+          "item": "ResponseItem",
+          "status": "aktiv"
+        },
+        {
+          "aktiv": true,
+          "field": "headers",
+          "how": "",
+          "item": "ResponseItem",
+          "status": "aktiv"
+        },
+        {
+          "aktiv": true,
+          "field": "cookies",
+          "how": "",
+          "item": "ResponseItem",
+          "status": "aktiv"
+        },
+        {
+          "aktiv": true,
+          "field": "har",
+          "how": "",
+          "item": "ResponseItem",
+          "status": "aktiv"
+        },
+        {
+          "aktiv": true,
+          "field": "intendedEndUserRole",
+          "how": "via Mapping",
+          "item": "ValuespaceItem",
+          "status": "aktiv | via Mapping"
+        },
+        {
+          "aktiv": true,
+          "field": "discipline",
+          "how": "",
+          "item": "ValuespaceItem",
+          "status": "aktiv"
+        },
+        {
+          "aktiv": true,
+          "field": "educationalContext",
+          "how": "hard-coded: \"hochschule\"",
+          "item": "ValuespaceItem",
+          "status": "aktiv | hard-coded: \"hochschule\""
+        },
+        {
+          "aktiv": true,
+          "field": "hochschulfaechersystematik",
+          "how": "",
+          "item": "ValuespaceItem",
+          "status": "aktiv"
+        },
+        {
+          "aktiv": true,
+          "field": "learningResourceType",
+          "how": "",
+          "item": "ValuespaceItem",
+          "status": "aktiv"
+        },
+        {
+          "aktiv": true,
+          "field": "new_lrt",
+          "how": "u.a. via Mapping von HCRT auf new_lrt",
+          "item": "ValuespaceItem",
+          "status": "aktiv | u.a. via Mapping von HCRT auf new_lrt"
+        },
+        {
+          "aktiv": true,
+          "field": "conditionsOfAccess",
+          "how": "",
+          "item": "ValuespaceItem",
+          "status": "aktiv"
+        },
+        {
+          "aktiv": true,
+          "field": "price",
+          "how": "",
+          "item": "ValuespaceItem",
+          "status": "aktiv"
+        },
+        {
+          "aktiv": true,
+          "field": "url",
+          "how": "",
+          "item": "LicenseItem",
+          "status": "aktiv"
+        },
+        {
+          "aktiv": true,
+          "field": "author",
+          "how": "",
+          "item": "LicenseItem",
+          "status": "aktiv"
+        },
+        {
+          "aktiv": true,
+          "field": "sourceId",
+          "how": "",
+          "item": "BaseItem",
+          "status": "aktiv"
+        },
+        {
+          "aktiv": true,
+          "field": "hash",
+          "how": "",
+          "item": "BaseItem",
+          "status": "aktiv"
+        },
+        {
+          "aktiv": true,
+          "field": "origin",
+          "how": "",
+          "item": "BaseItem",
+          "status": "aktiv"
+        },
+        {
+          "aktiv": true,
+          "field": "thumbnail",
+          "how": "",
+          "item": "BaseItem",
+          "status": "aktiv"
+        },
+        {
+          "aktiv": true,
+          "field": "lom",
+          "how": "",
+          "item": "BaseItem",
+          "status": "aktiv"
+        },
+        {
+          "aktiv": true,
+          "field": "valuespaces",
+          "how": "",
+          "item": "BaseItem",
+          "status": "aktiv"
+        },
+        {
+          "aktiv": true,
+          "field": "permissions",
+          "how": "",
+          "item": "BaseItem",
+          "status": "aktiv"
+        },
+        {
+          "aktiv": true,
+          "field": "license",
+          "how": "",
+          "item": "BaseItem",
+          "status": "aktiv"
+        },
+        {
+          "aktiv": true,
+          "field": "screenshot_bytes",
+          "how": "Fallback, falls keine Thumbnail URL von der OERSI API geliefert wurde",
+          "item": "BaseItem",
+          "status": "aktiv | Fallback, falls keine Thumbnail URL von der OERSI API geliefert wurde"
+        }
+      ],
+      "flags": [],
+      "hasInternal": true,
+      "id": "crawler:oersi_spider",
+      "identity": {
+        "bezugsquelle": "OERSI",
+        "nodeId": "572b1dd5-044b-4cc7-9e53-29ae92af6433",
+        "spider": "oersi_spider",
+        "spiderVocabName": "",
+        "url": "https://oersi.org/resources/"
+      },
+      "kind": "crawler",
+      "name": "OERSI",
+      "previewUrl": "https://redaktion.openeduhub.net/edu-sharing/preview?nodeId=572b1dd5-044b-4cc7-9e53-29ae92af6433&storeProtocol=workspace&storeId=SpacesStore&dontcache=1782305341409",
+      "provenance": {
+        "Beschreibung": "WLO-API",
+        "Bezugsquelle": "WLO-API (Facette)",
+        "Bildungsstufen": "WLO-API",
+        "Faecher": "WLO-API",
+        "Inhaltsanzahl": "WLO-API (Facette)",
+        "Inhaltstypen": "WLO-API",
+        "Lehrplanbezug": "WLO-API",
+        "Lizenz": "WLO-API",
+        "Lizenz-Check": "datencrawler.csv",
+        "Sprache": "WLO-API",
+        "TDM-Hinweis (§44b)": "datencrawler.csv",
+        "Titel": "WLO-API",
+        "URL": "WLO-API",
+        "Urheber": "WLO-API",
+        "Zielgruppe": "WLO-API",
+        "robots.txt": "datencrawler.csv"
+      },
+      "public": {
+        "Beschreibung": "OERSI, die Open Educational Resources Search Index, ist eine Suchmaschine für freie Bildungsmaterialien in der Hochschullehre. Entwickelt als gemeinsames Projekt des Hochschulbibliothekszentrums NRW (hbz) und der Technischen Informationsbibliothek (TIB) seit Anfang 2020, bietet OERSI einen zentralen Zugang zu OER-Repositorien, institutionellen Repositorien und Fachrepositorien.\n\nOERSI selbst speichert keine Inhalte, sondern aggregiert und homogenisiert Metadaten für eine einheitliche Suche. Die Datenstruktur wird im Allgemeinen Metadatenprofil für Bildungsressourcen (AMB) kooperativ entwickelt. Im Gegensatz zu Repositorien ermöglicht OERSI nicht das direkte Hochladen von Materialien; stattdessen erfolgt die Bereitstellung über angeschlossene Quellen.\n\nDurch offene Schnittstellen kann OERSI in andere Plattformen integriert werden. Beispiele sind die Einbindung in OER-Portale wie twillo und ORCA.nrw. Die Suche lässt sich in eigene Webseiten oder Portale integrieren und anpassen. Die Entwicklung erfolgt auf GitLab, wobei offene Prozesse eine breite Beteiligung ermöglichen, von Feedback bis zur aktiven Entwicklung durch Verbesserungsvorschläge in Form von Merge Requests.\n\nDieser Text wurde durch ChatGPT generiert. ",
+        "Bezugsquelle": "OERSI",
+        "Bildungsstufen": [
+          "Hochschule"
+        ],
+        "Faecher": [
+          "Sonstiges"
+        ],
+        "Inhaltsanzahl": 49671,
+        "Inhaltstypen": [
+          "Quelle"
+        ],
+        "Lehrplanbezug": [
+          "Open Educational Resources (OER)"
+        ],
+        "Lizenz": "CC_BY_SA",
+        "Lizenz-Check": "verschiedene",
+        "Sprache": "Deutsch (Deutschland)",
+        "TDM-Hinweis (§44b)": "nicht gefunden",
+        "Titel": "OERSI - Open Educational Resources Search Index",
+        "URL": "https://oersi.org/resources/",
+        "Urheber": "Technische Informationsbibliothek (TIB), Welfengarten 1 B, 30167 Hannover, Postfach 6080, 30060 Hannover",
+        "Zielgruppe": [
+          "Lerner/in",
+          "Lehrer/in"
+        ],
+        "robots.txt": "# https://www.robotstxt.org/robotstxt.htmlUser-agent: *Disallow:Sitemap: https://oersi.org/sitemap.xml"
+      },
+      "quality": {
+        "Kosten": "nein"
+      }
+    },
+    {
+      "confidence": "high",
+      "contentCount": 39445,
+      "erschliessung": "im Bestand verfuegbar",
+      "fieldActiveCount": 18,
+      "fieldGeneration": [
+        {
+          "aktiv": true,
+          "field": "identifier",
+          "how": "",
+          "item": "LomGeneralItem",
+          "status": "aktiv"
+        },
+        {
+          "aktiv": true,
+          "field": "title",
+          "how": "",
+          "item": "LomGeneralItem",
+          "status": "aktiv"
+        },
+        {
+          "aktiv": true,
+          "field": "language",
+          "how": "",
+          "item": "LomGeneralItem",
+          "status": "aktiv"
+        },
+        {
+          "aktiv": true,
+          "field": "keyword",
+          "how": "",
+          "item": "LomGeneralItem",
+          "status": "aktiv"
+        },
+        {
+          "aktiv": true,
+          "field": "description",
+          "how": "",
+          "item": "LomGeneralItem",
+          "status": "aktiv"
+        },
+        {
+          "aktiv": true,
+          "field": "format",
+          "how": "",
+          "item": "LomTechnicalItem",
+          "status": "aktiv"
+        },
+        {
+          "aktiv": true,
+          "field": "size",
+          "how": "",
+          "item": "LomTechnicalItem",
+          "status": "aktiv"
+        },
+        {
+          "aktiv": true,
+          "field": "location",
+          "how": "",
+          "item": "LomTechnicalItem",
+          "status": "aktiv"
+        },
+        {
+          "aktiv": true,
+          "field": "discipline",
+          "how": "",
+          "item": "ValuespaceItem",
+          "status": "aktiv"
+        },
+        {
+          "aktiv": true,
+          "field": "learningResourceType",
+          "how": "",
+          "item": "ValuespaceItem",
+          "status": "aktiv"
+        },
+        {
+          "aktiv": true,
+          "field": "url",
+          "how": "hard-coded auf CC_BY_NC_SA_30",
+          "item": "LicenseItem",
+          "status": "aktiv | hard-coded auf CC_BY_NC_SA_30"
+        },
+        {
+          "aktiv": true,
+          "field": "sourceId",
+          "how": "",
+          "item": "BaseItem",
+          "status": "aktiv"
+        },
+        {
+          "aktiv": true,
+          "field": "hash",
+          "how": "",
+          "item": "BaseItem",
+          "status": "aktiv"
+        },
+        {
+          "aktiv": true,
+          "field": "thumbnail",
+          "how": "",
+          "item": "BaseItem",
+          "status": "aktiv"
+        },
+        {
+          "aktiv": true,
+          "field": "lastModified",
+          "how": "",
+          "item": "BaseItem",
+          "status": "aktiv"
+        },
+        {
+          "aktiv": true,
+          "field": "lom",
+          "how": "",
+          "item": "BaseItem",
+          "status": "aktiv"
+        },
+        {
+          "aktiv": true,
+          "field": "valuespaces",
+          "how": "",
+          "item": "BaseItem",
+          "status": "aktiv"
+        },
+        {
+          "aktiv": true,
+          "field": "license",
+          "how": "",
+          "item": "BaseItem",
+          "status": "aktiv"
+        }
+      ],
+      "flags": [],
+      "hasInternal": true,
+      "id": "crawler:geogebra_spider",
+      "identity": {
+        "bezugsquelle": "Geogebra",
+        "nodeId": "facccb42-11f1-48f6-a9ac-4a3434c77873",
+        "spider": "geogebra_spider",
+        "spiderVocabName": "",
+        "url": "https://www.geogebra.org/"
+      },
+      "kind": "crawler",
+      "name": "Geogebra",
+      "previewUrl": "https://redaktion.openeduhub.net/edu-sharing/preview?nodeId=facccb42-11f1-48f6-a9ac-4a3434c77873&storeProtocol=workspace&storeId=SpacesStore&dontcache=1782305366418",
+      "provenance": {
+        "AGB/Nutzungsbedingungen": "datencrawler.csv",
+        "Beschreibung": "WLO-API",
+        "Bezugsquelle": "WLO-API (Facette)",
+        "Bildungsstufen": "WLO-API",
+        "Faecher": "WLO-API",
+        "Inhaltsanzahl": "WLO-API (Facette)",
+        "Inhaltstypen": "WLO-API",
+        "Lehrplanbezug": "WLO-API",
+        "Lizenz": "WLO-API",
+        "Lizenz-Check": "datencrawler.csv",
+        "Schlagworte": "WLO-API",
+        "Sprache": "WLO-API",
+        "TDM-Hinweis (§44b)": "datencrawler.csv",
+        "Titel": "WLO-API",
+        "URL": "WLO-API",
+        "Urheber": "WLO-API",
+        "Zielgruppe": "WLO-API",
+        "robots.txt": "datencrawler.csv"
+      },
+      "public": {
+        "AGB/Nutzungsbedingungen": "kostenlos für nicht-kommerzielle Zwecke",
+        "Beschreibung": "Geogebra ist ein für nichtkomerzielle Nutzung freies Programm, das  aus der Rechner Suite, dem 3D Rechner, dem CAS-Rechner und der Geometrie-Software besteht. (Link: https://www.isb.bayern.de/gymnasium/faecher/mathematik-informatik/mathematik/weitere-informationen/computereinsatz_im_mathematikunterricht/)  Es kann nicht nur in der Geometrie, sondern auch in der Analysis, der analytischen Geometrie und in der Stochastik eingesetzt werden. In einigen bayerischen Schulen läuft ein Versuch, Geogebra anstelle eines CAS-Rechners im Unterricht und bei Prüfungen zu nutzen. (Quelle des Bildes: wikimedia)",
+        "Bezugsquelle": "Geogebra",
+        "Bildungsstufen": [
+          "Sekundarstufe I",
+          "Sekundarstufe II"
+        ],
+        "Faecher": [
+          "Mathematik",
+          "Berufliche Bildung",
+          "Wirtschaftskunde"
+        ],
+        "Inhaltsanzahl": 39445,
+        "Inhaltstypen": [
+          "Quelle"
+        ],
+        "Lehrplanbezug": [
+          "Mathematik",
+          "Wirtschaft"
+        ],
+        "Lizenz": "COPYRIGHT_FREE",
+        "Lizenz-Check": "Copyright, freier Zugang",
+        "Schlagworte": [
+          "Geogebra"
+        ],
+        "Sprache": "Deutsch (Deutschland)",
+        "TDM-Hinweis (§44b)": "nicht gefunden",
+        "Titel": "GeoGebra",
+        "URL": "https://www.geogebra.org/",
+        "Urheber": "GeoGebra GmbH, Altenbergerstraße 69, 4040 Linz, Österreich, E-mail: office@geogebra.org",
+        "Zielgruppe": [
+          "Berater/in",
+          "Lerner/in",
+          "Eltern"
+        ],
+        "robots.txt": "User-agent: *Disallow:Sitemap: https://www.geogebra.org/m-sitemap-index.xmlSitemap: https://www.geogebra.org/math-sitemap.xmlSitemap: https://www.geogebra.org/special-sitemap.xmlSitemap: https://www.geogebra.org/t-sitemap.xmlSitemap: https://www.geogebra.org/u-sitemap.xml"
+      },
+      "quality": {}
+    },
+    {
+      "confidence": "medium",
+      "contentCount": 14838,
+      "erschliessung": "im Bestand verfuegbar",
+      "fieldActiveCount": 26,
+      "fieldGeneration": [
+        {
+          "aktiv": true,
+          "field": "identifier",
+          "how": "",
+          "item": "LomGeneralItem",
+          "status": "aktiv"
+        },
+        {
+          "aktiv": true,
+          "field": "title",
+          "how": "",
+          "item": "LomGeneralItem",
+          "status": "aktiv"
+        },
+        {
+          "aktiv": true,
+          "field": "language",
+          "how": "manuell über CSV gesetzt",
+          "item": "LomGeneralItem",
+          "status": "aktiv | manuell über CSV gesetzt"
+        },
+        {
+          "aktiv": true,
+          "field": "keyword",
+          "how": "manuell über CSV gesetzt  + keywords aus RSS \"category\"-property",
+          "item": "LomGeneralItem",
+          "status": "aktiv | manuell über CSV gesetzt  + keywords aus RSS \"category\"-property"
+        },
+        {
+          "aktiv": true,
+          "field": "description",
+          "how": "",
+          "item": "LomGeneralItem",
+          "status": "aktiv"
+        },
+        {
+          "aktiv": true,
+          "field": "role",
+          "how": "",
+          "item": "LomLifecycleItem",
+          "status": "aktiv"
+        },
+        {
+          "aktiv": true,
+          "field": "organization",
+          "how": "",
+          "item": "LomLifecycleItem",
+          "status": "aktiv"
+        },
+        {
+          "aktiv": true,
+          "field": "date",
+          "how": "",
+          "item": "LomLifecycleItem",
+          "status": "aktiv"
+        },
+        {
+          "aktiv": true,
+          "field": "format",
+          "how": "",
+          "item": "LomTechnicalItem",
+          "status": "aktiv"
+        },
+        {
+          "aktiv": true,
+          "field": "location",
+          "how": "",
+          "item": "LomTechnicalItem",
+          "status": "aktiv"
+        },
+        {
+          "aktiv": true,
+          "field": "duration",
+          "how": "",
+          "item": "LomTechnicalItem",
+          "status": "aktiv"
+        },
+        {
+          "aktiv": true,
+          "field": "discipline",
+          "how": "manuell über CSV gesetzt",
+          "item": "ValuespaceItem",
+          "status": "aktiv | manuell über CSV gesetzt"
+        },
+        {
+          "aktiv": true,
+          "field": "educationalContext",
+          "how": "typicalAgeRange über CSV gesetzt",
+          "item": "ValuespaceItem",
+          "status": "aktiv | typicalAgeRange über CSV gesetzt"
+        },
+        {
+          "aktiv": true,
+          "field": "learningResourceType",
+          "how": "manuell über CSV gesetzt",
+          "item": "ValuespaceItem",
+          "status": "aktiv | manuell über CSV gesetzt"
+        },
+        {
+          "aktiv": true,
+          "field": "conditionsOfAccess",
+          "how": "hard-coded auf \"no login\"",
+          "item": "ValuespaceItem",
+          "status": "aktiv | hard-coded auf \"no login\""
+        },
+        {
+          "aktiv": true,
+          "field": "price",
+          "how": "hard-coded auf \"no\"",
+          "item": "ValuespaceItem",
+          "status": "aktiv | hard-coded auf \"no\""
+        },
+        {
+          "aktiv": true,
+          "field": "internal",
+          "how": "manuell über CSV gesetzt",
+          "item": "LicenseItem",
+          "status": "aktiv | manuell über CSV gesetzt"
+        },
+        {
+          "aktiv": true,
+          "field": "description",
+          "how": "falls (optionales) <copyright>-Property im RSS Item existiert, wird es als custom Lizenz mit diesem String hinterlegt",
+          "item": "LicenseItem",
+          "status": "aktiv | falls (optionales) <copyright>-Property im RSS Item existiert, wird es als custom Lizenz mit diesem String hinterlegt"
+        },
+        {
+          "aktiv": true,
+          "field": "author",
+          "how": "falls optionales <author>-Property vorhanden",
+          "item": "LicenseItem",
+          "status": "aktiv | falls optionales <author>-Property vorhanden"
+        },
+        {
+          "aktiv": true,
+          "field": "sourceId",
+          "how": "",
+          "item": "BaseItem",
+          "status": "aktiv"
+        },
+        {
+          "aktiv": true,
+          "field": "hash",
+          "how": "",
+          "item": "BaseItem",
+          "status": "aktiv"
+        },
+        {
+          "aktiv": true,
+          "field": "response",
+          "how": "",
+          "item": "BaseItem",
+          "status": "aktiv"
+        },
+        {
+          "aktiv": true,
+          "field": "thumbnail",
+          "how": "",
+          "item": "BaseItem",
+          "status": "aktiv"
+        },
+        {
+          "aktiv": true,
+          "field": "lom",
+          "how": "",
+          "item": "BaseItem",
+          "status": "aktiv"
+        },
+        {
+          "aktiv": true,
+          "field": "valuespaces",
+          "how": "",
+          "item": "BaseItem",
+          "status": "aktiv"
+        },
+        {
+          "aktiv": true,
+          "field": "license",
+          "how": "",
+          "item": "BaseItem",
+          "status": "aktiv"
+        }
+      ],
+      "flags": [
+        "FACETS_ONLY"
+      ],
+      "hasInternal": true,
+      "id": "crawler:br_rss_spider",
+      "identity": {
+        "bezugsquelle": "Bayerischer Rundfunk",
+        "nodeId": "",
+        "spider": "br_rss_spider",
+        "spiderVocabName": "",
+        "url": "https://www.br.de/service/br-rss-feeds-100.html"
+      },
+      "kind": "crawler",
+      "name": "Bayerischer Rundfunk",
+      "previewUrl": "",
+      "provenance": {
+        "Bezugsquelle": "WLO-API (Facette)",
+        "Inhaltsanzahl": "WLO-API (Facette)",
+        "Lizenz-Check": "datencrawler.csv",
+        "TDM-Hinweis (§44b)": "datencrawler.csv",
+        "URL": "datencrawler.csv",
+        "Urheber": "datencrawler.csv",
+        "robots.txt": "datencrawler.csv"
+      },
+      "public": {
+        "Bezugsquelle": "Bayerischer Rundfunk",
+        "Inhaltsanzahl": 14838,
+        "Lizenz-Check": "Copyright, freier Zugang",
+        "TDM-Hinweis (§44b)": "nicht gefunden",
+        "URL": "https://www.br.de/service/br-rss-feeds-100.html",
+        "Urheber": "Bayerischer RundfunkAnstalt des öffentlichen RechtsRundfunkplatz 180335 München",
+        "robots.txt": "User-agent: *Disallow: /extra/gremienDisallow: /extra/internDisallow: /extra/mediathekDisallow: /*/*~_all-1_Disallow: /*/*~_image*Disallow: /*/*~postroll.xmlDisallow: /*/*~recommend.htmlDisallow: /*/*~recommend_image*Disallow: /*/*~recommendForm*Disallow: /*/*~_date*Disallow: /*/*~playlist_date*Disallow: /*/*~musictitle.htmlDisallow: /*/*~_page*Disallow: /*/*~recommend_monthDisallow: /*/*seiteempfehlenDisallow: /*/*sortOrderDisallow: /*/*searchPlzDisallow: /*/*searchOrtsnameDisallow: /*/*?_requestid=*Disallow: /wetter/action/bayernwetter/bayern.do?regio=*Disallow: /wetter/action/bayernwetter/bayern.do?plz=*Disallow: /nachrichten/suche*param*Disallow: /service/suche/index.html*query*Disallow: /*;jsessionid*# AmazonUser-agent: AmazonbotDisallow: /# AnthropicUser-agent: anthropic-aiDisallow: /User-agent: ClaudeBotDisallow: /User-agent: Claude-UserDisallow: /User-agent: Claude-SearchBotDisallow: /User-agent: claude-webDisallow: /# AppleUser-agent: Applebot-ExtendedDisallow: /# ByteDanceUser-agent: BytespiderDisallow: /User-agent: TikTokSpiderDisallow: /# CohereUser-agent: cohere-aiDisallow: /User-agent: cohere-training-data-crawlerDisallow: /# Common CrawlUser-agent: CCBotDisallow: /# DiffbotUser-agent: DiffBotDisallow: /# DuckDuckGoUser-agent: DuckAssistBotDisallow: /# GoogleUser-agent: Google-ExtendedDisallow: /# HuaweiUser-agent: PetalBotDisallow: /User-agent: PanguBotDisallow: /# MetaUser-agent: meta-externalagentDisallow: /User-agent: Meta-ExternalFetcherDisallow: /User-agent: FacebookBotDisallow: /# MistralUser-agent: MistralAI-UserDisallow: /# OpenAIUser-agent: ChatGPT-UserDisallow: /User-agent: GPTBotDisallow: /User-agent: OAI-SearchBotDisallow: /User-agent: ChatGPT-User/2.0Disallow: /# PerplexityUser-agent: PerplexityBotDisallow: /User-agent: Perplexity-UserDisallow: /# Webz.ioUser-agent: omgiliDisallow: /User-agent: omgilibotDisallow: /User-agent: Webzio-ExtendedDisallow: /# You.comUser-agent: YouBotDisallow: /# ZyteUser-agent: ScrapyDisallow: /Sitemap: https://www.br.de/sitemapIndex.xmlSitemap: https://www.br.de/nachrichten/sitemaps/index.xml"
+      },
+      "quality": {}
+    },
+    {
+      "confidence": "high",
+      "contentCount": 12859,
+      "erschliessung": "im Bestand verfuegbar",
+      "fieldActiveCount": 25,
+      "fieldGeneration": [
+        {
+          "aktiv": true,
+          "field": "title",
+          "how": "",
+          "item": "LomGeneralItem",
+          "status": "aktiv"
+        },
+        {
+          "aktiv": true,
+          "field": "description",
+          "how": "",
+          "item": "LomGeneralItem",
+          "status": "aktiv"
+        },
+        {
+          "aktiv": true,
+          "field": "role",
+          "how": "",
+          "item": "LomLifecycleItem",
+          "status": "aktiv"
+        },
+        {
+          "aktiv": true,
+          "field": "firstName",
+          "how": "",
+          "item": "LomLifecycleItem",
+          "status": "aktiv"
+        },
+        {
+          "aktiv": true,
+          "field": "lastName",
+          "how": "",
+          "item": "LomLifecycleItem",
+          "status": "aktiv"
+        },
+        {
+          "aktiv": true,
+          "field": "url",
+          "how": "",
+          "item": "LomLifecycleItem",
+          "status": "aktiv"
+        },
+        {
+          "aktiv": true,
+          "field": "format",
+          "how": "hard-coded (\"text/html\")",
+          "item": "LomTechnicalItem",
+          "status": "aktiv | hard-coded (\"text/html\")"
+        },
+        {
+          "aktiv": true,
+          "field": "size",
+          "how": "",
+          "item": "LomTechnicalItem",
+          "status": "aktiv"
+        },
+        {
+          "aktiv": true,
+          "field": "location",
+          "how": "",
+          "item": "LomTechnicalItem",
+          "status": "aktiv"
+        },
+        {
+          "aktiv": true,
+          "field": "discipline",
+          "how": "",
+          "item": "ValuespaceItem",
+          "status": "aktiv"
+        },
+        {
+          "aktiv": true,
+          "field": "educationalContext",
+          "how": "",
+          "item": "ValuespaceItem",
+          "status": "aktiv"
+        },
+        {
+          "aktiv": true,
+          "field": "learningResourceType",
+          "how": "",
+          "item": "ValuespaceItem",
+          "status": "aktiv"
+        },
+        {
+          "aktiv": true,
+          "field": "new_lrt",
+          "how": "",
+          "item": "ValuespaceItem",
+          "status": "aktiv"
+        },
+        {
+          "aktiv": true,
+          "field": "internal",
+          "how": "",
+          "item": "LicenseItem",
+          "status": "aktiv"
+        },
+        {
+          "aktiv": true,
+          "field": "author",
+          "how": "",
+          "item": "LicenseItem",
+          "status": "aktiv"
+        },
+        {
+          "aktiv": true,
+          "field": "sourceId",
+          "how": "",
+          "item": "BaseItem",
+          "status": "aktiv"
+        },
+        {
+          "aktiv": true,
+          "field": "hash",
+          "how": "",
+          "item": "BaseItem",
+          "status": "aktiv"
+        },
+        {
+          "aktiv": true,
+          "field": "type",
+          "how": "",
+          "item": "BaseItem",
+          "status": "aktiv"
+        },
+        {
+          "aktiv": true,
+          "field": "response",
+          "how": "",
+          "item": "BaseItem",
+          "status": "aktiv"
+        },
+        {
+          "aktiv": true,
+          "field": "thumbnail",
+          "how": "",
+          "item": "BaseItem",
+          "status": "aktiv"
+        },
+        {
+          "aktiv": true,
+          "field": "lastModified",
+          "how": "",
+          "item": "BaseItem",
+          "status": "aktiv"
+        },
+        {
+          "aktiv": true,
+          "field": "lom",
+          "how": "",
+          "item": "BaseItem",
+          "status": "aktiv"
+        },
+        {
+          "aktiv": true,
+          "field": "valuespaces",
+          "how": "",
+          "item": "BaseItem",
+          "status": "aktiv"
+        },
+        {
+          "aktiv": true,
+          "field": "permissions",
+          "how": "",
+          "item": "BaseItem",
+          "status": "aktiv"
+        },
+        {
+          "aktiv": true,
+          "field": "license",
+          "how": "",
+          "item": "BaseItem",
+          "status": "aktiv"
+        }
+      ],
+      "flags": [
+        "WLO_MIGRATION",
+        "OER"
+      ],
+      "hasInternal": true,
+      "id": "crawler:tutory_spider",
+      "identity": {
+        "bezugsquelle": "Tutory",
+        "nodeId": "d34d264b-a558-42ed-b31c-686c13ea753a",
+        "spider": "tutory_spider",
+        "spiderVocabName": "",
+        "url": "https://www.tutory.de/"
+      },
+      "kind": "crawler",
+      "name": "Tutory",
+      "previewUrl": "https://redaktion.openeduhub.net/edu-sharing/preview?nodeId=d34d264b-a558-42ed-b31c-686c13ea753a&storeProtocol=workspace&storeId=SpacesStore&dontcache=1782305360882",
+      "provenance": {
+        "AGB/Nutzungsbedingungen": "datencrawler.csv",
+        "Beschreibung": "WLO-API",
+        "Bezugsquelle": "WLO-API (Facette)",
+        "Bildungsstufen": "WLO-API",
+        "Faecher": "WLO-API",
+        "Inhaltsanzahl": "WLO-API (Facette)",
+        "Inhaltstypen": "WLO-API",
+        "Lizenz": "WLO-API",
+        "OER": "WLO-API",
+        "Schlagworte": "WLO-API",
+        "Sprache": "WLO-API",
+        "TDM-Hinweis (§44b)": "datencrawler.csv",
+        "Titel": "WLO-API",
+        "URL": "WLO-API",
+        "Urheber": "WLO-API",
+        "Zielgruppe": "WLO-API",
+        "robots.txt": "datencrawler.csv"
+      },
+      "public": {
+        "AGB/Nutzungsbedingungen": "Inhalte unter CC-Lizenz",
+        "Beschreibung": "Tutory ist ein eine nutzerfreundliche Webanwendung für den Bezug und die Gestaltung von Arbeitsblättern mit automatisierter Verwaltung der Lizenzangaben und Leitfäden zur Nutzung von offenen Bildungsmaterialien (OER).",
+        "Bezugsquelle": "Tutory",
+        "Bildungsstufen": [
+          "Primarstufe",
+          "Sekundarstufe I",
+          "Sekundarstufe II",
+          "Berufliche Bildung",
+          "Erwachsenenbildung"
+        ],
+        "Faecher": [
+          "Allgemein",
+          "Deutsch"
+        ],
+        "Inhaltsanzahl": 12859,
+        "Inhaltstypen": [
+          "Quelle"
+        ],
+        "Lizenz": "COPYRIGHT_FREE",
+        "OER": true,
+        "Schlagworte": [
+          "Arbeitsblatt",
+          "Arbeitsblätter",
+          "Lehr- und Lernmaterial"
+        ],
+        "Sprache": "Deutsch (Deutschland)",
+        "TDM-Hinweis (§44b)": "nicht gefunden",
+        "Titel": "tutory",
+        "URL": "https://www.tutory.de/",
+        "Urheber": "tutory.de",
+        "Zielgruppe": [
+          "Lehrer/in"
+        ],
+        "robots.txt": "User-agent: *Disallow: /dokument/*.pdfDisallow: /sammlung/*.pdfDisallow: /bereitstellung/dokument/*.pdfDisallow: /bereitstellung/sammlung/*.pdfDisallow: /public/document/de/guideline_teacher.pdfDisallow: /public/document/de/guideline_student.pdfDisallow: /public/images/home/testimonials/*Sitemap: https://www.tutory.de/sitemap.xml"
+      },
+      "quality": {
+        "DSGVO": "Datensparsam",
+        "Kosten": "zusätzliche Inhalte / Features per Kauf möglich",
+        "Login": "Anmeldung erforderlich für erweiterte Funktionen"
+      }
+    },
+    {
+      "confidence": "high",
+      "contentCount": 12501,
+      "erschliessung": "im Bestand verfuegbar",
+      "fieldActiveCount": 33,
+      "fieldGeneration": [
+        {
+          "aktiv": true,
+          "field": "identifier",
+          "how": "WordPress \"id\" eines Artikels",
+          "item": "LomGeneralItem",
+          "status": "aktiv | WordPress \"id\" eines Artikels"
+        },
+        {
+          "aktiv": true,
+          "field": "title",
+          "how": "",
+          "item": "LomGeneralItem",
+          "status": "aktiv"
+        },
+        {
+          "aktiv": true,
+          "field": "language",
+          "how": "",
+          "item": "LomGeneralItem",
+          "status": "aktiv"
+        },
+        {
+          "aktiv": true,
+          "field": "keyword",
+          "how": "",
+          "item": "LomGeneralItem",
+          "status": "aktiv"
+        },
+        {
+          "aktiv": true,
+          "field": "description",
+          "how": "",
+          "item": "LomGeneralItem",
+          "status": "aktiv"
+        },
+        {
+          "aktiv": true,
+          "field": "role",
+          "how": "\"metadata_provider\"",
+          "item": "LomLifecycleItem",
+          "status": "aktiv | \"metadata_provider\""
+        },
+        {
+          "aktiv": true,
+          "field": "organization",
+          "how": "unregelmäßiger Wert (Quelle bietet das Feld nicht immer an)",
+          "item": "LomLifecycleItem",
+          "status": "aktiv | unregelmäßiger Wert (Quelle bietet das Feld nicht immer an)"
+        },
+        {
+          "aktiv": true,
+          "field": "url",
+          "how": "unregelmäßiger Wert (Quelle bietet das Feld nicht immer an)",
+          "item": "LomLifecycleItem",
+          "status": "aktiv | unregelmäßiger Wert (Quelle bietet das Feld nicht immer an)"
+        },
+        {
+          "aktiv": true,
+          "field": "format",
+          "how": "hard-coded (\"text/html\")",
+          "item": "LomTechnicalItem",
+          "status": "aktiv | hard-coded (\"text/html\")"
+        },
+        {
+          "aktiv": true,
+          "field": "location",
+          "how": "",
+          "item": "LomTechnicalItem",
+          "status": "aktiv"
+        },
+        {
+          "aktiv": true,
+          "field": "fromRange",
+          "how": "",
+          "item": "LomAgeRangeItem",
+          "status": "aktiv"
+        },
+        {
+          "aktiv": true,
+          "field": "toRange",
+          "how": "",
+          "item": "LomAgeRangeItem",
+          "status": "aktiv"
+        },
+        {
+          "aktiv": true,
+          "field": "typicalAgeRange",
+          "how": "",
+          "item": "LomEducationalItem",
+          "status": "aktiv"
+        },
+        {
+          "aktiv": true,
+          "field": "url",
+          "how": "",
+          "item": "ResponseItem",
+          "status": "aktiv"
+        },
+        {
+          "aktiv": true,
+          "field": "intendedEndUserRole",
+          "how": "hard-coded (\"teacher\")  (es handelt sich um eine Quelle für Religionspädagogie)",
+          "item": "ValuespaceItem",
+          "status": "aktiv | hard-coded (\"teacher\")  (es handelt sich um eine Quelle für Religionspädagogie)"
+        },
+        {
+          "aktiv": true,
+          "field": "discipline",
+          "how": "hard-coded (\"Religion\")",
+          "item": "ValuespaceItem",
+          "status": "aktiv | hard-coded (\"Religion\")"
+        },
+        {
+          "aktiv": true,
+          "field": "educationalContext",
+          "how": "manuelles Mapping notwendig; teilweise Werte vorhanden, die unser Datenmodell nicht hat",
+          "item": "ValuespaceItem",
+          "status": "aktiv | manuelles Mapping notwendig; teilweise Werte vorhanden, die unser Datenmodell nicht hat"
+        },
+        {
+          "aktiv": true,
+          "field": "learningResourceType",
+          "how": "manuelles Mapping notwendig; teilweise Werte vorhanden, die unser Datenmodell nicht hat",
+          "item": "ValuespaceItem",
+          "status": "aktiv | manuelles Mapping notwendig; teilweise Werte vorhanden, die unser Datenmodell nicht hat"
+        },
+        {
+          "aktiv": true,
+          "field": "new_lrt",
+          "how": "hard-coded (\"Material\")",
+          "item": "ValuespaceItem",
+          "status": "aktiv | hard-coded (\"Material\")"
+        },
+        {
+          "aktiv": true,
+          "field": "conditionsOfAccess",
+          "how": "",
+          "item": "ValuespaceItem",
+          "status": "aktiv"
+        },
+        {
+          "aktiv": true,
+          "field": "price",
+          "how": "wird aus der license-description ausgelesen, sofern zutreffend",
+          "item": "ValuespaceItem",
+          "status": "aktiv | wird aus der license-description ausgelesen, sofern zutreffend"
+        },
+        {
+          "aktiv": true,
+          "field": "internal",
+          "how": "manuelles Mapping notwendig; Quelle benutzt keine CC_ Bezeichner",
+          "item": "LicenseItem",
+          "status": "aktiv | manuelles Mapping notwendig; Quelle benutzt keine CC_ Bezeichner"
+        },
+        {
+          "aktiv": true,
+          "field": "description",
+          "how": "manuelles Mapping notwendig; Quelle benutzt keine CC_ Bezeichner",
+          "item": "LicenseItem",
+          "status": "aktiv | manuelles Mapping notwendig; Quelle benutzt keine CC_ Bezeichner"
+        },
+        {
+          "aktiv": true,
+          "field": "author",
+          "how": "zu unregelmäßiges Feld: Autor kann nicht nach <Vorname> <Nachname> getrennt werden",
+          "item": "LicenseItem",
+          "status": "aktiv | zu unregelmäßiges Feld: Autor kann nicht nach <Vorname> <Nachname> getrennt werden"
+        },
+        {
+          "aktiv": true,
+          "field": "sourceId",
+          "how": "",
+          "item": "BaseItem",
+          "status": "aktiv"
+        },
+        {
+          "aktiv": true,
+          "field": "hash",
+          "how": "",
+          "item": "BaseItem",
+          "status": "aktiv"
+        },
+        {
+          "aktiv": true,
+          "field": "response",
+          "how": "",
+          "item": "BaseItem",
+          "status": "aktiv"
+        },
+        {
+          "aktiv": true,
+          "field": "thumbnail",
+          "how": "",
+          "item": "BaseItem",
+          "status": "aktiv"
+        },
+        {
+          "aktiv": true,
+          "field": "lastModified",
+          "how": "",
+          "item": "BaseItem",
+          "status": "aktiv"
+        },
+        {
+          "aktiv": true,
+          "field": "lom",
+          "how": "",
+          "item": "BaseItem",
+          "status": "aktiv"
+        },
+        {
+          "aktiv": true,
+          "field": "valuespaces",
+          "how": "",
+          "item": "BaseItem",
+          "status": "aktiv"
+        },
+        {
+          "aktiv": true,
+          "field": "permissions",
+          "how": "",
+          "item": "BaseItem",
+          "status": "aktiv"
+        },
+        {
+          "aktiv": true,
+          "field": "license",
+          "how": "",
+          "item": "BaseItem",
+          "status": "aktiv"
+        }
+      ],
+      "flags": [
+        "WLO_MIGRATION",
+        "OER"
+      ],
+      "hasInternal": true,
+      "id": "crawler:rpi_virtuell_spider",
+      "identity": {
+        "bezugsquelle": "RPI-Virtuell",
+        "nodeId": "80fa753f-203e-42f2-87d1-01cb3de5cd8a",
+        "spider": "rpi_virtuell_spider",
+        "spiderVocabName": "",
+        "url": "https://material.rpi-virtuell.de/"
+      },
+      "kind": "crawler",
+      "name": "RPI-Virtuell",
+      "previewUrl": "https://redaktion.openeduhub.net/edu-sharing/preview?nodeId=80fa753f-203e-42f2-87d1-01cb3de5cd8a&storeProtocol=workspace&storeId=SpacesStore&dontcache=1782305350080",
+      "provenance": {
+        "AGB/Nutzungsbedingungen": "datencrawler.csv",
+        "Beschreibung": "WLO-API",
+        "Bezugsquelle": "WLO-API (Facette)",
+        "Bildungsstufen": "WLO-API",
+        "Faecher": "WLO-API",
+        "Inhaltsanzahl": "WLO-API (Facette)",
+        "Inhaltstypen": "WLO-API",
+        "Lehrplanbezug": "WLO-API",
+        "Lizenz": "WLO-API",
+        "OER": "WLO-API",
+        "Schlagworte": "WLO-API",
+        "Sprache": "WLO-API",
+        "TDM-Hinweis (§44b)": "datencrawler.csv",
+        "Titel": "WLO-API",
+        "URL": "WLO-API",
+        "Urheber": "WLO-API",
+        "Zielgruppe": "WLO-API",
+        "robots.txt": "datencrawler.csv"
+      },
+      "public": {
+        "AGB/Nutzungsbedingungen": "Inhalte meist unter CC-Lizenz",
+        "Beschreibung": "rpi-virtuell wurde als virtuelles religionspädagogisches Institut im Internet konzipiert. Ein reichhaltiges Angebot an Praxishilfen, Unterrichtsmedien sowie zentrale Lern- und Kommunikationstechnologien unterstützen Unterrichtende in den verschiedenen religionspädagogischen Arbeitsfeldern in Schule und Kirche. Inzwischen hat sich rpi-virtuell zu einem etablierten religionspädagogischen Netzwerk entwickelt, das nicht nur Informationen bereitstellt, sondern auch zum Mitmachen und Mitdenken einlädt. Durch die gemeinsame Erschließung digitaler Optionen für Lehr- und Lernaktivitäten trägt die Fachcommunity von rpi-virtuell zur digitalen Kompetenz-, Struktur- und Praxisentwicklung in den kirchlichen Handlungsfeldern bei.\n\nrpi-virtuell ist Teil des Comenius-Instituts in Münster. Das Comenius-Institut befasst sich als gemeinnützige Evangelische Arbeitsstätte für Erziehungswissenschaft e.V. mit aktuellen Bildungs- und Erziehungsfragen in Kirche, Schule und Gesellschaft. Zu den Aufgaben des Institutes gehört Forschung, wissenschaftliche Begleitung sowie die Entwicklung von praktischen Lösungen.",
+        "Bezugsquelle": "RPI-Virtuell",
+        "Bildungsstufen": [
+          "Sekundarstufe I",
+          "Sekundarstufe II",
+          "Primarstufe"
+        ],
+        "Faecher": [
+          "Religion",
+          "Ethik"
+        ],
+        "Inhaltsanzahl": 12501,
+        "Inhaltstypen": [
+          "Quelle"
+        ],
+        "Lehrplanbezug": [
+          "Religion"
+        ],
+        "Lizenz": "CC_BY_SA",
+        "OER": true,
+        "Schlagworte": [
+          "Religionsunterricht",
+          "OER",
+          "Religion",
+          "Community"
+        ],
+        "Sprache": "Deutsch (Deutschland)",
+        "TDM-Hinweis (§44b)": "nicht gefunden",
+        "Titel": "rpi-virtuell",
+        "URL": "https://material.rpi-virtuell.de/",
+        "Urheber": "Comenius Institut - rpi-virtuell",
+        "Zielgruppe": [
+          "Lehrer/in"
+        ],
+        "robots.txt": "User-agent: *Disallow: /User-Agent: GooglebotAllow: /Disallow: /wp-admin/User-Agent: BingbotAllow: /Disallow: /wp-admin/User-Agent: Backlink-Check.deAllow: /Disallow: /wp-admin/User-Agent: FirefoxAllow: /Disallow: /wp-admin/User-Agent: MSIE 6.0Allow: /Disallow: /wp-admin/User-Agent: Twiceler-0.9Allow: /Disallow: /wp-admin/User-Agent: Yahoo! SlurpAllow: /Disallow: /wp-admin/User-Agent: msnbotAllow: /Disallow: /wp-admin/User-Agent: ia_archiverAllow: /Disallow: /wp-admin/"
+      },
+      "quality": {
+        "DSGVO": "Datensparsam",
+        "Kosten": "nein",
+        "Login": "ohne Anmeldung",
+        "Werbung": "ohne Werbung"
+      }
+    },
+    {
+      "confidence": "high",
+      "contentCount": 8197,
+      "erschliessung": "im Bestand verfuegbar",
+      "fieldActiveCount": 40,
+      "fieldGeneration": [
+        {
+          "aktiv": true,
+          "field": "identifier",
+          "how": "Serlo \"id\" (Integer)",
+          "item": "LomGeneralItem",
+          "status": "aktiv | Serlo \"id\" (Integer)"
+        },
+        {
+          "aktiv": true,
+          "field": "title",
+          "how": "(mehrere Fallbacks, da Serlo viele Objekte mit nicht-eindeutigen Titeln hat)",
+          "item": "LomGeneralItem",
+          "status": "aktiv | (mehrere Fallbacks, da Serlo viele Objekte mit nicht-eindeutigen Titeln hat)"
+        },
+        {
+          "aktiv": true,
+          "field": "language",
+          "how": "",
+          "item": "LomGeneralItem",
+          "status": "aktiv"
+        },
+        {
+          "aktiv": true,
+          "field": "description",
+          "how": "(mehrere Fallbacks, da nicht jedes Serlo Objekt einen Beschreibungstext hat)",
+          "item": "LomGeneralItem",
+          "status": "aktiv | (mehrere Fallbacks, da nicht jedes Serlo Objekt einen Beschreibungstext hat)"
+        },
+        {
+          "aktiv": true,
+          "field": "role",
+          "how": "möglich:  \"author\" / \"metadata_provider\" / \"publisher\"",
+          "item": "LomLifecycleItem",
+          "status": "aktiv | möglich:  \"author\" / \"metadata_provider\" / \"publisher\""
+        },
+        {
+          "aktiv": true,
+          "field": "firstName",
+          "how": "",
+          "item": "LomLifecycleItem",
+          "status": "aktiv"
+        },
+        {
+          "aktiv": true,
+          "field": "organization",
+          "how": "",
+          "item": "LomLifecycleItem",
+          "status": "aktiv"
+        },
+        {
+          "aktiv": true,
+          "field": "email",
+          "how": "",
+          "item": "LomLifecycleItem",
+          "status": "aktiv"
+        },
+        {
+          "aktiv": true,
+          "field": "url",
+          "how": "",
+          "item": "LomLifecycleItem",
+          "status": "aktiv"
+        },
+        {
+          "aktiv": true,
+          "field": "date",
+          "how": "",
+          "item": "LomLifecycleItem",
+          "status": "aktiv"
+        },
+        {
+          "aktiv": true,
+          "field": "format",
+          "how": "hard-coded (\"text/html\")",
+          "item": "LomTechnicalItem",
+          "status": "aktiv | hard-coded (\"text/html\")"
+        },
+        {
+          "aktiv": true,
+          "field": "location",
+          "how": "",
+          "item": "LomTechnicalItem",
+          "status": "aktiv"
+        },
+        {
+          "aktiv": true,
+          "field": "language",
+          "how": "",
+          "item": "LomEducationalItem",
+          "status": "aktiv"
+        },
+        {
+          "aktiv": true,
+          "field": "status",
+          "how": "",
+          "item": "ResponseItem",
+          "status": "aktiv"
+        },
+        {
+          "aktiv": true,
+          "field": "url",
+          "how": "",
+          "item": "ResponseItem",
+          "status": "aktiv"
+        },
+        {
+          "aktiv": true,
+          "field": "html",
+          "how": "",
+          "item": "ResponseItem",
+          "status": "aktiv"
+        },
+        {
+          "aktiv": true,
+          "field": "text",
+          "how": "",
+          "item": "ResponseItem",
+          "status": "aktiv"
+        },
+        {
+          "aktiv": true,
+          "field": "headers",
+          "how": "",
+          "item": "ResponseItem",
+          "status": "aktiv"
+        },
+        {
+          "aktiv": true,
+          "field": "intendedEndUserRole",
+          "how": "via Mapping",
+          "item": "ValuespaceItem",
+          "status": "aktiv | via Mapping"
+        },
+        {
+          "aktiv": true,
+          "field": "discipline",
+          "how": "via Mapping aus KIM Schulfächer Vocab & abgeleitet aus URL-Pfad",
+          "item": "ValuespaceItem",
+          "status": "aktiv | via Mapping aus KIM Schulfächer Vocab & abgeleitet aus URL-Pfad"
+        },
+        {
+          "aktiv": true,
+          "field": "educationalContext",
+          "how": "",
+          "item": "ValuespaceItem",
+          "status": "aktiv"
+        },
+        {
+          "aktiv": true,
+          "field": "learningResourceType",
+          "how": "",
+          "item": "ValuespaceItem",
+          "status": "aktiv"
+        },
+        {
+          "aktiv": true,
+          "field": "new_lrt",
+          "how": "",
+          "item": "ValuespaceItem",
+          "status": "aktiv"
+        },
+        {
+          "aktiv": true,
+          "field": "containsAdvertisement",
+          "how": "hard-coded (\"no\")",
+          "item": "ValuespaceItem",
+          "status": "aktiv | hard-coded (\"no\")"
+        },
+        {
+          "aktiv": true,
+          "field": "price",
+          "how": "",
+          "item": "ValuespaceItem",
+          "status": "aktiv"
+        },
+        {
+          "aktiv": true,
+          "field": "url",
+          "how": "",
+          "item": "LicenseItem",
+          "status": "aktiv"
+        },
+        {
+          "aktiv": true,
+          "field": "internal",
+          "how": "",
+          "item": "LicenseItem",
+          "status": "aktiv"
+        },
+        {
+          "aktiv": true,
+          "field": "description",
+          "how": "",
+          "item": "LicenseItem",
+          "status": "aktiv"
+        },
+        {
+          "aktiv": true,
+          "field": "sourceId",
+          "how": "",
+          "item": "BaseItem",
+          "status": "aktiv"
+        },
+        {
+          "aktiv": true,
+          "field": "hash",
+          "how": "",
+          "item": "BaseItem",
+          "status": "aktiv"
+        },
+        {
+          "aktiv": true,
+          "field": "type",
+          "how": "",
+          "item": "BaseItem",
+          "status": "aktiv"
+        },
+        {
+          "aktiv": true,
+          "field": "response",
+          "how": "",
+          "item": "BaseItem",
+          "status": "aktiv"
+        },
+        {
+          "aktiv": true,
+          "field": "thumbnail",
+          "how": "",
+          "item": "BaseItem",
+          "status": "aktiv"
+        },
+        {
+          "aktiv": true,
+          "field": "lastModified",
+          "how": "",
+          "item": "BaseItem",
+          "status": "aktiv"
+        },
+        {
+          "aktiv": true,
+          "field": "lom",
+          "how": "",
+          "item": "BaseItem",
+          "status": "aktiv"
+        },
+        {
+          "aktiv": true,
+          "field": "valuespaces",
+          "how": "",
+          "item": "BaseItem",
+          "status": "aktiv"
+        },
+        {
+          "aktiv": true,
+          "field": "permissions",
+          "how": "",
+          "item": "BaseItem",
+          "status": "aktiv"
+        },
+        {
+          "aktiv": true,
+          "field": "license",
+          "how": "",
+          "item": "BaseItem",
+          "status": "aktiv"
+        },
+        {
+          "aktiv": true,
+          "field": "publisher",
+          "how": "",
+          "item": "BaseItem",
+          "status": "aktiv"
+        },
+        {
+          "aktiv": true,
+          "field": "screenshot_bytes",
+          "how": "Fallback, falls keine Thumbnail-URL geliefert wird",
+          "item": "BaseItem",
+          "status": "aktiv | Fallback, falls keine Thumbnail-URL geliefert wird"
+        }
+      ],
+      "flags": [
+        "WLO_MIGRATION",
+        "OER"
+      ],
+      "hasInternal": true,
+      "id": "crawler:serlo_spider",
+      "identity": {
+        "bezugsquelle": "Serlo",
+        "nodeId": "94b140fb-cef6-42bb-a2ef-3e9ae3b936b5",
+        "spider": "serlo_spider",
+        "spiderVocabName": "",
+        "url": "https://de.serlo.org/"
+      },
+      "kind": "crawler",
+      "name": "Serlo",
+      "previewUrl": "https://redaktion.openeduhub.net/edu-sharing/preview?nodeId=94b140fb-cef6-42bb-a2ef-3e9ae3b936b5&storeProtocol=workspace&storeId=SpacesStore&dontcache=1782305352304",
+      "provenance": {
+        "AGB/Nutzungsbedingungen": "datencrawler.csv",
+        "Beschreibung": "WLO-API",
+        "Bezugsquelle": "WLO-API (Facette)",
+        "Bildungsstufen": "WLO-API",
+        "Faecher": "WLO-API",
+        "Inhaltsanzahl": "WLO-API (Facette)",
+        "Inhaltstypen": "WLO-API",
+        "Lizenz": "WLO-API",
+        "Lizenz-Check": "datencrawler.csv",
+        "OER": "WLO-API",
+        "Schlagworte": "WLO-API",
+        "Sprache": "WLO-API",
+        "Titel": "WLO-API",
+        "URL": "WLO-API",
+        "Urheber": "WLO-API",
+        "Zielgruppe": "WLO-API",
+        "robots.txt": "datencrawler.csv"
+      },
+      "public": {
+        "AGB/Nutzungsbedingungen": "Inhalte unter CC-Lizenz",
+        "Beschreibung": "Serlo.org bietet einfache Erklärungen, Kurse, Lernvideos, Übungen und Musterlösungen mit denen Schüler*innen und Studierende nach ihrem eigenen Bedarf und in ihrem eigenen Tempo lernen können. Die Lernplattform ist komplett kostenlos und werbefrei.\n\nSerlo.org wird von dem gemeinnützigen Verein Serlo Education e.V. betrieben. Ziel der Autor*innen, Softwareentwickler*innen und Projektmanager*innen ist, hochwertige Bildung weltweit frei verfügbar zu machen.",
+        "Bezugsquelle": "Serlo",
+        "Bildungsstufen": [
+          "Sekundarstufe I",
+          "Primarstufe",
+          "Sekundarstufe II",
+          "Hochschule"
+        ],
+        "Faecher": [
+          "Deutsch als Zweitsprache",
+          "Mathematik",
+          "Politik",
+          "Biologie",
+          "Französisch",
+          "Musik",
+          "Religion",
+          "Psychologie",
+          "Englisch",
+          "Physik",
+          "Geschichte",
+          "Deutsch",
+          "Geografie",
+          "Chemie",
+          "Informatik",
+          "Wirtschaftskunde",
+          "Spanisch",
+          "Italienisch",
+          "Latein",
+          "Medienbildung"
+        ],
+        "Inhaltsanzahl": 8197,
+        "Inhaltstypen": [
+          "Quelle"
+        ],
+        "Lizenz": "CC_BY",
+        "Lizenz-Check": "CC BY-SA 4.0",
+        "OER": true,
+        "Schlagworte": [
+          "Mathematikunterricht",
+          "Mathematische Kompetenz",
+          "Online-Angebot",
+          "Mathematische Teilgebiete",
+          "Lernpfade",
+          "selbstständiges Lernen",
+          "selbstorganisiertes Lernen",
+          "freie Bildung",
+          "OER",
+          "frei",
+          "selbstständig"
+        ],
+        "Sprache": "Deutsch (Deutschland)",
+        "Titel": "Serlo.org",
+        "URL": "https://de.serlo.org/",
+        "Urheber": "Serlo Education e. V.",
+        "Zielgruppe": [
+          "Lerner/in",
+          "Lehrer/in"
+        ],
+        "robots.txt": "User-agent: *Disallow: /page/revision/revisions/Disallow: /page/revision/revision/Disallow: /page/revision/Disallow: /entity/repository/history/Disallow: /entity/repository/compare/Disallow: /backendDisallow: /usersDisallow: /horizonDisallow: /flagDisallow: /licenseDisallow: /uuid/recycle-binDisallow: /navigation/Disallow: /authorization/Disallow: /pagesDisallow: /uuid/recycle-binDisallow: /*/entity/trash-binSitemap: https://de.serlo.org/sitemap.xml"
+      },
+      "quality": {
+        "DSGVO": "Datensparsam",
+        "Kosten": "nein",
+        "Login": "ohne Anmeldung"
+      }
+    },
+    {
+      "confidence": "high",
+      "contentCount": 4396,
+      "erschliessung": "im Bestand verfuegbar",
+      "fieldActiveCount": 28,
+      "fieldGeneration": [
+        {
+          "aktiv": true,
+          "field": "identifier",
+          "how": "",
+          "item": "LomGeneralItem",
+          "status": "aktiv"
+        },
+        {
+          "aktiv": true,
+          "field": "title",
+          "how": "",
+          "item": "LomGeneralItem",
+          "status": "aktiv"
+        },
+        {
+          "aktiv": true,
+          "field": "keyword",
+          "how": "",
+          "item": "LomGeneralItem",
+          "status": "aktiv"
+        },
+        {
+          "aktiv": true,
+          "field": "description",
+          "how": "",
+          "item": "LomGeneralItem",
+          "status": "aktiv"
+        },
+        {
+          "aktiv": true,
+          "field": "role",
+          "how": "",
+          "item": "LomLifecycleItem",
+          "status": "aktiv"
+        },
+        {
+          "aktiv": true,
+          "field": "firstName",
+          "how": "",
+          "item": "LomLifecycleItem",
+          "status": "aktiv"
+        },
+        {
+          "aktiv": true,
+          "field": "lastName",
+          "how": "",
+          "item": "LomLifecycleItem",
+          "status": "aktiv"
+        },
+        {
+          "aktiv": true,
+          "field": "format",
+          "how": "",
+          "item": "LomTechnicalItem",
+          "status": "aktiv"
+        },
+        {
+          "aktiv": true,
+          "field": "size",
+          "how": "",
+          "item": "LomTechnicalItem",
+          "status": "aktiv"
+        },
+        {
+          "aktiv": true,
+          "field": "location",
+          "how": "",
+          "item": "LomTechnicalItem",
+          "status": "aktiv"
+        },
+        {
+          "aktiv": true,
+          "field": "typicalAgeRange",
+          "how": "",
+          "item": "LomEducationalItem",
+          "status": "aktiv"
+        },
+        {
+          "aktiv": true,
+          "field": "language",
+          "how": "",
+          "item": "LomEducationalItem",
+          "status": "aktiv"
+        },
+        {
+          "aktiv": true,
+          "field": "intendedEndUserRole",
+          "how": "",
+          "item": "ValuespaceItem",
+          "status": "aktiv"
+        },
+        {
+          "aktiv": true,
+          "field": "discipline",
+          "how": "",
+          "item": "ValuespaceItem",
+          "status": "aktiv"
+        },
+        {
+          "aktiv": true,
+          "field": "educationalContext",
+          "how": "via Mapping von LRMI \"EducationalAudienceRole\"",
+          "item": "ValuespaceItem",
+          "status": "aktiv | via Mapping von LRMI \"EducationalAudienceRole\""
+        },
+        {
+          "aktiv": true,
+          "field": "learningResourceType",
+          "how": "",
+          "item": "ValuespaceItem",
+          "status": "aktiv"
+        },
+        {
+          "aktiv": true,
+          "field": "url",
+          "how": "",
+          "item": "LicenseItem",
+          "status": "aktiv"
+        },
+        {
+          "aktiv": true,
+          "field": "internal",
+          "how": "",
+          "item": "LicenseItem",
+          "status": "aktiv"
+        },
+        {
+          "aktiv": true,
+          "field": "sourceId",
+          "how": "",
+          "item": "BaseItem",
+          "status": "aktiv"
+        },
+        {
+          "aktiv": true,
+          "field": "hash",
+          "how": "",
+          "item": "BaseItem",
+          "status": "aktiv"
+        },
+        {
+          "aktiv": true,
+          "field": "type",
+          "how": "",
+          "item": "BaseItem",
+          "status": "aktiv"
+        },
+        {
+          "aktiv": true,
+          "field": "fulltext",
+          "how": "",
+          "item": "BaseItem",
+          "status": "aktiv"
+        },
+        {
+          "aktiv": true,
+          "field": "thumbnail",
+          "how": "",
+          "item": "BaseItem",
+          "status": "aktiv"
+        },
+        {
+          "aktiv": true,
+          "field": "lom",
+          "how": "",
+          "item": "BaseItem",
+          "status": "aktiv"
+        },
+        {
+          "aktiv": true,
+          "field": "valuespaces",
+          "how": "",
+          "item": "BaseItem",
+          "status": "aktiv"
+        },
+        {
+          "aktiv": true,
+          "field": "permissions",
+          "how": "",
+          "item": "BaseItem",
+          "status": "aktiv"
+        },
+        {
+          "aktiv": true,
+          "field": "license",
+          "how": "",
+          "item": "BaseItem",
+          "status": "aktiv"
+        },
+        {
+          "aktiv": true,
+          "field": "publisher",
+          "how": "",
+          "item": "BaseItem",
+          "status": "aktiv"
+        }
+      ],
+      "flags": [
+        "WLO_MIGRATION",
+        "OER"
+      ],
+      "hasInternal": true,
+      "id": "crawler:oai_sodis_spider",
+      "identity": {
+        "bezugsquelle": "Sodis",
+        "nodeId": "d53fca65-1ca6-4fe0-aa6a-dea30d71aa72",
+        "spider": "oai_sodis_spider",
+        "spiderVocabName": "",
+        "url": "https://sodis.de/cp/"
+      },
+      "kind": "crawler",
+      "name": "Sodis",
+      "previewUrl": "https://redaktion.openeduhub.net/edu-sharing/preview?nodeId=d53fca65-1ca6-4fe0-aa6a-dea30d71aa72&storeProtocol=workspace&storeId=SpacesStore&dontcache=1782305361180",
+      "provenance": {
+        "Beschreibung": "WLO-API",
+        "Bezugsquelle": "WLO-API (Facette)",
+        "Bildungsstufen": "WLO-API",
+        "Faecher": "WLO-API",
+        "Inhaltsanzahl": "WLO-API (Facette)",
+        "Inhaltstypen": "WLO-API",
+        "Lizenz-Check": "datencrawler.csv",
+        "OER": "WLO-API",
+        "Schlagworte": "WLO-API",
+        "Sprache": "WLO-API",
+        "TDM-Hinweis (§44b)": "datencrawler.csv",
+        "Titel": "WLO-API",
+        "URL": "WLO-API",
+        "Urheber": "datencrawler.csv",
+        "Zielgruppe": "WLO-API",
+        "robots.txt": "datencrawler.csv"
+      },
+      "public": {
+        "Beschreibung": "Der Content Pool ermöglicht die integrierte Suche nach zahlreichen freien Online-Lernressourcen.",
+        "Bezugsquelle": "Sodis",
+        "Bildungsstufen": [
+          "Sekundarstufe I",
+          "Sekundarstufe II",
+          "Primarstufe",
+          "Berufliche Bildung",
+          "Erwachsenenbildung"
+        ],
+        "Faecher": [
+          "Allgemein"
+        ],
+        "Inhaltsanzahl": 4396,
+        "Inhaltstypen": [
+          "Quelle"
+        ],
+        "Lizenz-Check": "verschieden, häuft CC",
+        "OER": true,
+        "Schlagworte": [
+          "Offene Bildung"
+        ],
+        "Sprache": "Deutsch (Deutschland)",
+        "TDM-Hinweis (§44b)": "nicht gefunden",
+        "Titel": "SODIS – online content pool",
+        "URL": "https://sodis.de/cp/",
+        "Urheber": "FWU Institut für Film und Bildin Wissenschaft und Unterricht gemeinnützige GmbHBavariafilmplatz 382031 Grünwald",
+        "Zielgruppe": [
+          "Lehrer/in",
+          "Lerner/in",
+          "Eltern"
+        ],
+        "robots.txt": "keine"
+      },
+      "quality": {
+        "DSGVO": "Datensparsam",
+        "Kosten": "nein",
+        "Login": "ohne Anmeldung"
+      }
+    },
+    {
+      "confidence": "high",
+      "contentCount": 4031,
+      "erschliessung": "im Bestand verfuegbar",
+      "fieldActiveCount": 41,
+      "fieldGeneration": [
+        {
+          "aktiv": true,
+          "field": "identifier",
+          "how": "entspricht URL",
+          "item": "LomGeneralItem",
+          "status": "aktiv | entspricht URL"
+        },
+        {
+          "aktiv": true,
+          "field": "title",
+          "how": "",
+          "item": "LomGeneralItem",
+          "status": "aktiv"
+        },
+        {
+          "aktiv": true,
+          "field": "language",
+          "how": "",
+          "item": "LomGeneralItem",
+          "status": "aktiv"
+        },
+        {
+          "aktiv": true,
+          "field": "keyword",
+          "how": "",
+          "item": "LomGeneralItem",
+          "status": "aktiv"
+        },
+        {
+          "aktiv": true,
+          "field": "description",
+          "how": "",
+          "item": "LomGeneralItem",
+          "status": "aktiv"
+        },
+        {
+          "aktiv": true,
+          "field": "role",
+          "how": "\"publisher\"",
+          "item": "LomLifecycleItem",
+          "status": "aktiv | \"publisher\""
+        },
+        {
+          "aktiv": true,
+          "field": "organization",
+          "how": "",
+          "item": "LomLifecycleItem",
+          "status": "aktiv"
+        },
+        {
+          "aktiv": true,
+          "field": "email",
+          "how": "",
+          "item": "LomLifecycleItem",
+          "status": "aktiv"
+        },
+        {
+          "aktiv": true,
+          "field": "date",
+          "how": "",
+          "item": "LomLifecycleItem",
+          "status": "aktiv"
+        },
+        {
+          "aktiv": true,
+          "field": "format",
+          "how": "hard-coded (\"text/html\")",
+          "item": "LomTechnicalItem",
+          "status": "aktiv | hard-coded (\"text/html\")"
+        },
+        {
+          "aktiv": true,
+          "field": "location",
+          "how": "",
+          "item": "LomTechnicalItem",
+          "status": "aktiv"
+        },
+        {
+          "aktiv": true,
+          "field": "description",
+          "how": "",
+          "item": "LomEducationalItem",
+          "status": "aktiv"
+        },
+        {
+          "aktiv": true,
+          "field": "language",
+          "how": "",
+          "item": "LomEducationalItem",
+          "status": "aktiv"
+        },
+        {
+          "aktiv": true,
+          "field": "url",
+          "how": "",
+          "item": "ResponseItem",
+          "status": "aktiv"
+        },
+        {
+          "aktiv": true,
+          "field": "headers",
+          "how": "",
+          "item": "ResponseItem",
+          "status": "aktiv"
+        },
+        {
+          "aktiv": true,
+          "field": "intendedEndUserRole",
+          "how": "",
+          "item": "ValuespaceItem",
+          "status": "aktiv"
+        },
+        {
+          "aktiv": true,
+          "field": "discipline",
+          "how": "via Mapping",
+          "item": "ValuespaceItem",
+          "status": "aktiv | via Mapping"
+        },
+        {
+          "aktiv": true,
+          "field": "educationalContext",
+          "how": "API liefert \"Bildungsebene\" (mit nahezu gleichem Vokabular)",
+          "item": "ValuespaceItem",
+          "status": "aktiv | API liefert \"Bildungsebene\" (mit nahezu gleichem Vokabular)"
+        },
+        {
+          "aktiv": true,
+          "field": "new_lrt",
+          "how": "via Mapping",
+          "item": "ValuespaceItem",
+          "status": "aktiv | via Mapping"
+        },
+        {
+          "aktiv": true,
+          "field": "sourceContentType",
+          "how": "",
+          "item": "ValuespaceItem",
+          "status": "aktiv"
+        },
+        {
+          "aktiv": true,
+          "field": "conditionsOfAccess",
+          "how": "",
+          "item": "ValuespaceItem",
+          "status": "aktiv"
+        },
+        {
+          "aktiv": true,
+          "field": "containsAdvertisement",
+          "how": "hard-coded: \"yes\"",
+          "item": "ValuespaceItem",
+          "status": "aktiv | hard-coded: \"yes\""
+        },
+        {
+          "aktiv": true,
+          "field": "price",
+          "how": "",
+          "item": "ValuespaceItem",
+          "status": "aktiv"
+        },
+        {
+          "aktiv": true,
+          "field": "accessibilitySummary",
+          "how": "",
+          "item": "ValuespaceItem",
+          "status": "aktiv"
+        },
+        {
+          "aktiv": true,
+          "field": "url",
+          "how": "via Mapping",
+          "item": "LicenseItem",
+          "status": "aktiv | via Mapping"
+        },
+        {
+          "aktiv": true,
+          "field": "internal",
+          "how": "via Mapping",
+          "item": "LicenseItem",
+          "status": "aktiv | via Mapping"
+        },
+        {
+          "aktiv": true,
+          "field": "description",
+          "how": "",
+          "item": "LicenseItem",
+          "status": "aktiv"
+        },
+        {
+          "aktiv": true,
+          "field": "author",
+          "how": "",
+          "item": "LicenseItem",
+          "status": "aktiv"
+        },
+        {
+          "aktiv": true,
+          "field": "sourceId",
+          "how": "",
+          "item": "BaseItem",
+          "status": "aktiv"
+        },
+        {
+          "aktiv": true,
+          "field": "hash",
+          "how": "",
+          "item": "BaseItem",
+          "status": "aktiv"
+        },
+        {
+          "aktiv": true,
+          "field": "type",
+          "how": "",
+          "item": "BaseItem",
+          "status": "aktiv"
+        },
+        {
+          "aktiv": true,
+          "field": "origin",
+          "how": "Unterscheidung zwischen:  \"frei und kostenlos\"  \"kostenloser Account benötigt\" \"premium only\" erzeugt Unterordner im workspace",
+          "item": "BaseItem",
+          "status": "aktiv | Unterscheidung zwischen:  \"frei und kostenlos\"  \"kostenloser Account benötigt\" \"premium only\" erzeugt Unterordner im workspace"
+        },
+        {
+          "aktiv": true,
+          "field": "response",
+          "how": "",
+          "item": "BaseItem",
+          "status": "aktiv"
+        },
+        {
+          "aktiv": true,
+          "field": "fulltext",
+          "how": "",
+          "item": "BaseItem",
+          "status": "aktiv"
+        },
+        {
+          "aktiv": true,
+          "field": "thumbnail",
+          "how": "",
+          "item": "BaseItem",
+          "status": "aktiv"
+        },
+        {
+          "aktiv": true,
+          "field": "lastModified",
+          "how": "",
+          "item": "BaseItem",
+          "status": "aktiv"
+        },
+        {
+          "aktiv": true,
+          "field": "lom",
+          "how": "",
+          "item": "BaseItem",
+          "status": "aktiv"
+        },
+        {
+          "aktiv": true,
+          "field": "valuespaces",
+          "how": "",
+          "item": "BaseItem",
+          "status": "aktiv"
+        },
+        {
+          "aktiv": true,
+          "field": "permissions",
+          "how": "default Permissions aus LomBase",
+          "item": "BaseItem",
+          "status": "aktiv | default Permissions aus LomBase"
+        },
+        {
+          "aktiv": true,
+          "field": "license",
+          "how": "",
+          "item": "BaseItem",
+          "status": "aktiv"
+        },
+        {
+          "aktiv": true,
+          "field": "ai_allow_usage",
+          "how": "",
+          "item": "BaseItem",
+          "status": "aktiv"
+        }
+      ],
+      "flags": [
+        "WLO_MIGRATION",
+        "OER"
+      ],
+      "hasInternal": true,
+      "id": "crawler:lehreronline_spider",
+      "identity": {
+        "bezugsquelle": "Lehrer-Online",
+        "nodeId": "f05447ad-c48f-403a-8db8-0132c9f01f03",
+        "spider": "lehreronline_spider",
+        "spiderVocabName": "",
+        "url": "https://www.lehrer-online.de"
+      },
+      "kind": "crawler",
+      "name": "Lehrer-Online",
+      "previewUrl": "https://redaktion.openeduhub.net/edu-sharing/preview?nodeId=f05447ad-c48f-403a-8db8-0132c9f01f03&storeProtocol=workspace&storeId=SpacesStore&dontcache=1782305365399",
+      "provenance": {
+        "AGB/Nutzungsbedingungen": "datencrawler.csv",
+        "Alter": "WLO-API",
+        "Beschreibung": "WLO-API",
+        "Bezugsquelle": "WLO-API (Facette)",
+        "Bildungsstufen": "WLO-API",
+        "Faecher": "WLO-API",
+        "Inhaltsanzahl": "WLO-API (Facette)",
+        "Inhaltstypen": "WLO-API",
+        "Lizenz": "WLO-API",
+        "OER": "WLO-API",
+        "Sprache": "WLO-API",
+        "TDM-Hinweis (§44b)": "datencrawler.csv",
+        "Titel": "WLO-API",
+        "URL": "WLO-API",
+        "Urheber": "WLO-API",
+        "Zielgruppe": "WLO-API",
+        "robots.txt": "datencrawler.csv"
+      },
+      "public": {
+        "AGB/Nutzungsbedingungen": "einige Materialien unter CC-Lizenz, andere urheberrechtlich geschützt",
+        "Alter": "6–21 Jahre",
+        "Beschreibung": "Lehrer-online ist ein Angebotsportal für Unterrichtsmaterialien in diversen Fachgebieten. ",
+        "Bezugsquelle": "Lehrer-Online",
+        "Bildungsstufen": [
+          "Primarstufe",
+          "Sekundarstufe I",
+          "Sekundarstufe II",
+          "Berufliche Bildung"
+        ],
+        "Faecher": [
+          "Kunst",
+          "Ethik",
+          "Mathematik",
+          "Politik",
+          "Biologie",
+          "Musik",
+          "Französisch",
+          "Religion",
+          "Englisch",
+          "Allgemein",
+          "Geschichte",
+          "Physik",
+          "Deutsch",
+          "Astronomie",
+          "Geografie",
+          "Chemie",
+          "Informatik",
+          "Sport",
+          "Sozialpädagogik",
+          "Spanisch",
+          "Latein"
+        ],
+        "Inhaltsanzahl": 4031,
+        "Inhaltstypen": [
+          "Quelle"
+        ],
+        "Lizenz": "COPYRIGHT_FREE",
+        "OER": true,
+        "Sprache": "Deutsch (Deutschland)",
+        "TDM-Hinweis (§44b)": "nicht gefunden",
+        "Titel": "lehrer-online",
+        "URL": "https://www.lehrer-online.de",
+        "Urheber": "Eduversum GmbH",
+        "Zielgruppe": [
+          "Lehrer/in",
+          "Verwaltung"
+        ],
+        "robots.txt": "User-Agent: *Disallow: /fileadmin/html/Disallow: /fileadmin/user_upload/_temp_/Disallow: /t3lib/Disallow: /typo3/Disallow: /typo3_src/Disallow: /typo3conf/Disallow: /pdf-vorschau/Disallow: /*meine-mappen/Disallow: /*meine-merkliste/Disallow: /*cHashDisallow: /elixier/Allow: /typo3conf/ext/Disallow: /typo3temp/*Allow: /typo3temp/compressor/Allow: /typo3temp/*.css$Allow: /typo3temp/*.css.*.gzip$Allow: /typo3temp/*.js$Allow: /typo3temp/*.js.*.gzip$Allow: /typo3temp/*.jpgAllow: /typo3temp/*.gifAllow: /typo3temp/*.pngDisallow: *.sqlDisallow: *.sql.gzDisallow: /*tx_pwcomments_pi1"
+      },
+      "quality": {
+        "DSGVO": "Datensparsam",
+        "Für Bildung geeignet": "Ja - geeignet",
+        "Kosten": "zusätzliche Inhalte / Features per Kauf möglich",
+        "Login": "Anmeldung erforderlich für erweiterte Funktionen"
+      }
+    }
+  ],
+  "page": 1,
+  "pageSize": 10,
+  "pages": 6,
+  "total": 53
+}
