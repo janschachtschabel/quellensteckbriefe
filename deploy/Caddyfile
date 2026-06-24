@@ -1,0 +1,6 @@
+# Caddy holt automatisch ein Let's-Encrypt-Zertifikat für $SITE_ADDRESS und leitet
+# HTTP -> HTTPS um. Der Hostname kommt aus .env (SITE_ADDRESS), z. B.
+#   quellensteckbriefe.31.70.69.94.nip.io
+{$SITE_ADDRESS} {
+	reverse_proxy quellensteckbriefe:8080
+}

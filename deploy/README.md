@@ -9,16 +9,25 @@ und `.env` (kopiert aus `.env.example`).
 
 ## 1. Docker installieren (Debian 13 „Trixie")
 
-Einfachster Weg über die Debian-Pakete:
+Über das **offizielle Docker-Repo** (liefert Engine *und* das `docker compose`-Plugin —
+ein Debian-Paket `docker-compose-v2` gibt es auf Trixie nicht):
 
 ```bash
-sudo apt update
-sudo apt install -y docker.io docker-compose-v2
+sudo apt-get update
+sudo apt-get install -y ca-certificates curl
+sudo install -m 0755 -d /etc/apt/keyrings
+sudo curl -fsSL https://download.docker.com/linux/debian/gpg -o /etc/apt/keyrings/docker.asc
+sudo chmod a+r /etc/apt/keyrings/docker.asc
+echo "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/debian $(. /etc/os-release && echo "$VERSION_CODENAME") stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+sudo apt-get update
+sudo apt-get install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
 sudo systemctl enable --now docker
+docker compose version          # prüfen
 ```
 
-> Alternativ die jeweils neueste Docker-Engine aus dem offiziellen Docker-Repo:
-> <https://docs.docker.com/engine/install/debian/>
+> Falls `apt-get update` fürs Docker-Repo fehlschlägt (für `trixie` noch keine
+> Pakete): in `/etc/apt/sources.list.d/docker.list` `trixie` durch `bookworm`
+> ersetzen und `sudo apt-get update` erneut ausführen.
 
 Optional ohne `sudo` arbeiten (danach einmal ab- und wieder anmelden):
 
@@ -76,6 +85,33 @@ Firewall (falls `ufw` aktiv ist):
 ```bash
 sudo ufw allow 8080/tcp
 ```
+
+## 5. HTTPS via nip.io (optional, ohne eigene Domain)
+
+`nip.io` ist Wildcard-DNS: `<label>.<DEINE-IP>.nip.io` zeigt automatisch auf deine
+Server-IP — damit kann Let's Encrypt ein gültiges Zertifikat ausstellen, ohne dass
+du eine Domain kaufst. Ein **Caddy**-Reverse-Proxy davor holt das Zertifikat
+automatisch. Dafür liegen **`docker-compose.tls.yml`** + **`Caddyfile`** in diesem
+Ordner bereit.
+
+Voraussetzung: **Ports 80 und 443** offen (VPS-Firewall *und* Hoster-Firewall) und
+nichts anderes lauscht dort.
+
+```bash
+# in .env zusätzlich setzen (IP einsetzen, Punkte bleiben Punkte):
+#   SITE_ADDRESS=quellensteckbriefe.31.70.69.94.nip.io
+sudo ufw allow 80,443/tcp
+sudo docker compose -f docker-compose.tls.yml up -d
+sudo docker compose -f docker-compose.tls.yml logs -f caddy   # "certificate obtained" abwarten
+```
+
+Danach erreichbar unter `https://quellensteckbriefe.<DEINE-IP>.nip.io` (HTTP→HTTPS
+leitet Caddy automatisch um). Der einfache Port-8080-Modus aus Schritt 4 wird dann
+nicht mehr gebraucht.
+
+> Schlägt die Zertifikatsausstellung fehl (nip.io teilt sich ein Let's-Encrypt-
+> Rate-Limit): **`sslip.io`** ist ein 1:1-Ersatz — `SITE_ADDRESS` auf
+> `…<DEINE-IP>.sslip.io` umstellen. Häufigste andere Ursache: Port 80 nicht erreichbar.
 
 ## Betrieb
 

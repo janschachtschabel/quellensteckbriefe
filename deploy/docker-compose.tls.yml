@@ -1,0 +1,34 @@
+# WLO Quellensteckbriefe — Deployment MIT automatischem HTTPS (Caddy + nip.io/sslip.io).
+# Eigenständige, vollständige Compose-Datei. Start:
+#   docker compose -f docker-compose.tls.yml up -d
+# Konfiguration in .env (siehe .env.example): IMAGE, QE_TEAM_PASSWORD, SITE_ADDRESS.
+# (PORT wird hier NICHT gebraucht — nach außen lauscht nur Caddy auf 80/443.)
+services:
+  quellensteckbriefe:
+    image: ${IMAGE:?bitte IMAGE in .env setzen (z. B. deinuser/quellensteckbriefe:latest)}
+    container_name: quellensteckbriefe
+    restart: unless-stopped
+    expose:
+      - "8080"            # nur intern im Compose-Netz; Caddy proxyt darauf
+    environment:
+      - QE_TEAM_PASSWORD=${QE_TEAM_PASSWORD:?bitte QE_TEAM_PASSWORD in .env setzen}
+
+  caddy:
+    image: caddy:2
+    container_name: caddy
+    restart: unless-stopped
+    ports:
+      - "80:80"
+      - "443:443"
+    environment:
+      - SITE_ADDRESS=${SITE_ADDRESS:?bitte SITE_ADDRESS in .env setzen (z. B. quellensteckbriefe.31.70.69.94.nip.io)}
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile:ro
+      - caddy_data:/data        # Zertifikate persistent halten (sonst Neuanforderung bei jedem Neustart)
+      - caddy_config:/config
+    depends_on:
+      - quellensteckbriefe
+
+volumes:
+  caddy_data:
+  caddy_config:
