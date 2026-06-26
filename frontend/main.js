@@ -1,5 +1,5 @@
 'use strict';
-// main.js — Ansichtswechsel, Login, Live-Refresh, Verdrahtung, Rechtsseiten, Init. Zuletzt laden.
+// main.js — view switching, login, live refresh, wiring, legal pages, init. Load last.
 
 // ---- View switching -------------------------------------------------------
 function switchView(v){
@@ -14,21 +14,21 @@ function switchView(v){
 
 // ---- Login ----------------------------------------------------------------
 function refreshLoginBtn(){
-  $('#loginBtn').textContent = state.pw?'🔓 Team (angemeldet)':'🔒 Team-Login';
-  // Team-only Filter (Prüfung/Herkunft) nur nach Login zeigen; beim Abmelden zurücksetzen.
-  $$('.team-only').forEach(e=>e.classList.toggle('hidden', !state.pw));
-  if(!state.pw && $('#f-pruef')) $('#f-pruef').value='';
+  $('#loginBtn').textContent = state.team?'🔓 Team (angemeldet)':'🔒 Team-Login';
+  // Show team-only filters (review/origin) only after login; reset them on logout.
+  $$('.team-only').forEach(e=>e.classList.toggle('hidden', !state.team));
+  if(!state.team && $('#f-pruef')) $('#f-pruef').value='';
 }
 async function doLogin(){
   const pw=$('#pwInput').value;
   try{ const r=await fetch('/api/auth',{method:'POST',headers:{'X-Team-Password':pw}}); if(!r.ok)throw 0;
-    state.pw=pw; sessionStorage.setItem('qe_pw',pw); $('#loginOverlay').classList.add('hidden'); $('#pwErr').classList.add('hidden'); refreshLoginBtn();
+    state.team=true; $('#loginOverlay').classList.add('hidden'); $('#pwErr').classList.add('hidden'); refreshLoginBtn();
     if(state.view==='stats') loadStatsView();
     toast('Team-Login aktiv — interne Infos sichtbar.');
   }catch{ $('#pwErr').classList.remove('hidden'); }
 }
 
-// ---- Datenstand & Live-Refresh --------------------------------------------
+// ---- Data freshness & live refresh ----------------------------------------
 async function loadFreshness(){
   try{ const s=await api('/api/stats'); const ts=s.meta?.generatedAt;
     state.dataStand = ts || '';
@@ -57,7 +57,7 @@ async function pollRefresh(){
 
 // ---- Wire up --------------------------------------------------------------
 function resetFilters(){ ['f-pruef','f-subject','f-level','f-lrt','f-license','f-language'].forEach(i=>$('#'+i).value='');
-  $('#f-art').value='';   // Default = alle Quellen
+  $('#f-art').value='';   // Default = all sources
   $('#f-sort').value='contentCount|desc'; $('#f-mincount').value=0;$('#mc-val').textContent='0';
   ['f-oer','f-fp'].forEach(i=>$('#'+i).checked=false); $('#search').value=''; state.page=1; loadList(); }
 let deb; const reload=()=>{ state.page=1; clearTimeout(deb); deb=setTimeout(loadList,180); };
@@ -72,18 +72,19 @@ $('#exportCsvAll').addEventListener('click',()=>exportAll('csv'));
 $('#exportJsonAll').addEventListener('click',()=>exportAll('json'));
 $('#exportTablePdf').addEventListener('click',tablePdf);
 $('#exportStatsPdf').addEventListener('click',statsPdf);
+$('#exportProtokoll').addEventListener('click',exportProtokoll);
 $('#selPdf').addEventListener('click',selectionPdf);
 $('#selCsv').addEventListener('click',()=>exportSelection('csv'));
 $('#selJson').addEventListener('click',()=>exportSelection('json'));
 $('#selClear').addEventListener('click',()=>{state.sel.clear();$$('.card').forEach(c=>c.classList.remove('sel'));$('#selAllPage').checked=false;updateSelbar();});
-$('#loginBtn').addEventListener('click',()=>{ if(state.pw){state.pw='';sessionStorage.removeItem('qe_pw');refreshLoginBtn();state.page=1;loadList();if(state.view==='stats')loadStatsView();toast('Abgemeldet.');}else $('#loginOverlay').classList.remove('hidden'); });
+$('#loginBtn').addEventListener('click',()=>{ if(state.team){state.team=false;fetch('/api/logout',{method:'POST'});refreshLoginBtn();state.page=1;loadList();if(state.view==='stats')loadStatsView();toast('Abgemeldet.');}else $('#loginOverlay').classList.remove('hidden'); });
 $('#refreshBtn').addEventListener('click',startRefresh);
 $('#pwOk').addEventListener('click',doLogin);
 $('#pwInput').addEventListener('keydown',e=>{if(e.key==='Enter')doLogin();});
 $('#pwCancel').addEventListener('click',()=>$('#loginOverlay').classList.add('hidden'));
 $('#overlay').addEventListener('click',e=>{if(e.target.id==='overlay')closeDetail();});
 
-// ---- Rechtsseiten (Impressum / Datenschutz, in-App) -----------------------
+// ---- Legal pages (Impressum / Datenschutz, in-app) ------------------------
 function openLegal(which){
   const tpl=document.getElementById('tpl-'+which);
   if(!tpl) return;
@@ -98,3 +99,5 @@ $('#legalOverlay').addEventListener('click',e=>{if(e.target.id==='legalOverlay')
 document.addEventListener('keydown',e=>{if(e.key==='Escape')closeLegal();});
 
 refreshLoginBtn(); loadFilters(); loadList(); loadFreshness();
+// Restore an existing team session from the httpOnly cookie (the password is never stored).
+api('/api/auth/status').then(s=>{ if(s&&s.team){ state.team=true; refreshLoginBtn(); if(state.view==='stats') loadStatsView(); } }).catch(()=>{});

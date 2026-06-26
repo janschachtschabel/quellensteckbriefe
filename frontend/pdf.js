@@ -1,14 +1,14 @@
 'use strict';
-// pdf.js — PDF-Erzeugung (jsPDF): Steckbrief-, Tabellen-, Statistik-PDF.
+// pdf.js — PDF generation (jsPDF): profile (Steckbrief), table, statistics PDF.
 
-// ---- PDF (jsPDF, WLO-Branding) --------------------------------------------
-// PDF-Optionen aus der Auswahl-Leiste (Vorlage / Vorschaubilder / Einzeldateien)
+// ---- PDF (jsPDF, WLO branding) --------------------------------------------
+// PDF options from the selection bar (template / preview images / separate files)
 function pdfOpts(){ return {
   template:($('#pdfTemplate')&&$('#pdfTemplate').value)||'standard',
   preview:!!($('#pdfPreview')&&$('#pdfPreview').checked),
   separate:!!($('#pdfSeparate')&&$('#pdfSeparate').checked) }; }
 const sleep=(ms)=>new Promise(r=>setTimeout(r,ms));
-// Vorschaubild über den Server-Proxy als DataURL holen (CORS-frei für jsPDF)
+// Fetch the preview image as a DataURL via the server proxy (CORS-free for jsPDF)
 async function loadThumb(url){
   try{
     const r=await fetch('/api/thumb?url='+encodeURIComponent(url));
@@ -20,7 +20,7 @@ async function loadThumb(url){
 async function selectionPdf(){
   if(!state.sel.size) return;
   const opts=pdfOpts();
-  const wantInternal = $('#pdfInternal').checked && state.pw;
+  const wantInternal = $('#pdfInternal').checked && state.team;
   toast(opts.preview?'PDF wird erzeugt (Vorschaubilder laden) …':'PDF wird erzeugt …');
   const d = await apiPost('/api/sources/batch', {ids:[...state.sel]});
   if(opts.separate && d.items.length>1){
@@ -58,7 +58,7 @@ async function buildPdf(records, internal, opts){
   const P=[0,59,124], MUT=[91,107,134], TXT=[40,50,70];
   const W=doc.internal.pageSize.getWidth(), H=doc.internal.pageSize.getHeight(), M=14, CW=W-2*M;
   let page=0;
-  // Balken in WissenLebtOnline-Farben: Blau → Hellblau → Slate → Lime → Pink
+  // Bars in WissenLebtOnline colors: blue → light blue → slate → lime → pink
   const BAR=[[0,59,124],[46,108,168],[123,160,201],[163,206,60],[236,74,112]];
   const drawHeader=()=>{
     const sw=W/BAR.length; BAR.forEach((c,i)=>{doc.setFillColor(...c);doc.rect(i*sw,0,sw+1,7,'F');});
@@ -82,10 +82,10 @@ async function buildPdf(records, internal, opts){
     return doc.lastAutoTable.finalY+4; };
   const pb=(y)=>{ if(y>H-46){drawFooter();doc.addPage();page++;drawHeader();return 24;} return y; };
   const clip=(v,n)=>{ v=String(v||'').replace(/\s+/g,' ').trim(); return v.length>n?v.slice(0,n)+'…':v; };
-  // KI-Werte: moderat kürzen; sehr lange (z.B. ganze robots.txt) ganz weglassen
+  // AI values: shorten moderately; omit very long ones entirely (e.g. a whole robots.txt)
   const clipKi=(v)=>{ v=String(v||'').replace(/\s+/g,' ').trim(); return v.length>400?'':(v.length>200?v.slice(0,200)+'…':v); };
 
-  // Vorschaubilder vorab über den Server-Proxy laden (CORS-frei für jsPDF)
+  // Preload preview images via the server proxy (CORS-free for jsPDF)
   const prevImgs = {};
   if(wantPrev){
     await Promise.all(records.map(async r=>{
@@ -96,9 +96,9 @@ async function buildPdf(records, internal, opts){
   records.forEach((r,idx)=>{
     if(idx>0) doc.addPage(); page++; drawHeader();
     const p=r.public, id=r.identity;
-    // Kopf: Vorschaubild links (Seitenverhältnis erhalten), Titel/Meta/Beschreibung rechts.
-    // Feste Spaltenbreite (slotW), Höhe dynamisch aus den echten Bildmaßen; sehr hohe
-    // Bilder werden über maxH per fit-by-height begrenzt (nie verzerrt, nur skaliert).
+    // Header: preview image left (aspect ratio preserved), title/meta/description right.
+    // Fixed column width (slotW), height derived dynamically from the real image dimensions; very tall
+    // images are constrained via maxH using fit-by-height (never distorted, only scaled).
     const img=prevImgs[r.id], slotW=38, maxH=34, topY=22;
     let dw=0, dh=0;
     if(img){
@@ -133,7 +133,7 @@ async function buildPdf(records, internal, opts){
     y=section('Bildung & Einordnung',y);
     y=table(y,bRows);
 
-    // Kompakt-Vorlage: nur Allgemein + Lizenz + Bildung (1 Seite). Standard: alles.
+    // Compact template: only general + license + education (1 page). Standard: everything.
     if(!isCompact){
       const qrows=Object.entries(r.quality||{});
       if(qrows.length){ y=pb(y); y=section('Qualitätsmerkmale (gepflegt)',y); y=table(y, qrows.map(([k,v])=>[k,String(v)])); }
@@ -146,7 +146,7 @@ async function buildPdf(records, internal, opts){
         y=pb(y); y=section('Interne Infos (Team)',y);
         y=table(y, Object.entries(r.internal).map(([k,v])=>[k,String(v??'-')]));
       }
-      // KI-Nutzung & Recht zuletzt: lange Werte gekürzt, sehr lange (robots.txt) weggelassen
+      // AI usage & law last: long values truncated, very long ones (robots.txt) omitted
       const kiRows=[['robots.txt',p['robots.txt']],['TDM-Hinweis (§44b)',p['TDM-Hinweis (§44b)']],['AGB/Nutzung',p['AGB/Nutzungsbedingungen']],['Lizenz-Check',p['Lizenz-Check']],['API-Nutzung',p['API-Nutzungsbedingungen']]]
         .map(([k,v])=>[k,clipKi(v)]).filter(row=>row[1]);
       if(kiRows.length){ y=pb(y); y=section('KI-Nutzung & Recht',y); y=table(y,kiRows); }
@@ -160,7 +160,7 @@ async function buildPdf(records, internal, opts){
 
 const clipS=(v,n)=>{ v=String(v||'').replace(/\s+/g,' ').trim(); return v.length>n?v.slice(0,n)+'…':v; };
 
-// ---- Tabellen-PDF (Quellenübersicht der aktuellen Filter) ------------------
+// ---- Table PDF (source overview for the current filters) -------------------
 async function tablePdf(){
   if(!window.jspdf){ toast('PDF-Bibliothek lädt noch …'); return; }
   toast('Tabelle wird erzeugt …');
@@ -188,7 +188,7 @@ async function tablePdf(){
   toast(`Tabelle erzeugt (${num(totalN)} Quellen${capped?`, gekürzt auf ${CAP}`:''}).`);
 }
 
-// ---- Statistik-PDF (Verteilungen) -----------------------------------------
+// ---- Statistics PDF (distributions) ---------------------------------------
 async function statsPdf(){
   if(!window.jspdf){ toast('PDF-Bibliothek lädt noch …'); return; }
   let s=state.lastStats;
@@ -202,13 +202,14 @@ async function statsPdf(){
   doc.text((s.meta&&s.meta.generatedAt?`Datenstand: ${s.meta.generatedAt} · `:'')+`erstellt ${new Date().toLocaleDateString('de-DE')}`,M,y); y+=6;
   const sec=(t)=>{ if(y>H-30){doc.addPage();y=18;} doc.setFillColor(...P);doc.rect(M,y,CW,6.5,'F');doc.setFontSize(10);doc.setTextColor(255,255,255);doc.setFont('helvetica','bold');doc.text(t,M+2,y+4.6); y+=9; };
   const tbl=(head,body)=>{ doc.autoTable({startY:y,head:head?[head]:undefined,body,theme:head?'striped':'plain',headStyles:{fillColor:P,textColor:[255,255,255],fontSize:8},styles:{fontSize:8,cellPadding:1.8},columnStyles:{1:{halign:'right',cellWidth:30}},margin:{left:M,right:M}}); y=doc.lastAutoTable.finalY+5; };
-  const t=s.totals, cc=s.contentCoverage, fg=s.fieldGeneration;
+  const t=s.totals, cc=s.contentCoverage, fg=s.fieldGeneration, qv=s.quellenverwaltung||{}, bkv=s.byKindVisible||{};
   sec('Zusammenfassung');
-  tbl(null,[['Quellen gesamt',num(t.quellenGesamt)],['Inhalte gesamt',num(t.inhalteGesamt)],['Quelldatensätze',num(t.quelldatensaetze)],['Crawler-Quellen',num(t.crawler)],['manuell angelegt',num(t.manuell)],['reine Bezugsquellen',num(t.bezugsquellenOhneQuelle)],['OER',`${num(s.oer.count)} (${s.oer.percent}%)`],['mit Feld-Profil',num(fg.crawlerWithProfile)],['Ø aktive Felder/Crawler',String(fg.avgFieldsPerCrawler)]]);
+  // Mirror the app's "Quellenverwaltung" card (visible/clean counts), not the raw totals.
+  tbl(null,[['Quellen gesamt (sichtbar)',num(qv.gesamt)],['mit Quelldatensatz (Objekte)',num(qv.mitQuelldatensatz)],['mit Bezugsquelle (distinkt)',num(qv.mitBezugsquelle)],['Überschneidung QD & BQ',num(qv.ueberschneidung)],['Inhalte gesamt',num(t.inhalteGesamt)],['OER',`${num(s.oer.count)} (${s.oer.percent}%)`],['mit Feld-Profil',num(fg.crawlerWithProfile)],['Ø aktive Felder/Crawler',String(fg.avgFieldsPerCrawler)]]);
   sec('Inhaltsabdeckung nach Quellentyp');
   tbl(['Quellentyp','Inhalte'],[['über Bezugsquelle',num(cc.bezugsquelle)],['über Crawler',num(cc.crawler)],['mit Quelldatensatz',num(cc.quelldatensatz)],['gesamt',num(cc.gesamt)]]);
   const dist=(title,items)=>{ if(!items||!items.length)return; sec(title); tbl([title.split(' (')[0],'Anzahl'],items.map(i=>[clipS(i.value,54),num(i.count)])); };
-  dist('Art der Quelle',[{value:'Crawler',count:s.byKind.crawler},{value:'manuell',count:s.byKind.manuell},{value:'reine Bezugsquelle',count:s.byKind.bezugsquelle}]);
+  dist('Art der Quelle (sichtbar)',[{value:'Crawler',count:bkv.crawler},{value:'manuell',count:bkv.manuell},{value:'reine Bezugsquelle',count:bkv.bezugsquelle}]);
   dist('Inhaltsmengen je Quelle',s.contentBrackets);
   dist('Top-Quellen nach Inhalten',s.topByContent.slice(0,15).map(c=>({value:c.name,count:c.count})));
   dist('Top-Crawler (Inhalte)',s.topCrawler.slice(0,15).map(c=>({value:c.name,count:c.count})));

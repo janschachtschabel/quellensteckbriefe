@@ -26,7 +26,8 @@ USER appuser
 
 ENV PYTHONUNBUFFERED=1
 # QE_TEAM_PASSWORD bewusst NICHT gesetzt (kein Secret im Image) — zur Laufzeit
-# via `-e QE_TEAM_PASSWORD=…` übergeben; Default ist sonst 'wlo-intern'.
+# via `-e QE_TEAM_PASSWORD=…` übergeben. Ohne diese Variable sind die Team-Funktionen
+# deaktiviert (fail closed; es gibt KEIN Default-Passwort).
 EXPOSE 8080
 
 HEALTHCHECK --interval=30s --timeout=5s --start-period=25s --retries=3 \

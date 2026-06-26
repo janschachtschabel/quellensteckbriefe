@@ -1,16 +1,16 @@
 """
-fetcher.py — Live-Abruf von der WLO-Produktion für den Refresh-Job.
+fetcher.py — live fetch from WLO production for the refresh job.
 
-Zieht die aktuellen Live-/Facetten-Daten und schreibt sie in die Caches, aus
-denen truth.py die Datenwahrheit baut:
-  raw/cache_facet_bezugsquellen.json   Bezugsquelle -> Inhaltsanzahl (Facette)
-  raw/cache_facet_spider.json          Spider -> Inhaltsanzahl (Facette)
-  raw/quellen_nodes.json               alle Quelldatensaetze (LRT=Quelle)
-  raw/vocab_sources.json               Skohub-Vokabular
-  data/replication_publisher_gap.csv   dominanter Publisher je Spider
+Pulls the current live/facet data and writes it into the caches from which
+truth.py builds the data truth:
+  raw/cache_facet_bezugsquellen.json   Bezugsquelle -> content count (facet)
+  raw/cache_facet_spider.json          Spider -> content count (facet)
+  raw/quellen_nodes.json               all source datasets (LRT=Quelle)
+  raw/vocab_sources.json               Skohub vocabulary
+  data/replication_publisher_gap.csv   dominant publisher per Spider
 
-Statische Eingaben (datencrawler.csv, quellen_korrektur.csv) werden NICHT
-ueberschrieben – sie sind manuell gepflegt.
+Static inputs (datencrawler.csv, quellen_korrektur.csv) are NOT overwritten –
+they are maintained manually.
 """
 from __future__ import annotations
 import csv
@@ -29,7 +29,9 @@ def _norm(t):
     return re.sub(r"\s+", " ", t)
 
 HERE = Path(__file__).parent
-ROOT = HERE.parents[1]                       # wlo-suche
+# Cache root for the live fetch, derived from the repo layout: …/wlo-suche on dev,
+# /app in the container (where backend/data/inputs/ provides the bundled CSVs).
+ROOT = HERE.parents[1]                       # wlo-suche (dev) / /app (container)
 RAW = ROOT / "quellen-analyse" / "raw"
 DATADIR = ROOT / "quellen-analyse" / "data"
 RAW.mkdir(parents=True, exist_ok=True)
@@ -45,8 +47,8 @@ TIMEOUT = 90
 
 
 def _facet(prop: str) -> tuple[dict, int]:
-    """Facetten-Map {Wert: Anzahl} UND die Gesamtzahl aller Inhalte
-    (pagination.total der ngsearchword=*-Abfrage = WLO-Prod-Gesamtbestand)."""
+    """Facet map {value: count} AND the total count of all content
+    (pagination.total of the ngsearchword=* query = total WLO prod inventory)."""
     body = {"criteria": [{"property": "ngsearchword", "values": ["*"]}],
             "facetLimit": 100_000, "facetMinCount": 1, "facets": [{"property": prop}]}
     r = requests.post(f"{NG}?contentType=ALL&maxItems=1&skipCount=0", json=body, headers=H, timeout=TIMEOUT)
@@ -90,8 +92,8 @@ def _node_uuid(n) -> str:
 
 
 def _csv_quelldatensatz_ids() -> list:
-    """Node-IDs aus der CSV-Spalte 'Quelldatensatz (Prod)' (über die truth-Profile,
-    die die Spalte bereits sauber als internal.quelldatensatzProd liefern)."""
+    """Node IDs from the CSV column 'Quelldatensatz (Prod)' (via the truth profiles,
+    which already provide the column cleanly as internal.quelldatensatzProd)."""
     try:
         import truth
         profs = truth.load_crawler_profiles()
@@ -107,8 +109,8 @@ def _csv_quelldatensatz_ids() -> list:
 
 
 def _fetch_extra_nodes(existing_ids: set, progress) -> list:
-    """Such-UNsichtbare Quelldatensätze per Node-API laden (z. B. bpb): Node-ID
-    stammt aus der CSV. Liefert Node-Objekte im selben Format wie quellen_nodes.json."""
+    """Load search-INvisible source datasets via the node API (e.g. bpb): the node
+    ID comes from the CSV. Returns node objects in the same format as quellen_nodes.json."""
     ids = [i for i in _csv_quelldatensatz_ids() if i not in existing_ids]
     out = []
     for k, nid in enumerate(ids, 1):
@@ -158,8 +160,8 @@ def _vocab() -> None:
 
 def enrich_bq_previews(bq_facet: dict, quelle_publishers: set, progress,
                        min_count: int = 5, max_new: int = 400) -> int:
-    """Holt 1 Beispiel-Inhalt je facets-only Bezugsquelle für ein Vorschaubild.
-    Inkrementell gecacht in raw/bq_previews.json (nur fehlende werden geholt)."""
+    """Fetches 1 example item per facets-only Bezugsquelle for a preview image.
+    Cached incrementally in raw/bq_previews.json (only missing ones are fetched)."""
     fp = RAW / "bq_previews.json"
     cache = {}
     if fp.exists():
@@ -193,11 +195,11 @@ def enrich_bq_previews(bq_facet: dict, quelle_publishers: set, progress,
 
 
 def refresh_all(progress=lambda p, m: None) -> None:
-    """Vollstaendiger Live-Refresh. progress(percent:int, message:str)."""
+    """Full live refresh. progress(percent:int, message:str)."""
     progress(4, "Bezugsquellen-Facette abrufen …")
     bq, prod_total = _facet("ccm:oeh_publisher_combined")
     (RAW / "cache_facet_bezugsquellen.json").write_text(json.dumps(bq, ensure_ascii=False), encoding="utf-8")
-    # echte WLO-Prod-Gesamtzahl + Datenstand festhalten
+    # record the real WLO prod total + data timestamp
     (RAW / "cache_meta.json").write_text(json.dumps(
         {"wloProdContentTotal": prod_total, "fetchedAt": time.strftime("%Y-%m-%d %H:%M")},
         ensure_ascii=False), encoding="utf-8")
@@ -234,5 +236,5 @@ def refresh_all(progress=lambda p, m: None) -> None:
     try:
         _vocab()
     except Exception:
-        pass  # Vokabular ist unkritisch / aenderte sich selten
+        pass  # vocabulary is non-critical / rarely changed
     progress(95, "Live-Abruf abgeschlossen.")

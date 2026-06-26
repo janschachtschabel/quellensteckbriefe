@@ -1,80 +1,103 @@
 {
+  "hidden": {
+    "blacklist": 0,
+    "total": 0,
+    "zweitDatensatz": 0
+  },
   "items": [
     {
       "confidence": "high",
-      "contentCount": 248,
+      "contentCount": 18,
       "erschliessung": "im Bestand verfuegbar",
       "fieldActiveCount": 0,
       "fieldGeneration": [],
-      "flags": [],
+      "flags": [
+        "OER"
+      ],
       "hasInternal": true,
-      "id": "node:04d21212-2abe-4726-add5-7cdb54189bc9",
+      "id": "node:b397065f-f73f-4157-bac8-7054669f3d63",
       "identity": {
-        "bezugsquelle": "ComeIn",
-        "nodeId": "04d21212-2abe-4726-add5-7cdb54189bc9",
+        "bezugsquelle": "Chemie interaktiv",
+        "nodeId": "b397065f-f73f-4157-bac8-7054669f3d63",
         "spider": "",
         "spiderVocabName": "",
-        "url": "https://redaktion.openeduhub.net/edu-sharing/components/render/04d21212-2abe-4726-add5-7cdb54189bc9"
+        "url": "https://redaktion.openeduhub.net/edu-sharing/components/render/b397065f-f73f-4157-bac8-7054669f3d63"
       },
       "kind": "manuell",
-      "name": "Fortbildungskurs 1: Basislektionen ",
-      "previewUrl": "https://redaktion.openeduhub.net/edu-sharing/preview?nodeId=04d21212-2abe-4726-add5-7cdb54189bc9&storeProtocol=workspace&storeId=SpacesStore&dontcache=1782305330861",
+      "name": "Chemie interaktiv - Animationen für den Chemieunterricht",
+      "previewUrl": "https://redaktion.openeduhub.net/edu-sharing/preview?nodeId=b397065f-f73f-4157-bac8-7054669f3d63&storeProtocol=workspace&storeId=SpacesStore&dontcache=1782421240290",
       "provenance": {
-        "Alter": "WLO-API",
         "Beschreibung": "WLO-API",
         "Bezugsquelle": "WLO-API (Facette)",
         "Bildungsstufen": "WLO-API",
+        "FSK": "WLO-API",
         "Faecher": "WLO-API",
         "Inhaltsanzahl": "WLO-API (Facette)",
         "Inhaltstypen": "WLO-API",
         "Lehrplanbezug": "WLO-API",
         "Lizenz": "WLO-API",
+        "OER": "WLO-API",
         "Schlagworte": "WLO-API",
         "Sprache": "WLO-API",
         "Titel": "WLO-API",
         "URL": "WLO-API",
-        "Zielgruppe": "WLO-API",
-        "Zielsprache": "WLO-API"
+        "Zielgruppe": "WLO-API"
       },
       "public": {
-        "Alter": "18–99 Jahre",
-        "Beschreibung": "Fortbildungskurs Teil 1 umfasst alle eigens erstellten OER-Materialien zu den Basislektionen aus dem Online-Selbstlernkurs, die aufeinander aufbauen und gemeinsam bearbeitet werden sollten, um das theoretische Grundwissen und Möglichkeiten der digitalen Umsetzung erläutert zu bekommen. \nFortbildungskurs Teil 2 A, B und C ist am Ende verlinkt und beinhaltet 3 verschiedene Aufbaumodule, die sich mit Best-Practise-Beispielen aus den Kompetenzbereichen Erkenntnisgewinnung, Kommunikation und Bewerten auseinandersetzen.",
-        "Bezugsquelle": "ComeIn",
+        "Beschreibung": "Auf dieser Seite findest du eine Sammlung von interaktiven Animationen, Simulationen und Videofilmen für den Chemieunterricht und Biologieunterricht.",
+        "Bezugsquelle": "Chemie interaktiv",
         "Bildungsstufen": [
-          "Hochschule",
-          "Fortbildung"
+          "Sekundarstufe I",
+          "Sekundarstufe II"
         ],
+        "FSK": "0",
         "Faecher": [
-          "Biologie",
-          "Mathematik, Naturwissenschaften"
-        ],
-        "Inhaltsanzahl": 248,
-        "Inhaltstypen": [
-          "Bildungsangebot",
-          "Quelle",
-          "Kurs"
-        ],
-        "Lehrplanbezug": [
+          "Chemie",
           "Biologie"
         ],
-        "Lizenz": "CC_BY",
+        "Inhaltsanzahl": 18,
+        "Inhaltstypen": [
+          "Quelle"
+        ],
+        "Lehrplanbezug": [
+          "Fachportale"
+        ],
+        "Lizenz": "COPYRIGHT_FREE",
+        "OER": true,
         "Schlagworte": [
-          "ComeMINT",
-          "Biologieunterricht (Biologiedidaktik, Biologie)",
-          "Digitalisierung",
-          "Inklusion"
+          "Simulation",
+          "Animation",
+          "interaktiv",
+          "Videofilm",
+          "Tausch",
+          "Wuppertal",
+          "3D",
+          "Viewer",
+          "Chemie-Portale"
         ],
         "Sprache": "Deutsch (Deutschland)",
-        "Titel": "Fortbildungskurs 1: Basislektionen ",
-        "URL": "https://redaktion.openeduhub.net/edu-sharing/components/render/04d21212-2abe-4726-add5-7cdb54189bc9",
+        "Titel": "Chemie interaktiv - Animationen für den Chemieunterricht",
+        "URL": "https://redaktion.openeduhub.net/edu-sharing/components/render/b397065f-f73f-4157-bac8-7054669f3d63",
         "Zielgruppe": [
+          "Lerner/in",
           "Lehrer/in"
-        ],
-        "Zielsprache": "de"
+        ]
       },
       "quality": {
-        "Für Bildung geeignet": "Ja - geeignet",
-        "Kosten": "nein"
+        "Aktualität": "3-A zeitlos aktuell",
+        "Datenschutz (rechtl.)": "4-D angemessen viele Daten mit Einverständis",
+        "Didaktik/Methodik": "3-M gute Methodik",
+        "Jugendschutz": "Nein - unauffällig",
+        "Kosten": "nein",
+        "Login": "ohne Anmeldung",
+        "Medial passend": "4-ME Medial passend",
+        "Neutralität": "4-N neutrale Formulierung",
+        "Persönlichkeitsrechte": "Nein - unauffällig",
+        "Sprachl. Angemessenheit": "3-S angemessen",
+        "Strafrecht": "Nein - unauffällig",
+        "Transparenz": "4-T Anbieter bekannt, umfangreiche Kontaktangaben",
+        "Urheberrecht": "Nein - unauffällig",
+        "Werbung": "ohne Werbung"
       }
     },
     {
@@ -94,8 +117,8 @@
         "url": "https://redaktion.openeduhub.net/edu-sharing/components/render/1c0541d7-f667-4dec-9d73-287a6372421d"
       },
       "kind": "manuell",
-      "name": "KI-Campus",
-      "previewUrl": "https://redaktion.openeduhub.net/edu-sharing/preview?nodeId=1c0541d7-f667-4dec-9d73-287a6372421d&storeProtocol=workspace&storeId=SpacesStore&dontcache=1782305334640",
+      "name": "Stifterverband für die Deutsche Wissenschaft e.V.",
+      "previewUrl": "https://redaktion.openeduhub.net/edu-sharing/preview?nodeId=1c0541d7-f667-4dec-9d73-287a6372421d&storeProtocol=workspace&storeId=SpacesStore&dontcache=1782421213778",
       "provenance": {
         "Alter": "WLO-API",
         "Beschreibung": "WLO-API",
@@ -108,7 +131,7 @@
         "Schlagworte": "WLO-API",
         "Sprache": "WLO-API",
         "Sprachniveau": "WLO-API",
-        "Titel": "WLO-API",
+        "Titel": "Bezugsquelle (kein eigener Quell-Datensatz)",
         "URL": "WLO-API",
         "Urheber": "WLO-API",
         "Zielgruppe": "WLO-API"
@@ -139,7 +162,7 @@
         "Sprachniveau": [
           "C2"
         ],
-        "Titel": "KI-Campus",
+        "Titel": "Stifterverband für die Deutsche Wissenschaft e.V.",
         "URL": "https://redaktion.openeduhub.net/edu-sharing/components/render/1c0541d7-f667-4dec-9d73-287a6372421d",
         "Urheber": "Stifterverband für die Deutsche Wissenschaft e.V.",
         "Zielgruppe": [
@@ -170,7 +193,7 @@
       },
       "kind": "manuell",
       "name": "VCI Online - Verband der Chemischen Industrie e.V. (VCI)",
-      "previewUrl": "https://redaktion.openeduhub.net/edu-sharing/preview?nodeId=6bfd4856-e040-4629-800c-2093122e7528&storeProtocol=workspace&storeId=SpacesStore&dontcache=1782305347825",
+      "previewUrl": "https://redaktion.openeduhub.net/edu-sharing/preview?nodeId=6bfd4856-e040-4629-800c-2093122e7528&storeProtocol=workspace&storeId=SpacesStore&dontcache=1782421231189",
       "provenance": {
         "Beschreibung": "WLO-API",
         "Bezugsquelle": "WLO-API (Facette)",
@@ -233,7 +256,7 @@
       },
       "kind": "manuell",
       "name": "Methodenkartei | Universität Oldenburg",
-      "previewUrl": "https://redaktion.openeduhub.net/edu-sharing/preview?nodeId=92633321-72aa-4854-8677-0ae4c09eb48d&storeProtocol=workspace&storeId=SpacesStore&dontcache=1782305352054",
+      "previewUrl": "https://redaktion.openeduhub.net/edu-sharing/preview?nodeId=92633321-72aa-4854-8677-0ae4c09eb48d&storeProtocol=workspace&storeId=SpacesStore&dontcache=1782421236619",
       "provenance": {
         "Beschreibung": "WLO-API",
         "Bezugsquelle": "WLO-API (Facette)",
@@ -302,7 +325,7 @@
       },
       "kind": "manuell",
       "name": "Schlaukopf",
-      "previewUrl": "https://redaktion.openeduhub.net/edu-sharing/preview?nodeId=dcddb099-489a-4fa4-a181-9a6267532aeb&storeProtocol=workspace&storeId=SpacesStore&dontcache=1782305362307",
+      "previewUrl": "https://redaktion.openeduhub.net/edu-sharing/preview?nodeId=dcddb099-489a-4fa4-a181-9a6267532aeb&storeProtocol=workspace&storeId=SpacesStore&dontcache=1782421248108",
       "provenance": {
         "Beschreibung": "WLO-API",
         "Bezugsquelle": "WLO-API (Facette)",
@@ -384,7 +407,7 @@
       },
       "kind": "manuell",
       "name": "Klassenarbeiten.de - Kostenlose Klassenarbeiten und Übungen",
-      "previewUrl": "https://redaktion.openeduhub.net/edu-sharing/preview?nodeId=10d8ed1c-23c6-49ec-8365-f83ff8e95c0c&storeProtocol=workspace&storeId=SpacesStore&dontcache=1782305332293",
+      "previewUrl": "https://redaktion.openeduhub.net/edu-sharing/preview?nodeId=10d8ed1c-23c6-49ec-8365-f83ff8e95c0c&storeProtocol=workspace&storeId=SpacesStore&dontcache=1782421211639",
       "provenance": {
         "Beschreibung": "WLO-API",
         "Bezugsquelle": "WLO-API (Facette)",
@@ -467,8 +490,8 @@
         "url": "https://redaktion.openeduhub.net/edu-sharing/components/render/4fe88ca2-ff26-46f6-a261-5466019e36fe"
       },
       "kind": "manuell",
-      "name": " Wale und Delfine als Thema in der Schule ",
-      "previewUrl": "https://redaktion.openeduhub.net/edu-sharing/preview?nodeId=4fe88ca2-ff26-46f6-a261-5466019e36fe&storeProtocol=workspace&storeId=SpacesStore&dontcache=1782305340509",
+      "name": "Whale & Dolphin Conservation gGmbH",
+      "previewUrl": "https://redaktion.openeduhub.net/edu-sharing/preview?nodeId=4fe88ca2-ff26-46f6-a261-5466019e36fe&storeProtocol=workspace&storeId=SpacesStore&dontcache=1782421222461",
       "provenance": {
         "Beschreibung": "WLO-API",
         "Bezugsquelle": "WLO-API (Facette)",
@@ -482,7 +505,7 @@
         "Schlagworte": "WLO-API",
         "Sprache": "WLO-API",
         "Sprachniveau": "WLO-API",
-        "Titel": "WLO-API",
+        "Titel": "Bezugsquelle (kein eigener Quell-Datensatz)",
         "URL": "WLO-API",
         "Urheber": "WLO-API",
         "Zielgruppe": "WLO-API",
@@ -525,7 +548,7 @@
         "Sprachniveau": [
           "Kompetente Sprachverwendung"
         ],
-        "Titel": " Wale und Delfine als Thema in der Schule ",
+        "Titel": "Whale & Dolphin Conservation gGmbH",
         "URL": "https://redaktion.openeduhub.net/edu-sharing/components/render/4fe88ca2-ff26-46f6-a261-5466019e36fe",
         "Urheber": "WDC Deutschland",
         "Zielgruppe": [
@@ -557,8 +580,8 @@
         "url": "https://redaktion.openeduhub.net/edu-sharing/components/render/82f8c314-96e1-49a2-8485-1bc83142b521"
       },
       "kind": "manuell",
-      "name": "Digital und Binnendifferenziert: Das Potential digital gestufter Lernhilfen für den Biologieunterricht",
-      "previewUrl": "https://redaktion.openeduhub.net/edu-sharing/preview?nodeId=82f8c314-96e1-49a2-8485-1bc83142b521&storeProtocol=workspace&storeId=SpacesStore&dontcache=1782305350263",
+      "name": "imoox.at",
+      "previewUrl": "https://redaktion.openeduhub.net/edu-sharing/preview?nodeId=82f8c314-96e1-49a2-8485-1bc83142b521&storeProtocol=workspace&storeId=SpacesStore&dontcache=1782421234703",
       "provenance": {
         "Beschreibung": "WLO-API",
         "Bezugsquelle": "WLO-API (Facette)",
@@ -569,7 +592,7 @@
         "Lehrplanbezug": "WLO-API",
         "Lizenz": "WLO-API",
         "Sprache": "WLO-API",
-        "Titel": "WLO-API",
+        "Titel": "Bezugsquelle (kein eigener Quell-Datensatz)",
         "URL": "WLO-API",
         "Urheber": "WLO-API",
         "Zielgruppe": "WLO-API",
@@ -598,7 +621,7 @@
         ],
         "Lizenz": "CC_BY_SA",
         "Sprache": "Deutsch (Deutschland)",
-        "Titel": "Digital und Binnendifferenziert: Das Potential digital gestufter Lernhilfen für den Biologieunterricht",
+        "Titel": "imoox.at",
         "URL": "https://redaktion.openeduhub.net/edu-sharing/components/render/82f8c314-96e1-49a2-8485-1bc83142b521",
         "Urheber": "Rebekka Karbstein, Margit Offermann und Ricarda Lohrsträter für das ComeNet-Biologie publiziert über die OER-Plattform iMoox.at",
         "Zielgruppe": [
@@ -626,7 +649,7 @@
       },
       "kind": "manuell",
       "name": "Urlaub: entspannt und nachhaltig! | umwelt-im-unterricht.de",
-      "previewUrl": "https://redaktion.openeduhub.net/edu-sharing/preview?nodeId=95bbe376-ef5e-4178-aa4c-931f300bebdd&storeProtocol=workspace&storeId=SpacesStore&dontcache=1782305352384",
+      "previewUrl": "https://redaktion.openeduhub.net/edu-sharing/preview?nodeId=95bbe376-ef5e-4178-aa4c-931f300bebdd&storeProtocol=workspace&storeId=SpacesStore&dontcache=1782421236898",
       "provenance": {
         "Beschreibung": "WLO-API",
         "Bezugsquelle": "WLO-API (Facette)",
@@ -707,7 +730,7 @@
       },
       "kind": "manuell",
       "name": "teachSam",
-      "previewUrl": "https://redaktion.openeduhub.net/edu-sharing/preview?nodeId=d88265ab-f46f-4c07-8265-abf46f8c07be&storeProtocol=workspace&storeId=SpacesStore&dontcache=1782305361658",
+      "previewUrl": "https://redaktion.openeduhub.net/edu-sharing/preview?nodeId=d88265ab-f46f-4c07-8265-abf46f8c07be&storeProtocol=workspace&storeId=SpacesStore&dontcache=1782421247598",
       "provenance": {
         "Beschreibung": "WLO-API",
         "Bezugsquelle": "WLO-API (Facette)",
@@ -770,6 +793,6 @@
   ],
   "page": 1,
   "pageSize": 10,
-  "pages": 9,
-  "total": 81
+  "pages": 8,
+  "total": 80
 }

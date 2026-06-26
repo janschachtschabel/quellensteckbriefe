@@ -1,5 +1,5 @@
 'use strict';
-// detail.js — Detail-/Steckbrief-Ansicht.
+// detail.js — Detail / profile (Steckbrief) view.
 
 // ---- Detail / Steckbrief --------------------------------------------------
 async function openDetail(id){
@@ -15,7 +15,7 @@ function provTag(p){ return p?`<span class="prov ${provClass(p)}">${esc(p)}</spa
 const PUB_LABELS={'Faecher':'Fächer','URL':'URL'};
 function kvRows(obj, prov){
   return Object.entries(obj).map(([k,v])=>{
-    let val = Array.isArray(v)?v.join(', '):(v===true?'ja':v===false?'nein':esc(v));
+    let val = Array.isArray(v)?esc(v.join(', ')):(v===true?'ja':v===false?'nein':esc(v));
     if(k==='OER'&&v===true) val='<span class="tag-oer">ja (OER)</span>';
     return `<div class="k">${esc(PUB_LABELS[k]||k)}</div><div class="v">${val} ${prov?provTag(prov[k]):''}</div>`;
   }).join('');
@@ -33,7 +33,7 @@ const KI_KEYS=['robots.txt','TDM-Hinweis (§44b)','AGB/Nutzungsbedingungen','Liz
 const BILDUNG_KEYS=['Faecher','Bildungsstufen','Inhaltstypen','Zielgruppe','Alter','Sprachniveau','Zielsprache','Lehrplanbezug','FSK'];
 function pick(obj,keys){ const o={}; keys.forEach(k=>{ if(k in obj) o[k]=obj[k]; }); return o; }
 
-// Interner Bereich: Fakten zuerst (gruppiert), Bemerkungen zuletzt.
+// Internal section: facts first (grouped), remarks last.
 const INT_FACTS=['Erschliessungsstatus (genau)','Workflow-Status','Korrekturliste',
   'Node-ID','quelldatensatzProd','replicationsource','general_identifier','spider',
   'crawlerType','zustand','prio','haeufigkeit','prodLetzterCrawl','stagingLetzterCrawl','anzahlProd','anzahlStaging',
@@ -84,7 +84,8 @@ function steckbrief(r){
   const sKi=Object.keys(ki).length?`<div class="sb-section ki-section"><h3>⚖️ KI-Nutzung &amp; Recht</h3>
     <p class="hint">Rechts-/Nutzungshinweise der Quelle selbst — Basis der KI-Nutzungs-Einschätzung. (Ob WLO einen Vertrag hat, steht nur im internen Bereich.)</p>
     <div class="kv">${kvRows(ki,r.provenance)}</div></div>`:'';
+  const safe=safeUrl(id.url);
   const actions=`<div class="print-actions"><button id="sb-print" class="btn">🖨️ Steckbrief als PDF</button>
-    ${id.url?`<a class="btn-ghost" href="${esc(id.url)}" target="_blank" rel="noopener">↗ Quelle öffnen</a>`:''}</div>`;
+    ${safe?`<a class="btn-ghost" href="${esc(safe)}" target="_blank" rel="noopener">↗ Quelle öffnen</a>`:''}</div>`;
   return head+`<div class="sb-body">${actions}${sGrund}${sBildung}${sLizenz}${sQuality}${sFelder}${sKi}${sInternal}</div>`;
 }

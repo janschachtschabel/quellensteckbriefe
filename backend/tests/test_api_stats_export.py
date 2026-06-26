@@ -22,7 +22,7 @@ def test_quellenverwaltung_matches_filter(client):
     def total(query):
         return client.get(f"/api/sources?{query}&page_size=1").json()["total"]
 
-    assert qv["gesamt"] == total("")                                  # alle Quellen
+    assert qv["gesamt"] == total("")                                  # all sources
     assert qv["mitQuelldatensatz"] == total("has_node=true")
     assert qv["mitBezugsquelle"] == total("has_bezugsquelle=true")
     assert qv["ueberschneidung"] == total("has_node=true&has_bezugsquelle=true")

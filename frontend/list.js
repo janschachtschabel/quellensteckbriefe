@@ -1,23 +1,35 @@
 'use strict';
-// list.js — Filter, Quellenliste/Kacheln, Auswahl, Karten-Aktionsmenue.
+// list.js — filters, source list/tiles, selection, card action menu.
 
 // ---- Filters / query ------------------------------------------------------
 function filterParams(){
   const p = new URLSearchParams();
   const q=$('#search').value.trim(); if(q) p.set('q',q);
-  // Art der Quelle (End-User). Strukturell — vollständige Mengen, Crawler werden NICHT
-  // herausgerechnet (ein Crawler mit Quelldatensatz zählt auch unter „… und Bezugsquelle").
+  // Source type (end user). Structural — complete sets, crawlers are NOT
+  // filtered out (a crawler with a Quelldatensatz also counts under "… and Bezugsquelle").
   const art=$('#f-art').value;
-  if(art==='crawler') p.set('has_spider','true');                                    // Quellen mit Crawler (alle Spider-gebundenen)
-  else if(art==='node') p.set('has_node','true');                                    // mit Quelldatensatz (alle mit Datensatz)
-  else if(art==='bq') p.set('has_bezugsquelle','true');                              // mit Bezugsquelle (alle mit Bezugsquelle)
-  else if(art==='both'){ p.set('has_node','true'); p.set('has_bezugsquelle','true'); } // Quelldatensatz und Bezugsquelle
-  // Prüf-/Herkunfts-Filter — nur Team (setzt EIN Kriterium, kollidiert nicht mit „Art der Quelle").
+  if(art==='crawler') p.set('has_spider','true');                                    // sources with a crawler (all Spider-bound)
+  else if(art==='node') p.set('has_node','true');                                    // with Quelldatensatz (all with a record)
+  else if(art==='bq') p.set('has_bezugsquelle','true');                              // with Bezugsquelle (all with a Bezugsquelle)
+  else if(art==='both'){ p.set('has_node','true'); p.set('has_bezugsquelle','true'); } // Quelldatensatz and Bezugsquelle
+  // Review/origin filter — team only (sets ONE criterion, does not collide with "Source type").
   const pruef=$('#f-pruef') ? $('#f-pruef').value : '';
-  if(pruef==='wlo') p.set('wlo_migration','true');             // aus Datenübernahme (Migration)
-  else if(pruef==='legacy') p.set('flag','LEGACY_BINDUNG');    // über alte Verschlagwortung gebunden
-  else if(pruef==='mistyp') p.set('flag','TYP_NICHT_QUELLE');  // Datensatz ohne Typ „Quelle"
-  else if(pruef==='blacklist') p.set('flag','BLACKLIST');      // aussortiert (sonst ausgeblendet)
+  if(pruef==='wlo') p.set('flag','WLO_MIGRATION');             // data migration = WLO_MIGRATION flag (1:1 with the protocol rubric)
+  else if(pruef==='legacy') p.set('flag','LEGACY_BINDUNG');    // bound via old tagging
+  else if(pruef==='mistyp') p.set('flag','TYP_NICHT_QUELLE');  // record without type "Quelle"
+  else if(pruef==='blacklist') p.set('flag','BLACKLIST');      // sorted out (otherwise hidden)
+  else if(pruef==='zweit') p.set('flag','ZWEITDATENSATZ');     // secondary dataset (otherwise hidden)
+  else if(pruef==='einzel') p.set('flag','BQ_EINZELINHALT');   // Bezugsquelle facet entry with a single content item
+  else if(pruef==='duenn') p.set('flag','METADATEN_DUENN');    // source dataset missing core metadata fields
+  else if(pruef==='bindung') p.set('flag','BINDUNG_UNVOLLSTAENDIG'); // crawler binding without a source dataset
+  else if(pruef==='fehltag') p.set('flag','FEHLTAGGING');       // mixed content types (Quelle + others)
+  else if(pruef==='dublette') p.set('flag','DUBLETTE_VERDACHT'); // shares URL/title with another record
+  else if(pruef==='qdohnebq') p.set('flag','QD_OHNE_BEZUGSQUELLE'); // source dataset without a Bezugsquelle
+  else if(pruef==='bqohneqd') p.set('flag','BQ_OHNE_QD');          // publisher Bezugsquelle with content but no source dataset
+  else if(pruef==='ohnestatus') p.set('flag','OHNE_STATUS');       // source dataset without editorial status
+  else if(pruef==='statusink') p.set('flag','STATUS_INKONSISTENT'); // fully filled, but editorial status < 9
+  else if(pruef==='nichtpub') p.set('flag','NICHT_PUBLIZIERT');    // not published in search
+  else if(pruef==='spideruneindeutig') p.set('flag','SPIDER_UNEINDEUTIG'); // general_identifier != replicationsource
   const subj=$('#f-subject').value; if(subj) p.set('subject',subj);
   const lvl=$('#f-level').value; if(lvl) p.set('level',lvl);
   const lrt=$('#f-lrt').value; if(lrt) p.set('lrt',lrt);
@@ -41,7 +53,7 @@ async function loadFilters(){
 
 let lastPS = 12;
 function computePageSize(){
-  // Genau 4 Reihen Kacheln je Seite (Spaltenzahl aus Breite + CSS-min 335px, gap 16px)
+  // Exactly 4 rows of tiles per page (column count from width + CSS min 335px, gap 16px)
   const list = $('#list');
   const w = (list && list.clientWidth) || window.innerWidth || 1000;
   const cols = Math.max(1, Math.floor((w + 16) / (335 + 16)));
@@ -54,8 +66,19 @@ async function loadList(){
   lastPS = computePageSize();
   p.set('page', state.page); p.set('page_size', lastPS);
   const d = await api('/api/sources?' + p.toString());
+  // The "hidden" breakdown is shown ONLY in the top-right header info text, so that
+  // display differences vs. the API stay traceable; this list shows only the result count.
   $('#resultCount').textContent = `${num(d.total)} Treffer`;
-  $('#exportHint').textContent = `${num(d.total)} Quellen im Filter`;
+  const h = d.hidden || {total: 0, blacklist: 0, zweitDatensatz: 0};
+  const parts = [];
+  if (h.blacklist) parts.push(`${num(h.blacklist)} aussortiert`);
+  if (h.zweitDatensatz) parts.push(`${num(h.zweitDatensatz)} Mehrfach-Datensätze`);
+  const note = h.total ? ` · ${num(h.total)} ausgeblendet${parts.length ? ` (${parts.join(' + ')})` : ''}` : '';
+  const eh = $('#exportHint');
+  eh.textContent = `${num(d.total)} im Filter${note}`;
+  eh.title = h.total
+    ? 'Im aktuellen Filter nicht angezeigt. „aussortiert" = Blacklist (Nicht-Quellen); „Mehrfach-Datensätze" = weitere Quelldatensätze derselben Bezugsquelle (zählen unter ihrer Bezugsquelle; in der Quelldatensatz-Ansicht sichtbar, im Team-Filter „Datenprüfung" abrufbar). angezeigt + ausgeblendet = im Filter insgesamt.'
+    : '';
   $('#list').innerHTML = d.items.map(card).join('') || '<p class="hint">Keine Treffer.</p>';
   d.items.forEach(it => {
     const el=$(`.card[data-id="${cssEsc(it.id)}"]`);
@@ -68,7 +91,7 @@ async function loadList(){
   $('#selAllPage').checked = d.items.length>0 && d.items.every(it=>state.sel.has(it.id));
   renderPager(d);
 }
-const cssEsc = (s) => s.replace(/"/g,'\\"');
+const cssEsc = (s) => String(s).replace(/["\\]/g, '\\$&');   // escape " and \ for [data-id="…"]
 
 const KIND={crawler:['🕸️','Crawler-Quelle'],manuell:['✍️','Redaktionelle Quelle'],bezugsquelle:['🏷️','Bezugsquelle']};
 function card(it){
@@ -76,7 +99,7 @@ function card(it){
   const desc=it.public.Beschreibung || it.erschliessung || '';
   const thumb = it.previewUrl ? `<div class="thumb"><img src="${esc(it.previewUrl)}" loading="lazy" referrerpolicy="no-referrer" onerror="this.closest('.thumb').remove()">
       <div class="thumb-badges">${it.flags.includes('OER')?'<span class="b-oer">OER</span>':''}</div></div>`:'';
-  // Einheitliche Status-Pillen: Farbe = Status (grün ok / gelb Einschränkung / rot fehlt / grau unbekannt).
+  // Unified status pills: color = status (green ok / yellow limitation / red missing / gray unknown).
   const node=it.identity.nodeId, bq=it.identity.bezugsquelle, sp=it.identity.spider;
   const misTyp=it.flags.includes('TYP_NICHT_QUELLE'), isLegacy=it.flags.includes('LEGACY_BINDUNG');
   const spName=it.identity.spiderVocabName||(sp||'').replace(/_spider$/,'');
@@ -133,7 +156,7 @@ function selectAllPage(on){
   updateSelbar();
 }
 
-// ---- Karten-Aktionsmenü ---------------------------------------------------
+// ---- Card action menu -----------------------------------------------------
 let menuId=null;
 function openCardMenu(btn, id){
   menuId=id;
@@ -149,7 +172,7 @@ $('#cardmenu').addEventListener('click', async (e)=>{
   const id=menuId; closeCardMenu();
   if(act==='detail') openDetail(id);
   else if(act==='select') toggleSel(id, !state.sel.has(id));
-  else if(act==='open'){ const r=await api('/api/sources/'+encodeURIComponent(id)); if(r.identity.url) window.open(r.identity.url,'_blank','noopener'); else toast('Keine URL hinterlegt.'); }
+  else if(act==='open'){ const r=await api('/api/sources/'+encodeURIComponent(id)); const u=safeUrl(r.identity.url); if(u) window.open(u,'_blank','noopener'); else toast('Keine (gültige) URL hinterlegt.'); }
   else if(act==='pdf'){ const r=await api('/api/sources/'+encodeURIComponent(id)); buildPdf([r], !!r.internal, pdfOpts()); }
 });
 document.addEventListener('click',(e)=>{ if(!e.target.closest('#cardmenu')&&!e.target.closest('.card-menu-btn')) closeCardMenu(); });

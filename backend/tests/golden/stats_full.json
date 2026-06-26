@@ -26,6 +26,11 @@
     "crawler": 55,
     "manuell": 1279
   },
+  "byKindVisible": {
+    "bezugsquelle": 2885,
+    "crawler": 55,
+    "manuell": 781
+  },
   "confidence": {
     "high": 682,
     "low": 2893,
@@ -292,20 +297,20 @@
     "quelldatensaetzeGesamt": 1322,
     "quelldatensatzMitBezugsquelle": 1153,
     "quelldatensatzOhneBezugsquelle": 169,
-    "schnittmengeBlacklist": 67,
+    "schnittmengeBlacklist": 66,
     "schnittmengeNurEinmalProBezugsquelle": 683,
     "schnittmengeSauber": 669,
-    "schnittmengeZweitdatensatz": 417
+    "schnittmengeZweitdatensatz": 418
   },
   "inhalte": {
     "wloProd": 318650,
     "zuordenbar": 304800
   },
   "korrektur": {
-    "blacklist": 81,
-    "blacklistImSchnitt": 67,
-    "whitelist": 136,
-    "whitelistImSchnitt": 129
+    "blacklist": 80,
+    "blacklistImSchnitt": 66,
+    "whitelist": 137,
+    "whitelistImSchnitt": 130
   },
   "licenseDistribution": [
     {
@@ -367,7 +372,7 @@
       "crawler": 55,
       "manuell": 1279
     },
-    "generatedAt": "2026-06-24 14:48",
+    "generatedAt": "2026-06-25 23:00",
     "total": 4219,
     "totalContents": 304800,
     "withFieldProfile": 53,
@@ -385,10 +390,10 @@
     "zweitDatensatz": 473
   },
   "quellenverwaltung": {
-    "gesamt": 4138,
-    "mitBezugsquelle": 3975,
-    "mitQuelldatensatz": 1241,
-    "ueberschneidung": 1086
+    "gesamt": 3721,
+    "mitBezugsquelle": 3558,
+    "mitQuelldatensatz": 1242,
+    "ueberschneidung": 1087
   },
   "topByContent": [
     {

@@ -1,8 +1,8 @@
-"""store.py — In-Memory-Datenhaltung.
+"""store.py — in-memory data storage.
 
-Lädt die Datenwahrheit (data/truth.json) einmalig in den Speicher und indiziert
-sie nach id. `_DATA` wird in-place aktualisiert, damit andere Module, die es
-importiert haben, dieselbe Referenz behalten.
+Loads the data truth (data/truth.json) into memory once and indexes it by id.
+`_DATA` is updated in place so that other modules that have imported it keep
+the same reference.
 """
 import json
 
@@ -15,6 +15,10 @@ def load():
     if not TRUTH.exists():
         raise RuntimeError("data/truth.json fehlt – erst truth.py laufen lassen.")
     d = json.loads(TRUTH.read_text(encoding="utf-8"))
+    records = d["records"]
+    by_id = {r["id"]: r for r in records}     # build the index first (the slow part)
+    # then swap the three keys back-to-back, index before records, so a concurrent
+    # request never sees new records with a stale index (effectively atomic commit).
     _DATA["meta"] = d["meta"]
-    _DATA["records"] = d["records"]
-    _DATA["byId"] = {r["id"]: r for r in d["records"]}
+    _DATA["byId"] = by_id
+    _DATA["records"] = records

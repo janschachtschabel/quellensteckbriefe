@@ -50,6 +50,34 @@ def test_team_stats_requires_password(client, team_pw):
                       headers={"X-Team-Password": team_pw}).status_code == 200
 
 
+def test_refresh_requires_password(client, team_pw, monkeypatch):
+    # The refresh job triggers expensive live API calls -> must require team login.
+    assert client.post("/jobs/refresh").status_code == 403
+    # Authenticated request passes through to refresh.start (stubbed: no live fetch).
+    monkeypatch.setattr("refresh.start", lambda: {"status": "stubbed"})
+    r = client.post("/jobs/refresh", headers={"X-Team-Password": team_pw})
+    assert r.status_code == 200 and r.json()["status"] == "stubbed"
+
+
+def test_cookie_session_flow(client, team_pw):
+    # Login sets an httpOnly session cookie; the cookie alone then authorizes team views,
+    # so the browser never has to store the password.
+    r = client.post("/api/auth", headers={"X-Team-Password": team_pw})
+    assert r.status_code == 200 and client.cookies.get("qe_session")
+    assert client.get("/api/stats/team").status_code == 200          # cookie carries the auth
+    assert client.get("/api/auth/status").json()["team"] is True
+    client.post("/api/logout")
+    assert client.get("/api/auth/status").json()["team"] is False    # token revoked server-side
+
+
+def test_team_disabled_when_no_password(monkeypatch):
+    # Fail closed: with no configured password, no token can authenticate.
+    import config
+    monkeypatch.setattr(config, "TEAM_PW", "")
+    assert config.check_pw("anything", None) is False
+    assert config.check_pw("", "") is False
+
+
 @pytest.mark.parametrize("bad_url", [
     "http://evil.com/x.jpg",
     "http://openeduhub.net.attacker.com/x.jpg",   # suffix-spoof

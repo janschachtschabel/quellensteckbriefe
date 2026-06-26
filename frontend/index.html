@@ -5,9 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>WLO Quellenerschliessung</title>
   <link rel="stylesheet" href="/styles.css">
-  <script defer src="https://cdn.jsdelivr.net/npm/jspdf@2.5.1/dist/jspdf.umd.min.js"></script>
-  <script defer src="https://cdn.jsdelivr.net/npm/jspdf-autotable@3.8.2/dist/jspdf.plugin.autotable.min.js"></script>
-  <script defer src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+  <!-- Vendored locally (no CDN dependency, offline/firewall-capable). Versions:
+       jspdf 2.5.1 · jspdf-autotable 3.8.2 · chart.js 4.4.1 -->
+  <script defer src="/vendor/jspdf.umd.min.js"></script>
+  <script defer src="/vendor/jspdf.plugin.autotable.min.js"></script>
+  <script defer src="/vendor/chart.umd.min.js"></script>
 </head>
 <body>
   <header class="topbar">
@@ -17,7 +19,7 @@
     </div>
     <div class="topbar-actions">
       <input id="search" type="search" placeholder="Suche: Name, Fach, Beschreibung…" autocomplete="off">
-      <button id="refreshBtn" class="btn-ghost" title="Live-Daten von der WLO-API neu abrufen">🔄 Aktualisieren</button>
+      <button id="refreshBtn" class="btn-ghost team-only hidden" title="Live-Daten von der WLO-API neu abrufen (nur Team)">🔄 Aktualisieren</button>
       <button id="loginBtn" class="btn-ghost" title="Interner Bereich">🔒 Team-Login</button>
     </div>
   </header>
@@ -34,6 +36,7 @@
       <button id="exportJsonAll" class="btn-ghost small">⬇ JSON</button>
       <button id="exportTablePdf" class="btn-ghost small" title="Aktuelle Filter-Auswahl als Tabellen-PDF">🖨️ Tabelle</button>
       <button id="exportStatsPdf" class="btn-ghost small hidden" title="Statistik-Bericht als PDF">🖨️ Statistik</button>
+      <button id="exportProtokoll" class="btn-ghost small team-only hidden" title="Fehler-Protokoll: alle Datenprobleme der Quellen quantifiziert, je Fall mit Handlungsempfehlung (Markdown, nur Team)">📋 Fehler-Protokoll</button>
     </div>
   </nav>
 
@@ -70,14 +73,33 @@
           <option value="both">Quelldatensatz und Bezugsquelle</option>
         </select>
       </label>
-      <!-- Nur nach Team-Login sichtbar (Fehlerkontrolle). -->
-      <label class="team-only hidden">Prüfung / Herkunft (Team)
+      <!-- Nur nach Team-Login sichtbar (Datenkontrolle): zeigt die Datensätze, die
+           im Endkunden-Filter bewusst ausgeblendet sind, sowie Datenqualitäts-Marker. -->
+      <label class="team-only hidden">Datenprüfung / Herkunft (Team)
         <select id="f-pruef">
           <option value="">alle</option>
-          <option value="wlo">aus Datenübernahme (Migration)</option>
-          <option value="legacy">über alte Verschlagwortung gebunden</option>
-          <option value="mistyp">Datensatz ohne Typ „Quelle" (mis-getaggt)</option>
-          <option value="blacklist">aussortiert (keine echte Quelle)</option>
+          <optgroup label="Datenprobleme">
+            <option value="zweit">Zweit-Datensätze (Dubletten · sonst ausgeblendet)</option>
+            <option value="blacklist">aussortiert · keine echte Quelle (sonst ausgeblendet)</option>
+            <option value="einzel">Bezugsquelle mit nur 1 Inhalt</option>
+            <option value="dublette">Dubletten-Verdacht (gleiche URL/Titel)</option>
+            <option value="fehltag">Misch-Typen (Quelle + weitere Inhaltstypen)</option>
+            <option value="duenn">dünne Metadaten (Kernfelder fehlen)</option>
+            <option value="qdohnebq">Quelldatensatz ohne Bezugsquelle</option>
+            <option value="bindung">unvollständige Bindung (Crawler ohne Datensatz)</option>
+            <option value="bqohneqd">Bezugsquelle mit Inhalten, aber ohne Quelldatensatz</option>
+            <option value="mistyp">echte Quelle, aber Typ ≠ „Quelle" (Korrektur-Kandidat)</option>
+          </optgroup>
+          <optgroup label="Status / Sichtbarkeit">
+            <option value="ohnestatus">Quelldatensatz ohne Erschließungsstatus</option>
+            <option value="statusink">voll gefüllt, aber Status &lt; 9 (Inkonsistenz)</option>
+            <option value="nichtpub">nicht in der Suche veröffentlicht</option>
+          </optgroup>
+          <optgroup label="Herkunft / Bindung">
+            <option value="wlo">aus Datenübernahme (Migration)</option>
+            <option value="legacy">über alte Verschlagwortung gebunden</option>
+            <option value="spideruneindeutig">Spider-Bindung uneindeutig (general_identifier ≠ replicationsource)</option>
+          </optgroup>
         </select>
       </label>
       <label>Fach <select id="f-subject"><option value="">alle</option></select></label>

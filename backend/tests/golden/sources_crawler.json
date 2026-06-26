@@ -1,4 +1,9 @@
 {
+  "hidden": {
+    "blacklist": 0,
+    "total": 0,
+    "zweitDatensatz": 0
+  },
   "items": [
     {
       "confidence": "high",
@@ -218,7 +223,7 @@
       },
       "kind": "crawler",
       "name": "Bundeszentrale für politische Bildung",
-      "previewUrl": "https://redaktion.openeduhub.net/edu-sharing/preview?nodeId=b23cf2a4-a0cc-4272-b5f2-3a398dd7c27e&storeProtocol=workspace&storeId=SpacesStore&dontcache=1782305355214",
+      "previewUrl": "https://redaktion.openeduhub.net/edu-sharing/preview?nodeId=b23cf2a4-a0cc-4272-b5f2-3a398dd7c27e&storeProtocol=workspace&storeId=SpacesStore&dontcache=1782421240180",
       "provenance": {
         "AGB/Nutzungsbedingungen": "datencrawler.csv",
         "Beschreibung": "WLO-API",
@@ -877,7 +882,7 @@
       },
       "kind": "crawler",
       "name": "OERSI",
-      "previewUrl": "https://redaktion.openeduhub.net/edu-sharing/preview?nodeId=572b1dd5-044b-4cc7-9e53-29ae92af6433&storeProtocol=workspace&storeId=SpacesStore&dontcache=1782305341409",
+      "previewUrl": "https://redaktion.openeduhub.net/edu-sharing/preview?nodeId=572b1dd5-044b-4cc7-9e53-29ae92af6433&storeProtocol=workspace&storeId=SpacesStore&dontcache=1782421224609",
       "provenance": {
         "Beschreibung": "WLO-API",
         "Bezugsquelle": "WLO-API (Facette)",
@@ -1074,7 +1079,7 @@
       },
       "kind": "crawler",
       "name": "Geogebra",
-      "previewUrl": "https://redaktion.openeduhub.net/edu-sharing/preview?nodeId=facccb42-11f1-48f6-a9ac-4a3434c77873&storeProtocol=workspace&storeId=SpacesStore&dontcache=1782305366418",
+      "previewUrl": "https://redaktion.openeduhub.net/edu-sharing/preview?nodeId=facccb42-11f1-48f6-a9ac-4a3434c77873&storeProtocol=workspace&storeId=SpacesStore&dontcache=1782421252064",
       "provenance": {
         "AGB/Nutzungsbedingungen": "datencrawler.csv",
         "Beschreibung": "WLO-API",
@@ -1556,7 +1561,7 @@
       },
       "kind": "crawler",
       "name": "Tutory",
-      "previewUrl": "https://redaktion.openeduhub.net/edu-sharing/preview?nodeId=d34d264b-a558-42ed-b31c-686c13ea753a&storeProtocol=workspace&storeId=SpacesStore&dontcache=1782305360882",
+      "previewUrl": "https://redaktion.openeduhub.net/edu-sharing/preview?nodeId=d34d264b-a558-42ed-b31c-686c13ea753a&storeProtocol=workspace&storeId=SpacesStore&dontcache=1782421246688",
       "provenance": {
         "AGB/Nutzungsbedingungen": "datencrawler.csv",
         "Beschreibung": "WLO-API",
@@ -1871,7 +1876,7 @@
       },
       "kind": "crawler",
       "name": "RPI-Virtuell",
-      "previewUrl": "https://redaktion.openeduhub.net/edu-sharing/preview?nodeId=80fa753f-203e-42f2-87d1-01cb3de5cd8a&storeProtocol=workspace&storeId=SpacesStore&dontcache=1782305350080",
+      "previewUrl": "https://redaktion.openeduhub.net/edu-sharing/preview?nodeId=80fa753f-203e-42f2-87d1-01cb3de5cd8a&storeProtocol=workspace&storeId=SpacesStore&dontcache=1782421234525",
       "provenance": {
         "AGB/Nutzungsbedingungen": "datencrawler.csv",
         "Beschreibung": "WLO-API",
@@ -2239,7 +2244,7 @@
       },
       "kind": "crawler",
       "name": "Serlo",
-      "previewUrl": "https://redaktion.openeduhub.net/edu-sharing/preview?nodeId=94b140fb-cef6-42bb-a2ef-3e9ae3b936b5&storeProtocol=workspace&storeId=SpacesStore&dontcache=1782305352304",
+      "previewUrl": "https://redaktion.openeduhub.net/edu-sharing/preview?nodeId=94b140fb-cef6-42bb-a2ef-3e9ae3b936b5&storeProtocol=workspace&storeId=SpacesStore&dontcache=1782421236795",
       "provenance": {
         "AGB/Nutzungsbedingungen": "datencrawler.csv",
         "Beschreibung": "WLO-API",
@@ -2545,7 +2550,7 @@
       },
       "kind": "crawler",
       "name": "Sodis",
-      "previewUrl": "https://redaktion.openeduhub.net/edu-sharing/preview?nodeId=d53fca65-1ca6-4fe0-aa6a-dea30d71aa72&storeProtocol=workspace&storeId=SpacesStore&dontcache=1782305361180",
+      "previewUrl": "https://redaktion.openeduhub.net/edu-sharing/preview?nodeId=d53fca65-1ca6-4fe0-aa6a-dea30d71aa72&storeProtocol=workspace&storeId=SpacesStore&dontcache=1782421247040",
       "provenance": {
         "Beschreibung": "WLO-API",
         "Bezugsquelle": "WLO-API (Facette)",
@@ -2913,7 +2918,7 @@
       },
       "kind": "crawler",
       "name": "Lehrer-Online",
-      "previewUrl": "https://redaktion.openeduhub.net/edu-sharing/preview?nodeId=f05447ad-c48f-403a-8db8-0132c9f01f03&storeProtocol=workspace&storeId=SpacesStore&dontcache=1782305365399",
+      "previewUrl": "https://redaktion.openeduhub.net/edu-sharing/preview?nodeId=f05447ad-c48f-403a-8db8-0132c9f01f03&storeProtocol=workspace&storeId=SpacesStore&dontcache=1782421250562",
       "provenance": {
         "AGB/Nutzungsbedingungen": "datencrawler.csv",
         "Alter": "WLO-API",

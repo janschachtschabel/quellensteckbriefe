@@ -48,3 +48,11 @@ def meta(client):
 @pytest.fixture(scope="session")
 def team_pw():
     return TEAM_PW
+
+
+@pytest.fixture(autouse=True)
+def _no_session_cookie(client):
+    """Start every test without a team session cookie. The auth/cookie tests set one on
+    the shared session-scoped client; clearing keeps the password-less tests isolated."""
+    client.cookies.clear()
+    yield

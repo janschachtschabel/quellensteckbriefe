@@ -1,9 +1,12 @@
-"""refresh.py — Live-Daten-Refresh als Hintergrund-Job.
+"""refresh.py — live data refresh as a background job.
 
-Oeffentlich zugaenglich (kein Team-Login): aktualisiert nur den Snapshot aus der
-oeffentlichen WLO-API, baut die Datenwahrheit neu und laedt sie in den Speicher.
-Ein Concurrency-Guard (Lock) verhindert parallele Laeufe.
+Triggered by the team only (the /jobs/refresh route checks the password) or by the
+optional nightly scheduler. Re-fetches the snapshot from the public WLO API, rebuilds
+the data truth and loads it into memory. A concurrency guard (lock) prevents parallel
+runs; start_scheduler() can drive a once-a-day run.
 """
+import datetime
+import logging
 import threading
 import time
 
@@ -22,17 +25,18 @@ def _run_refresh():
                     startedAt=time.strftime("%Y-%m-%d %H:%M:%S"), finishedAt=None)
         fetcher.refresh_all(lambda p, m: _JOB.update(percent=int(p), message=m))
         _JOB.update(percent=96, message="Datenwahrheit neu bauen …")
-        meta = truth.main()                 # baut data/truth.json
-        store.load()                        # in-memory neu laden
+        meta = truth.main()                 # builds data/truth.json
+        store.load()                        # reload in memory
         _JOB.update(status="done", percent=100, message="Fertig.",
                     meta=meta, finishedAt=time.strftime("%Y-%m-%d %H:%M:%S"))
     except Exception as e:                   # noqa: BLE001
+        logging.getLogger("refresh").exception("refresh job failed")
         _JOB.update(status="error", error=str(e), message=f"Fehler: {e}",
                     finishedAt=time.strftime("%Y-%m-%d %H:%M:%S"))
 
 
 def start():
-    # Concurrency-Guard: wiederholte Klicks während eines Laufs sind No-Ops.
+    # Concurrency guard: repeated clicks during a run are no-ops.
     with _JOB_LOCK:
         if _JOB["status"] == "running":
             return {"status": "running", "percent": _JOB["percent"], "message": _JOB["message"]}
@@ -44,3 +48,34 @@ def start():
 
 def status():
     return _JOB
+
+
+def _seconds_until(hour):
+    """Seconds from now to the next occurrence of `hour`:00 in local time."""
+    now = datetime.datetime.now()
+    target = now.replace(hour=hour, minute=0, second=0, microsecond=0)
+    if target <= now:
+        target += datetime.timedelta(days=1)
+    return (target - now).total_seconds()
+
+
+_SCHEDULER_STARTED = False
+
+
+def start_scheduler(hour):
+    """Start a daemon thread that triggers a refresh once a day at `hour`:00 (local
+    time). No-op when hour is None (disabled). Idempotent: only one nightly thread even
+    if called repeatedly (e.g. on a worker reload). Reuses the same concurrency-guarded
+    job as the manual button, so a long-running refresh is never double-started."""
+    global _SCHEDULER_STARTED
+    if hour is None or _SCHEDULER_STARTED:
+        return
+    _SCHEDULER_STARTED = True
+
+    def _loop():
+        while True:
+            time.sleep(_seconds_until(hour))
+            start()
+            time.sleep(61)   # avoid re-triggering within the same minute
+
+    threading.Thread(target=_loop, daemon=True, name="nightly-refresh").start()

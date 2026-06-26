@@ -122,10 +122,6 @@
       "felder": [
         {
           "anzahl": 1322,
-          "feld": "Titel"
-        },
-        {
-          "anzahl": 1322,
           "feld": "URL"
         },
         {
@@ -155,6 +151,10 @@
         {
           "anzahl": 1153,
           "feld": "Sprache"
+        },
+        {
+          "anzahl": 1062,
+          "feld": "Titel"
         },
         {
           "anzahl": 1061,
@@ -189,7 +189,7 @@
           "feld": "Alter"
         }
       ],
-      "gesamt": 15756,
+      "gesamt": 15496,
       "quelle": "WLO-API"
     },
     {
@@ -205,6 +205,16 @@
       ],
       "gesamt": 7611,
       "quelle": "WLO-API (Facette)"
+    },
+    {
+      "felder": [
+        {
+          "anzahl": 260,
+          "feld": "Titel"
+        }
+      ],
+      "gesamt": 260,
+      "quelle": "Bezugsquelle (kein eigener Quell-Datensatz)"
     },
     {
       "felder": [
@@ -241,29 +251,27 @@
       "quelle": "datencrawler.csv"
     }
   ],
-  "generatedAt": "2026-06-24 14:48",
+  "generatedAt": "2026-06-25 23:00",
   "herkunft": {
     "nurBezugsquelle_ohneQuelldatensatz": 2885,
     "nurQuelldatensatz_ohneBezugsquelle": 169,
     "quelldatensaetzeGesamt": 1322,
     "schnittmenge_QuelldatensatzUndBezugsquelle": 1153,
-    "schnittmenge_blacklist": 67,
+    "schnittmenge_blacklist": 66,
     "schnittmenge_sauber": 669,
-    "schnittmenge_zweitDatensatz": 417
+    "schnittmenge_zweitDatensatz": 418
   },
   "probleme": {
-    "bezugsquellenMit1Inhalt": 2104,
+    "bezugsquelleEinzelinhalt": 2104,
+    "bezugsquelleOhneQuelldatensatz": 781,
     "bezugsquellenUnter5Inhalte": 2674,
-    "blacklistEintraege": 81,
+    "bindungUnvollstaendig": 12,
+    "blacklist": 80,
     "doppelteTitel": {
       "beispiele": [
         {
-          "anzahl": 4,
-          "wert": "portal globales lernen"
-        },
-        {
           "anzahl": 3,
-          "wert": "coding for tomorrow"
+          "wert": "portal globales lernen"
         },
         {
           "anzahl": 3,
@@ -279,19 +287,23 @@
         },
         {
           "anzahl": 2,
-          "wert": "dilertube"
-        },
-        {
-          "anzahl": 2,
           "wert": "oer commons"
         },
         {
           "anzahl": 2,
           "wert": "umwelt im unterricht"
+        },
+        {
+          "anzahl": 2,
+          "wert": "coding for tomorrow"
+        },
+        {
+          "anzahl": 2,
+          "wert": "staatsinstitut für frühpädagogik und medienkompetenz (ifp)"
         }
       ],
-      "gruppen": 60,
-      "ueberzaehlig": 64
+      "gruppen": 53,
+      "ueberzaehlig": 55
     },
     "doppelteUrl": {
       "beispiele": [
@@ -307,9 +319,15 @@
       "gruppen": 2,
       "ueberzaehlig": 2
     },
-    "mehrfachInhaltstypen_fehltagging": 274,
-    "quelldatensaetzeOhneBezugsquelle": 169,
-    "unsichtbareQuellenMitCrawler": 12,
+    "dublettenVerdacht": 112,
+    "metadatenDuenn": 87,
+    "mischTypen_fehltagging": 274,
+    "nichtPubliziert": 620,
+    "ohneStatus": 205,
+    "quelldatensatzOhneBezugsquelle": 169,
+    "spiderUneindeutig": 35,
+    "statusInkonsistent": 137,
+    "typNichtQuelle": 2,
     "zweitDatensaetze": 473
   },
   "spider": {

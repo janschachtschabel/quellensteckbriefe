@@ -1,14 +1,14 @@
-"""views.py — Serialisierung der Records fuer die API.
+"""views.py — serialization of the records for the API.
 
-Setzt die server-seitige Public/Internal-Trennung (siehe field_policy) um und
-liefert die flache Export-Sicht (CSV/JSON). Die EINE Stelle, die entscheidet,
-welche Felder eine oeffentliche Antwort verlassen.
+Implements the server-side public/internal separation (see field_policy) and
+provides the flat export view (CSV/JSON). The ONE place that decides which
+fields are allowed to leave a public response.
 """
 import field_policy as fp
 
 
 def public_view(r: dict) -> dict:
-    """Record OHNE interne Felder (serverseitige Trennung)."""
+    """Record WITHOUT internal fields (server-side separation)."""
     return {
         "id": r["id"], "name": r["name"], "kind": r["kind"],
         "contentCount": r["contentCount"], "erschliessung": r["erschliessung"],
@@ -27,7 +27,7 @@ def public_view(r: dict) -> dict:
 def full_view(r: dict) -> dict:
     v = public_view(r)
     v["internal"] = r.get("internal", {})
-    v["flags"] = r.get("flags", [])   # inkl. interne Flags
+    v["flags"] = r.get("flags", [])   # incl. internal flags
     return v
 
 

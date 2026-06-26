@@ -41,6 +41,42 @@ def test_blacklist_hidden_by_default():
     assert len(filt(recs, flag="BLACKLIST")) == 1
 
 
+def test_zweitdatensatz_hidden_by_default():
+    # Secondary datasets duplicate an already-listed Bezugsquelle, so they are
+    # hidden from the default/end-user view like the blacklist; the team reveals
+    # them via flag=ZWEITDATENSATZ (or show_blacklist).
+    recs = [rec(flags=["ZWEITDATENSATZ"])]
+    assert filt(recs) == []
+    assert len(filt(recs, show_blacklist=True)) == 1
+    assert len(filt(recs, flag="ZWEITDATENSATZ")) == 1
+
+
+def test_zweitdatensatz_visible_in_quelldatensatz_view():
+    # Secondary datasets are distinct source-dataset OBJECTS: hidden in the default and
+    # Bezugsquelle (tag) view, but visible when filtering by Quelldatensatz (has_node=True).
+    z = rec(flags=["ZWEITDATENSATZ"], identity={"nodeId": "n1", "bezugsquelle": "X"})
+    assert filt([z]) == []                               # default: collapsed (tag view)
+    assert len(filt([z], has_node=True)) == 1            # object view: visible
+    assert filt([z], has_bezugsquelle=True) == []        # tag view: collapsed
+
+
+def test_data_problem_flag_stays_visible_by_default():
+    # A data-problem flag that is NOT hidden-by-default must remain in the clean
+    # view; the team can still isolate it via flag=<NAME>.
+    recs = [rec(flags=["METADATEN_DUENN"])]
+    assert len(filt(recs)) == 1
+    assert len(filt(recs, flag="METADATEN_DUENN")) == 1
+
+
+def test_team_flag_reveals_even_hidden_records():
+    # The hide applies only to the unfiltered default view. A record that is both a
+    # secondary dataset AND carries a data problem must surface when the team filters
+    # by that data-problem flag — otherwise the problem stays invisible.
+    recs = [rec(flags=["ZWEITDATENSATZ", "METADATEN_DUENN"])]
+    assert filt(recs) == []                              # hidden by default (zweit)
+    assert len(filt(recs, flag="METADATEN_DUENN")) == 1  # revealed by team filter
+
+
 def test_kind():
     recs = [rec(kind="crawler"), rec(kind="manuell"), rec(kind="bezugsquelle")]
     assert len(filt(recs, kind="crawler")) == 1

@@ -1,8 +1,10 @@
 'use strict';
-// export.js — CSV/JSON-Export (Filter & Auswahl).
+// export.js — CSV/JSON export (filter & selection).
 
 // ---- Export (CSV/JSON) ----------------------------------------------------
 function exportAll(fmt){ window.location.href = `/api/export.${fmt}?` + filterParams().toString(); }
+// Team-only data-problem protocol (Markdown); the team session cookie authorizes the download.
+function exportProtokoll(){ window.location.href = '/api/protokoll.md'; }
 async function exportSelection(fmt){
   if(!state.sel.size) return;
   const d = await apiPost('/api/sources/batch', {ids:[...state.sel]});

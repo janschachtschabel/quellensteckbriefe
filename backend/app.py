@@ -1,41 +1,45 @@
-"""app.py — Quellenerschliessungs-API (Web-Layer).
+"""app.py — source-indexing API (web layer).
 
-Duenne FastAPI-Routen ueber die Datenwahrheit (data/truth.json). Die eigentliche
-Logik liegt in den Fachmodulen:
-  config     Konfiguration, Team-Passwort, Konstanten, Pfade
-  store      In-Memory-Datenhaltung (truth.json)
-  views      Public/Internal-Serialisierung (server-seitige Trennung)
-  filtering  Filterlogik der Quellenliste
-  stats      Statistik-Aggregation
-  refresh    Live-Daten-Refresh (Hintergrund-Job)
+Thin FastAPI routes over the data truth (data/truth.json). The actual
+logic lives in the domain modules:
+  config     configuration, team password, constants, paths
+  store      in-memory data holding (truth.json)
+  views      public/internal serialization (server-side separation)
+  filtering  filter logic of the source list
+  stats      statistics aggregation
+  refresh    live-data refresh (background job)
 
-Sicherheit: OEFFENTLICHE Endpoints geben NIE die internen Felder aus. Interne
-Felder (Entwicklervermerke, genauer Status) nur mit korrektem Team-Passwort
-(Env QE_TEAM_PASSWORD, Default 'wlo-intern').
+Security: PUBLIC endpoints NEVER expose the internal fields. Internal
+fields (developer notes, exact status) only with the correct team password
+(env QE_TEAM_PASSWORD; unset => team features disabled, fail closed).
 
 Endpoints:
   GET  /api/stats
-  GET  /api/sources            (Liste, gefiltert, public)
-  GET  /api/sources/{id}       (Detail; mit ?pw=/Header inkl. intern)
-  GET  /api/meta/filters       (Filteroptionen)
-  POST /api/auth               (Passwort pruefen)
-  /                            (Frontend)
+  GET  /api/sources            (list, filtered, public)
+  GET  /api/sources/{id}       (detail; with ?pw=/header incl. internal)
+  GET  /api/meta/filters       (filter options)
+  POST /api/auth               (check password)
+  /                            (frontend)
 """
 import csv
 import io
+from contextlib import asynccontextmanager
 from urllib.parse import urlparse
 
 import requests
 
-from fastapi import Body, Depends, FastAPI, Header, HTTPException, Query
+from fastapi import Body, Depends, FastAPI, Header, HTTPException, Query, Request
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse, Response, StreamingResponse
 from fastapi.staticfiles import StaticFiles
 
+import protokoll
 import refresh
+import session
 import stats as stats_mod
-from config import FRONTEND, check_pw as _check_pw
-from filtering import filter_records as _filter_records
+import stats_team as stats_team_mod
+from config import AUTO_REFRESH_HOUR, FRONTEND, check_pw as _check_pw
+from filtering import filter_records as _filter_records, hidden_breakdown as _hidden_breakdown
 from store import _DATA, load as _load
 from views import (
     EXPORT_COLS as _EXPORT_COLS,
@@ -44,28 +48,38 @@ from views import (
     public_view as _public_view,
 )
 
-app = FastAPI(title="WLO Quellenerschliessung", version="1.0.0")
+@asynccontextmanager
+async def _lifespan(app):
+    _load()                                      # load data/truth.json into memory
+    refresh.start_scheduler(AUTO_REFRESH_HOUR)   # optional nightly refresh (daemon; no-op if unset)
+    yield
+
+
+app = FastAPI(title="WLO Quellenerschliessung", version="1.0.0", lifespan=_lifespan)
+# Public read-only data tool: any origin may query the API. allow_credentials stays at its
+# default (False) and team auth uses a custom header (no cookies), so "*" does not enable
+# cross-site credentialed requests; the app's own frontend is same-origin anyway.
 app.add_middleware(CORSMiddleware, allow_origins=["*"], allow_methods=["*"], allow_headers=["*"])
 
 
 @app.middleware("http")
-async def _no_cache_assets(request, call_next):
-    """Statische Assets (HTML/JS/CSS/SVG) immer revalidieren lassen, damit nach
-    Deploys/Änderungen nicht veraltetes JS aus dem Browser-Cache geladen wird."""
+async def _cache_headers(request, call_next):
+    """Cache policy: API/job responses are never cached (they change on refresh — no stale
+    data from a browser/proxy); static assets are revalidated so no stale JS loads after a
+    deploy."""
     resp = await call_next(request)
     p = request.url.path
-    if p == "/" or p.endswith((".js", ".css", ".html", ".svg")):
+    if p.startswith("/api/") or p.startswith("/jobs/"):
+        resp.headers["Cache-Control"] = "no-store"
+    elif p.startswith("/vendor/"):
+        resp.headers["Cache-Control"] = "public, max-age=31536000, immutable"   # versioned libs
+    elif p == "/" or p.endswith((".js", ".css", ".html", ".svg")):
         resp.headers["Cache-Control"] = "no-cache, must-revalidate"
     return resp
 
 
-@app.on_event("startup")
-def _startup():
-    _load()
-
-
 # ---------------------------------------------------------------------------
-# Lese-Endpoints (oeffentlich)
+# Read endpoints (public)
 # ---------------------------------------------------------------------------
 @app.get("/api/stats")
 def stats():
@@ -114,44 +128,84 @@ def sources(
     out.sort(key=key, reverse=rev)
 
     total = len(out)
+    # Breakdown of the records this view hides by default, so the displayed count can be
+    # reconciled with the raw data: blacklist (always hidden) + secondary datasets
+    # (collapsed in the tag/default view, shown in the Quelldatensatz/object view).
+    # An explicit flag/show_blacklist query hides nothing.
+    hidden = {"total": 0, "blacklist": 0, "zweitDatensatz": 0}
+    if not flag and not show_blacklist:
+        full = _filter_records(
+            _DATA["records"], q, kind, oer, subject, level, min_count,
+            has_node, only_field_profile, license_, language, lrt, flag,
+            has_bezugsquelle, spider_real, wlo_migration, exclude_wlo, True,
+            has_spider=has_spider)
+        hidden = _hidden_breakdown(full, has_node)
     skip = (page - 1) * page_size
     items = [_public_view(r) for r in out[skip: skip + page_size]]
-    return {"total": total, "page": page, "pageSize": page_size,
+    return {"total": total, "hidden": hidden, "page": page, "pageSize": page_size,
             "pages": max(1, (total + page_size - 1) // page_size), "items": items}
 
 
+def team_auth(request: Request,
+              pw: str | None = Query(None),
+              x_team_password: str | None = Header(None)) -> bool:
+    """Team authorization: a valid session cookie OR the team password (header/query).
+    The browser uses the httpOnly session cookie (so the password is never stored client
+    side); API clients and tests may still send the X-Team-Password header / ?pw=."""
+    return session.valid(request.cookies.get(session.COOKIE)) or _check_pw(pw, x_team_password)
+
+
 @app.get("/api/sources/{source_id:path}")
-def source_detail(source_id: str,
-                  pw: str | None = Query(None),
-                  x_team_password: str | None = Header(None)):
+def source_detail(source_id: str, is_team: bool = Depends(team_auth)):
     r = _DATA["byId"].get(source_id)
     if not r:
         raise HTTPException(404, "Quelle nicht gefunden.")
-    if _check_pw(pw, x_team_password):
-        return _full_view(r)
-    return _public_view(r)
+    return _full_view(r) if is_team else _public_view(r)
 
 
 @app.post("/api/auth")
-def auth(pw: str | None = Query(None), x_team_password: str | None = Header(None)):
-    if _check_pw(pw, x_team_password):
-        return {"ok": True}
-    raise HTTPException(403, "Falsches Passwort.")
+def auth(request: Request, response: Response,
+         pw: str | None = Query(None), x_team_password: str | None = Header(None)):
+    """Log in with the team password and receive an httpOnly session cookie."""
+    if not _check_pw(pw, x_team_password):
+        raise HTTPException(403, "Falsches Passwort.")
+    token = session.issue()
+    # Secure flag when the request arrived over HTTPS (directly or via a TLS proxy).
+    secure = request.headers.get("x-forwarded-proto", request.url.scheme) == "https"
+    response.set_cookie(session.COOKIE, token, max_age=session.TTL,
+                        httponly=True, samesite="strict", secure=secure)
+    return {"ok": True}
+
+
+@app.post("/api/logout")
+def logout(request: Request, response: Response):
+    session.revoke(request.cookies.get(session.COOKIE))
+    response.delete_cookie(session.COOKIE)
+    return {"ok": True}
+
+
+@app.get("/api/auth/status")
+def auth_status(request: Request):
+    """Whether the current session cookie is a valid team login (drives the team UI)."""
+    return {"team": session.valid(request.cookies.get(session.COOKIE))}
 
 
 @app.post("/api/admin/reload")
-def reload_data(pw: str | None = Query(None), x_team_password: str | None = Header(None)):
-    if not _check_pw(pw, x_team_password):
+def reload_data(is_team: bool = Depends(team_auth)):
+    if not is_team:
         raise HTTPException(403, "Nur intern.")
     _load()
     return {"ok": True, "meta": _DATA["meta"]}
 
 
 # ---------------------------------------------------------------------------
-# Live-Daten-Refresh (Hintergrund-Job; oeffentlich, kein Team-Login noetig)
+# Live-data refresh (background job; team login required — it triggers expensive
+# live API calls). A nightly run can be configured via QE_AUTO_REFRESH_HOUR.
 # ---------------------------------------------------------------------------
 @app.post("/jobs/refresh")
-def jobs_refresh():
+def jobs_refresh(is_team: bool = Depends(team_auth)):
+    if not is_team:
+        raise HTTPException(403, "Team-Login erforderlich.")
     return refresh.start()
 
 
@@ -161,7 +215,7 @@ def jobs_latest():
 
 
 # ---------------------------------------------------------------------------
-# Umfangreiche Statistiken
+# Extensive statistics
 # ---------------------------------------------------------------------------
 @app.get("/api/stats/full")
 def stats_full():
@@ -169,15 +223,15 @@ def stats_full():
 
 
 @app.get("/api/stats/team")
-def stats_team(pw: str | None = Query(None), x_team_password: str | None = Header(None)):
-    """Negative-/Datenproblem-Statistiken + Herkunft + Spider-Abgleich. Nur Team."""
-    if not _check_pw(pw, x_team_password):
+def stats_team(is_team: bool = Depends(team_auth)):
+    """Negative/data-problem statistics + origin + spider reconciliation. Team only."""
+    if not is_team:
         raise HTTPException(403, "Nur intern (Team-Passwort nötig).")
-    return stats_mod.compute_stats_team(_DATA["records"], _DATA["meta"])
+    return stats_team_mod.compute_stats_team(_DATA["records"], _DATA["meta"])
 
 
 # ---------------------------------------------------------------------------
-# Export (maschinenlesbar)
+# Export (machine-readable)
 # ---------------------------------------------------------------------------
 def _filtered_rows(
     q: str | None = None, kind: str | None = None, oer: bool | None = None,
@@ -188,9 +242,9 @@ def _filtered_rows(
     wlo_migration: bool = False, exclude_wlo: bool = False, show_blacklist: bool = False,
     has_spider: bool | None = None,
 ) -> list:
-    """Gefilterte Records aus den Query-Parametern — die EINE Filterquelle der
-    Export-Routen, damit JSON-/CSV-Export exakt der Listen-Ansicht entsprechen
-    (gleicher Parametersatz wie /api/sources, nur ohne Sortierung/Pagination)."""
+    """Filtered records from the query parameters — the ONE filter source of the
+    export routes, so that JSON/CSV export matches the list view exactly
+    (same parameter set as /api/sources, just without sorting/pagination)."""
     return _filter_records(_DATA["records"], q, kind, oer, subject, level, min_count,
                            has_node, only_field_profile, license, language, lrt, flag,
                            has_bezugsquelle, spider_real, wlo_migration, exclude_wlo, show_blacklist,
@@ -215,25 +269,32 @@ def export_csv(rows: list = Depends(_filtered_rows)):
         headers={"Content-Disposition": "attachment; filename=quellen_export.csv"})
 
 
+@app.get("/api/protokoll.md")
+def protokoll_md(is_team: bool = Depends(team_auth)):
+    """Team-only Markdown protocol: data problems quantified, per case, with a fix per category."""
+    if not is_team:
+        raise HTTPException(403, "Nur intern (Team-Login nötig).")
+    md = protokoll.build_protokoll(_DATA["records"], _DATA["meta"])
+    return Response(md, media_type="text/markdown; charset=utf-8",
+                    headers={"Content-Disposition": "attachment; filename=fehler-protokoll.md"})
+
+
 @app.post("/api/sources/batch")
-def sources_batch(ids: list[str] = Body(..., embed=True),
-                  pw: str | None = Query(None),
-                  x_team_password: str | None = Header(None)):
-    """Mehrere Records für PDF-Erzeugung (public; intern mit Passwort)."""
-    full = _check_pw(pw, x_team_password)
+def sources_batch(ids: list[str] = Body(..., embed=True), is_team: bool = Depends(team_auth)):
+    """Multiple records for PDF generation (public; internal with team session/password)."""
     out = []
     for i in ids[:100]:
         r = _DATA["byId"].get(i)
         if r:
-            out.append(_full_view(r) if full else _public_view(r))
+            out.append(_full_view(r) if is_team else _public_view(r))
     return {"items": out}
 
 
 # ---------------------------------------------------------------------------
-# Vorschaubild-Proxy (für PDF-Einbettung) — umgeht den CORS-Canvas-Taint:
-# der Browser kann externe edu-sharing-Thumbnails nicht ohne Tainting auf ein
-# Canvas zeichnen; über diesen Same-Origin-Proxy klappt jsPDF.addImage.
-# Nur WLO-Hosts erlaubt (kein offener Proxy).
+# Preview-image proxy (for PDF embedding) — circumvents the CORS canvas taint:
+# the browser cannot draw external edu-sharing thumbnails onto a canvas without
+# tainting it; via this same-origin proxy jsPDF.addImage works.
+# Only WLO hosts allowed (not an open proxy).
 # ---------------------------------------------------------------------------
 _THUMB_CACHE: dict[str, tuple[bytes, str]] = {}
 
@@ -254,13 +315,13 @@ def thumb(url: str = Query(..., description="Vorschau-URL (nur *.openeduhub.net)
         if not ct.startswith("image/"):
             raise HTTPException(415, "Kein Bild.")
         cached = (rr.content, ct)
-        if len(_THUMB_CACHE) < 2000:        # simple Obergrenze gegen unbegrenztes Wachstum
+        if len(_THUMB_CACHE) < 2000:        # simple upper bound against unbounded growth
             _THUMB_CACHE[url] = cached
     content, ct = cached
     return Response(content=content, media_type=ct,
                     headers={"Cache-Control": "public, max-age=86400"})
 
 
-# Frontend zuletzt mounten
+# Mount the frontend last
 if FRONTEND.is_dir():
     app.mount("/", StaticFiles(directory=FRONTEND, html=True), name="frontend")

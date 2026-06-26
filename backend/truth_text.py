@@ -1,20 +1,20 @@
-"""truth_text.py — Text-Normalisierung & kleine Parser-/Vokabular-Helfer.
+"""truth_text.py — text normalization & small parser/vocabulary helpers.
 
-Reine Funktionen (keine I/O): Normalisierung von Namen/URLs, Property-Zugriff auf
-edu-sharing-Knoten und Aufloesung von Spider-/Vokabular-Bezeichnern. Gemeinsames
-Blatt-Modul fuer truth_loaders und truth (vermeidet Zyklen).
+Pure functions (no I/O): normalization of names/URLs, property access on
+edu-sharing nodes, and resolution of spider/vocabulary identifiers. Shared
+leaf module for truth_loaders and truth (avoids cycles).
 """
 from __future__ import annotations
 import re
 import unicodedata
 
-# Spider, die KEINE echte Crawler-Bindung sind, sondern Migrations-Herkunft
-# des Datensatz-Knotens (wirlernenonline_spider) -> nicht als Crawler ankern.
+# Spiders that are NOT a real crawler binding but the migration origin of the
+# dataset node (wirlernenonline_spider) -> do not anchor as a crawler.
 IGNORE_SPIDERS = {"wirlernenonline_spider"}
 
 PLACEHOLDER_BQ = {"wirlernenonline"}
 
-# Node-ID aus einem Render-/Komponenten-Link (CSV-Spalte 'Quelldatensatz (Prod)')
+# Node ID from a render/component link (CSV column 'Quelldatensatz (Prod)')
 _UUID_RE = re.compile(r"[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}", re.I)
 
 
@@ -27,6 +27,20 @@ def _norm(t):
     t = unicodedata.normalize("NFD", str(t or "").strip().lower())
     t = "".join(c for c in t if unicodedata.category(c) != "Mn")
     return re.sub(r"\s+", " ", t)
+
+
+def _represents(name, bq):
+    """True if the title represents the Bezugsquelle (= a real source dataset)
+    and not an individual item below it. Matches on a substring in either
+    direction OR an overlap of significant word stems (>=4 chars, accent/case-insensitive)."""
+    n, b = _norm(name), _norm(bq)
+    if not n or not b:
+        return False
+    if b in n or n in b:
+        return True
+    nt = {w for w in re.findall(r"\w+", n) if len(w) >= 4}
+    bt = {w for w in re.findall(r"\w+", b) if len(w) >= 4}
+    return bool(nt & bt)
 
 
 def _nurl(u):
@@ -49,13 +63,13 @@ def pA(props, key):
 
 
 def _clean_q(v):
-    """Sternchen entfernen (jsPDF/Anzeige), Whitespace normalisieren."""
+    """Remove asterisks (jsPDF/display), normalize whitespace."""
     v = re.sub(r"[✰★☆⭐]", "", str(v or "")).strip()
     return re.sub(r"\s+", " ", v)
 
 
 def _age(props):
-    """Typische Altersspanne als 'x–y Jahre'; Default 0–99 (= alle) wird ausgelassen."""
+    """Typical age range as 'x–y Jahre'; the default 0–99 (= all) is omitted."""
     af = p1(props, "ccm:educationaltypicalagerange_from")
     at = p1(props, "ccm:educationaltypicalagerange_to")
     if not af and not at:
@@ -66,7 +80,7 @@ def _age(props):
 
 
 def _is_junk_bq(bq):
-    """Müll-Bezugsquelle (z. B. „0", reine Zahlen, leer) — nicht als Quelle/Name verwenden."""
+    """Junk Bezugsquelle (e.g. "0", pure numbers, empty) — do not use as a source/name."""
     s = (bq or "").strip().lower()
     return s in ("", "0", "-", "–", "null", "none", "n/a", "k.a.", "keine") or s.isdigit()
 
@@ -78,9 +92,9 @@ def spider_vocab_name(spider, vocab):
 
 
 def _resolve_rs(rs, vocab):
-    """replicationsource lesbar machen: Legacy-URI (…/vocabs/sources/<uuid>) → Vocab-Name.
-    Technische Namen (z. B. bpb_spider) und wirlernenonline_spider bleiben unverändert,
-    damit Filter/Statistik weiter darauf prüfen können."""
+    """Make replicationsource human-readable: legacy URI (…/vocabs/sources/<uuid>) → vocab name.
+    Technical names (e.g. bpb_spider) and wirlernenonline_spider stay unchanged,
+    so that filters/statistics can keep checking against them."""
     s = (rs or "").strip()
     if "vocabs/sources/" in s:
         uid = s.rstrip("/").rsplit("/", 1)[-1].lower()

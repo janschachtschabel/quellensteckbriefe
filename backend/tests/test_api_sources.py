@@ -40,3 +40,9 @@ def test_blacklist_filter_returns_records(client):
 
 def test_unknown_source_404(client):
     assert client.get("/api/sources/does-not-exist").status_code == 404
+
+
+def test_new_data_problem_flags_filterable(client):
+    # Every new protocol rubric is a real flag, so each is retrievable via flag=<NAME>.
+    for fl in ("NICHT_PUBLIZIERT", "BQ_OHNE_QD", "OHNE_STATUS", "STATUS_INKONSISTENT", "SPIDER_UNEINDEUTIG"):
+        assert client.get(f"/api/sources?flag={fl}&page_size=1").json()["total"] >= 1, fl

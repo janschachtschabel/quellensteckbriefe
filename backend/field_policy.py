@@ -1,26 +1,26 @@
 """
 field_policy.py
 ===============
-Zentrale Richtlinie: welche Informationen sind OEFFENTLICH (Datengeber /
-Datennehmer) und welche INTERN (nur per Passwort fuer Teammitglieder).
+Central policy: which information is PUBLIC (data providers / data
+consumers) and which is INTERNAL (password-protected, for team members only).
 
-Grundsatz (laut Auftrag):
-  - Oeffentlich: Grund- + Qualitaetsinfos (Lizenz, OER, Fach, Stufe, URL,
-    Inhaltszahl) UND wie Metadaten erzeugt wurden (Feld-Provenienz der Crawler).
-  - Intern: interne Entwicklervermerke zu Crawlern und deren *genauer*
-    Betriebs-Status.
+Principle (per the assignment):
+  - Public: basic + quality info (license, OER, subject, level, URL,
+    content count) AND how metadata was produced (per-field provenance of the crawlers).
+  - Internal: internal developer notes about crawlers and their *exact*
+    operational status.
 
-Diese Datei ist die EINE Stelle, an der die Trennung gepflegt wird.
+This file is the ONE place where the separation is maintained.
 """
 
-# --- Crawler-Basisspalten aus datencrawler.csv -----------------------------
-# Oeffentlich nutzbare Steckbrief-Felder (fuer Datengeber/Datennehmer)
+# --- Crawler base columns from datencrawler.csv ----------------------------
+# Publicly usable profile fields (for data providers/data consumers)
 CRAWLER_PUBLIC_BASE = {
     "Titel": "titel",
     "Url": "url",
     "Bezugsquelle": "bezugsquelle",
     "Urheber": "urheber",
-    # Rechts-/KI-Nutzungs-Felder der QUELLE selbst (Basis der KI-Nutzungs-Einschaetzung)
+    # Legal/AI-usage fields of the SOURCE itself (basis for the AI-usage assessment)
     "robots.txt": "robotsTxt",
     "TDM Hinweis ( §44b)": "tdmHinweis",
     "AGB / Nutzungsbedingungen": "agb",
@@ -28,12 +28,12 @@ CRAWLER_PUBLIC_BASE = {
     "API Nutzungsbedingungen": "apiNutzung",
 }
 
-# Interne Felder – NUR fuer Teammitglieder (Passwort)
+# Internal fields – ONLY for team members (password)
 CRAWLER_INTERNAL_BASE = {
     "Crawler (Spider)": "spider",
     "Prio": "prio",
     "Crawler-Type": "crawlerType",
-    "Zustand": "zustand",                  # genauer Betriebs-Status -> intern
+    "Zustand": "zustand",                  # exact operational status -> internal
     "Spider Bemerkungen": "spiderBemerkungen",
     "Einschätzung KI & Erschließung": "kiEinschaetzung",
     "Bemerkung/Status": "bemerkungStatus",
@@ -46,13 +46,13 @@ CRAWLER_INTERNAL_BASE = {
     "Hinweis zu Quellendatensatz": "hinweisQuelldatensatz",
     "Export to OER Berlin": "exportOerBerlin",
     "GitHub": "github",
-    # Vertrags-/Vereinbarungsstatus = WLO-interne Geschaeftsinfo -> NUR intern
+    # Contract/agreement status = WLO-internal business info -> INTERNAL only
     "Vereinb. neu": "Vertrag/Vereinbarung",
     "Vereinb. alt": "Vereinbarung (alt)",
 }
 
-# --- Live-API-Felder (Quelldatensatz) --------------------------------------
-# Oeffentlich
+# --- Live API fields (Quelldatensatz) --------------------------------------
+# Public
 NODE_PUBLIC = {
     "title": "Titel",
     "wwwUrl": "URL",
@@ -66,7 +66,7 @@ NODE_PUBLIC = {
     "keywords": "Schlagworte",
     "contentCount": "Inhaltsanzahl",
 }
-# Intern (genauer Erschliessungs-/Workflow-Status, Roh-Provenienz)
+# Internal (exact indexing/workflow status, raw provenance)
 NODE_INTERNAL = {
     "editorialStatus": "Erschliessungsstatus (genau)",
     "wfStatus": "Workflow-Status",
@@ -78,7 +78,7 @@ NODE_INTERNAL = {
 
 
 def coarse_erschliessung(content_count: int, has_node: bool) -> str:
-    """Oeffentliche, grobe Erschliessungs-Aussage (ohne internen Status-Code)."""
+    """Public, coarse indexing statement (without the internal status code)."""
     if content_count and content_count > 0:
         return "im Bestand verfuegbar"
     if has_node:
@@ -86,10 +86,23 @@ def coarse_erschliessung(content_count: int, has_node: bool) -> str:
     return "nur als Bezugsquelle bekannt"
 
 
-# Welche Flags duerfen oeffentlich gezeigt werden?
-# Provenienz-Marker (WLO_MIGRATION/LEGACY_BINDUNG/TYP_NICHT_QUELLE) sind oeffentlich,
-# damit man an jeder Quelle sieht, WIE sie gebunden/eingespielt ist (Transparenz).
+# Which flags may be shown publicly?
+# Provenance markers (WLO_MIGRATION/LEGACY_BINDUNG/TYP_NICHT_QUELLE) are public,
+# so that for every source one can see HOW it is bound/ingested (transparency).
 PUBLIC_FLAGS = {"FACETS_ONLY", "OER", "KEINE_URL", "ZWEITDATENSATZ",
                 "WLO_MIGRATION", "LEGACY_BINDUNG", "TYP_NICHT_QUELLE"}
 INTERNAL_FLAGS = {"FEHLTAGGING", "BLACKLIST", "WHITELIST", "DUBLETTE_VERDACHT",
-                  "INHALT_VERDACHT", "PUB_INKONSISTENT"}
+                  "INHALT_VERDACHT", "PUB_INKONSISTENT",
+                  # team data-problem markers (surfaced via the team filter)
+                  "METADATEN_DUENN", "BQ_EINZELINHALT", "BINDUNG_UNVOLLSTAENDIG",
+                  "QD_OHNE_BEZUGSQUELLE", "OHNE_STATUS", "STATUS_INKONSISTENT",
+                  "NICHT_PUBLIZIERT", "SPIDER_UNEINDEUTIG", "BQ_OHNE_QD"}
+
+# Records carrying one of these flags are hidden from the default/end-user list
+# AND from the public "Quellenverwaltung" counts, so the customer sees clean data:
+#   BLACKLIST      sorted-out non-sources (single materials / duplicates)
+#   ZWEITDATENSATZ secondary dataset of an already-listed Bezugsquelle (its content
+#                  is already counted on the primary record -> it would double-count)
+# The team filter reveals each category on demand via flag=<NAME>. Defined here once;
+# filtering.py and stats.py both consume it so the list totals and the stats stay in sync.
+HIDDEN_BY_DEFAULT = ("BLACKLIST", "ZWEITDATENSATZ")

@@ -6,6 +6,7 @@ from truth_text import (
     _node_id_from_url,
     _norm,
     _nurl,
+    _represents,
     p1,
     pA,
 )
@@ -59,3 +60,15 @@ def test_age_range():
                  "ccm:educationaltypicalagerange_to": "99"}) == ""
     assert _age({"ccm:educationaltypicalagerange_from": "6",
                  "ccm:educationaltypicalagerange_to": "9"}) == "6–9 Jahre"
+
+
+def test_represents_source_vs_content():
+    # real source record (Quelldatensatz) -> represents the Bezugsquelle
+    assert _represents("Wikipedia – Die freie Enzyklopädie", "Wikipedia") is True
+    assert _represents("LEIFIchemie", "LEIFIchemie") is True
+    # single content item -> does NOT represent the Bezugsquelle
+    assert _represents("Relativsatz in der spanischen Sprache", "Wikipedia") is False
+    assert _represents("Profis gesucht | Sprachkurse für den Beruf", "Deutsche Welle") is False
+    # empty inputs are not a match (no empty substring match)
+    assert _represents("", "Wikipedia") is False
+    assert _represents("Irgendwas", "") is False

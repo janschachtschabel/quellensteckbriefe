@@ -1,9 +1,9 @@
-"""truth_loaders.py — Einlesen aller Informationsquellen (I/O).
+"""truth_loaders.py — reading all information sources (I/O).
 
-Liest die kuratierten CSVs (Crawler-Steckbriefe, Korrekturliste) und die
-Live-API-Caches (Quelldatensaetze, Facetten, Vokabular, Vorschaubilder) ein.
-Pfad-Anker ist `backend/` (Path(__file__).parent) — daher als flaches
-Geschwister-Modul, nicht als Unterpaket.
+Reads the curated CSVs (crawler profiles, correction list) and the live API
+caches (source datasets, facets, vocabulary, preview images). The path anchor
+is `backend/` (Path(__file__).parent) — hence a flat sibling module, not a
+subpackage.
 """
 from __future__ import annotations
 import csv
@@ -35,10 +35,10 @@ def _find(*cands):
     return None
 
 
-# --- Eingabepfade (mit Fallbacks) ------------------------------------------
-# Reihenfolge: zuerst die Original-Repos (Quelle der Wahrheit auf dem Dev-Rechner),
-# zuletzt die gebündelte Kopie in backend/data/inputs/ — diese macht die App
-# eigenständig (Container/Standalone-Checkout ohne die Geschwister-Repos).
+# --- Input paths (with fallbacks) ------------------------------------------
+# Order: first the original repos (source of truth on the dev machine), last
+# the bundled copy in backend/data/inputs/ — this makes the app self-contained
+# (container/standalone checkout without the sibling repos).
 ROOT = HERE.parents[1]                       # wlo-suche
 RAW = _find(ROOT / "quellen-analyse/raw")
 DATENCRAWLER = _find(
@@ -52,7 +52,7 @@ KORREKTUR = _find(
 )
 
 
-# Qualitäts-/Zugänglichkeits-Metadaten (DISPLAYNAME = lesbar). Nur gefüllte werden übernommen.
+# Quality/accessibility metadata (DISPLAYNAME = human-readable). Only filled ones are kept.
 QUALITY_FIELDS = [
     ("Sachrichtigkeit", "ccm:oeh_quality_correctness_DISPLAYNAME"),
     ("Aktualität", "ccm:oeh_quality_currentness_DISPLAYNAME"),
@@ -76,7 +76,7 @@ QUALITY_FIELDS = [
 
 
 # ---------------------------------------------------------------------------
-# 1) Crawler-Steckbriefe aus datencrawler.csv
+# 1) Crawler profiles from datencrawler.csv
 # ---------------------------------------------------------------------------
 def load_crawler_profiles():
     if not DATENCRAWLER:
@@ -86,7 +86,7 @@ def load_crawler_profiles():
     sep = ";" if line0.count(";") >= line0.count(",") else ","
     rd = csv.DictReader(text.splitlines(), delimiter=sep)
     cols = rd.fieldnames or []
-    # normalisierte Spaltensuche
+    # normalized column lookup
     norm_col = {_norm(c): c for c in cols}
 
     def col(name):
@@ -95,8 +95,8 @@ def load_crawler_profiles():
     pub_map = {col(k): v for k, v in fp.CRAWLER_PUBLIC_BASE.items() if col(k)}
     int_map = {col(k): v for k, v in fp.CRAWLER_INTERNAL_BASE.items() if col(k)}
     base_cols = set(pub_map) | set(int_map)
-    # Echte Feld-Erzeugungs-Spalten: "<Item> - <feld> – Status" (mit Item-Trenner " - ").
-    # Schliesst Basisspalten wie "Bemerkung/Status" aus (kein " - ").
+    # Real field-generation columns: "<Item> - <feld> – Status" (with item separator " - ").
+    # Excludes base columns like "Bemerkung/Status" (no " - ").
     status_cols = [c for c in cols
                    if _norm(c).endswith("status") and " - " in c and c not in base_cols]
 
@@ -105,7 +105,7 @@ def load_crawler_profiles():
         spider = (r.get(col("Crawler (Spider)")) or "").strip()
         if not spider or spider.lower() in ("", "nein", "-", "none"):
             continue
-        # Feld-Erzeugungs-Status gruppiert nach Item
+        # field-generation status grouped by item
         field_gen = []
         active = 0
         for c in status_cols:
@@ -138,7 +138,7 @@ def load_crawler_profiles():
 
 
 # ---------------------------------------------------------------------------
-# 2) Live-API-Caches
+# 2) Live API caches
 # ---------------------------------------------------------------------------
 def _parse_node(n):
     props = n.get("properties", {})
@@ -181,9 +181,9 @@ def _parse_node(n):
 
 
 def load_nodes():
-    """Such-sichtbare Quelldatensätze (quellen_nodes.json) PLUS per Node-API
-    nachgeladene, such-UNsichtbare Quelldatensätze (extra_nodes.json, z. B. bpb –
-    Node-ID stammt aus der CSV-Spalte 'Quelldatensatz (Prod)')."""
+    """Search-visible source datasets (quellen_nodes.json) PLUS search-INvisible
+    source datasets fetched via the node API (extra_nodes.json, e.g. bpb – the
+    node ID comes from the CSV column 'Quelldatensatz (Prod)')."""
     fpath = RAW / "quellen_nodes.json" if RAW else None
     if not fpath or not fpath.exists():
         sys.exit("quellen_nodes.json fehlt – erst quellen-analyse/analyze_sources.py laufen lassen.")
@@ -198,7 +198,7 @@ def load_nodes():
     for n in raw:
         rec = _parse_node(n)
         nid = rec["nodeId"]
-        if not nid or nid in seen:        # such-sichtbarer Knoten gewinnt (kommt zuerst)
+        if not nid or nid in seen:        # search-visible node wins (comes first)
             continue
         seen.add(nid)
         out.append(rec)
@@ -230,7 +230,7 @@ def load_vocab():
 
 
 def load_bq_previews():
-    """norm(Bezugsquelle) -> previewUrl (aus Vorschau-Anreicherung des Fetchers)."""
+    """norm(Bezugsquelle) -> previewUrl (from the fetcher's preview enrichment)."""
     fpath = RAW / "bq_previews.json" if RAW else None
     if not fpath or not fpath.exists():
         return {}
@@ -257,7 +257,7 @@ def load_korrektur():
 
 
 def load_spider_top_publisher():
-    """spider -> dominanter Publisher (echte Bezugsquelle des Crawler-Contents)."""
+    """spider -> dominant publisher (the real Bezugsquelle of the crawler content)."""
     p = _find(ROOT / "quellen-analyse/data/replication_publisher_gap.csv")
     out = {}
     if not p:
