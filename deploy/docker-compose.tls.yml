@@ -12,6 +12,7 @@ services:
       - "8080"            # nur intern im Compose-Netz; Caddy proxyt darauf
     environment:
       - QE_TEAM_PASSWORD=${QE_TEAM_PASSWORD:?bitte QE_TEAM_PASSWORD in .env setzen}
+      - QE_AUTO_REFRESH_HOUR=${QE_AUTO_REFRESH_HOUR:-}
 
   caddy:
     image: caddy:2

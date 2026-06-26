@@ -10,6 +10,8 @@ services:
     environment:
       # Team-Passwort wird zur Laufzeit injiziert (nicht im Image gebacken):
       - QE_TEAM_PASSWORD=${QE_TEAM_PASSWORD:?bitte QE_TEAM_PASSWORD in .env setzen}
+      # Optionaler nächtlicher Auto-Refresh (Stunde 0–23; leer = aus):
+      - QE_AUTO_REFRESH_HOUR=${QE_AUTO_REFRESH_HOUR:-}
     # Healthcheck ist bereits im Image definiert (Dockerfile) und wird übernommen.
     #
     # Persistenz (optional): Der mitgelieferte Datenstand (truth.json) steckt schon

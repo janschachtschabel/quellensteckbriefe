@@ -134,5 +134,7 @@ Container nach einem Server-Neustart automatisch wieder.
   Push auf `main` neu).
 - **HTTPS:** Für öffentlichen Betrieb einen Reverse-Proxy (Caddy/nginx/Traefik)
   vor den Container setzen, der TLS terminiert und auf `127.0.0.1:8080` weiterleitet.
-- **Passwort-Default:** Ohne gesetztes `QE_TEAM_PASSWORD` nutzt die App
-  `wlo-intern` — im Betrieb unbedingt überschreiben.
+- **Kein Passwort-Default:** Ohne gesetztes `QE_TEAM_PASSWORD` sind die Team-Funktionen
+  deaktiviert (fail closed) — die Variable in `.env` setzen.
+- **Nächtlicher Auto-Refresh (optional):** `QE_AUTO_REFRESH_HOUR=3` baut die Daten
+  täglich um 03:00 Uhr neu (leer = aus). Der Refresh-Button selbst ist team-geschützt.
